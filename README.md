@@ -48,6 +48,7 @@ Usually it is http://localhost:8080.
 
 Authorization is performed via the header X-Api-Key
 
+
 ## Codeception testing
 
 ```php
