@@ -9,10 +9,17 @@
     ],
     "homepage": "https://github.com/romkatsu/yii-api-demo",
     "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/app-api/issues?state=open",
+        "forum": "https://www.yiiframework.com/forum/",
+        "wiki": "https://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/app-api"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "cebe/markdown": "^1.2@dev",
         "cycle/orm": "^1.2",
         "cycle/proxy-factory": "^1.2",

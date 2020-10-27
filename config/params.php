@@ -12,7 +12,6 @@ return [
     'supportEmail' => 'support@example.com',
     'aliases' => [
         '@root' => dirname(__DIR__),
-        '@views' => '@root/views',
         '@resources' => '@root/resources',
         '@src' => '@root/src',
         '@data' => '@root/data',
