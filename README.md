@@ -28,7 +28,7 @@ docker exec -it yii-php bash
 
 install packages:
 ```
-composer create-project --prefer-dist --stability=dev yiisoft/app-api <your project>
+composer install
 ```
 
 Usually it is http://localhost:8080.
