@@ -33,3 +33,5 @@ phpunit.phar
 # Phan
 analysis.txt
 
+#tests
+tests/_data/database.db_snapshot
