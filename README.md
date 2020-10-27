@@ -12,7 +12,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/app-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/app-api/?branch=master)
 [![static analysis](https://github.com/yiisoft/app-api/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/app-api/actions?query=workflow%3A%22static+analysis%22)
 
-The package ...
+Yii api application template for Yii 3
 
 ## Installation
 
