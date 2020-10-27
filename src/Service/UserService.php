@@ -53,7 +53,7 @@ final class UserService
      */
     public function logout(): void
     {
-        if ($this->user->logout()) {
+        if (!$this->user->logout()) {
             throw new BadRequestException();
         }
     }
