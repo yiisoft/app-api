@@ -1,7 +1,7 @@
 {
     "name": "yiisoft/app-api",
     "type": "project",
-    "description": "Yii Framework Project Api Demo",
+    "description": "Yii Framework API project template",
     "keywords": [
         "yii3",
         "app",
