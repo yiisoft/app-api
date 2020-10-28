@@ -21,7 +21,7 @@ Install docker:
 docker-compose up -d
 ```
 
-Enter in to the container:
+Enter into the container:
 ```
 docker exec -it yii-php bash
 ```
