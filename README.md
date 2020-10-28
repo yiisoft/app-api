@@ -46,7 +46,7 @@ Usually it is http://localhost:8080.
 | GET  /users/[id] | yes           |  get user            |
 | POST /auth/      | no            |  auth                |
 
-Authorization is performed via the header X-Api-Key
+Authorization is performed via the `X-Api-Key` header.
 
 
 ## Codeception testing
