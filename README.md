@@ -2,7 +2,7 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://github.com/yiisoft.png" height="100px">
     </a>
-    <h1 align="center">Yii api template</h1>
+    <h1 align="center">Yii API template</h1>
     <br>
 </p>
 
@@ -12,7 +12,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/app-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/app-api/?branch=master)
 [![static analysis](https://github.com/yiisoft/app-api/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/app-api/actions?query=workflow%3A%22static+analysis%22)
 
-Yii api application template for Yii 3
+Yii API application template for Yii 3
 
 ## Installation
 
@@ -21,7 +21,7 @@ Install docker:
 docker-compose up -d
 ```
 
-Enter in to the container:
+Enter into the container:
 ```
 docker exec -it yii-php bash
 ```
@@ -46,7 +46,7 @@ Usually it is http://localhost:8080.
 | GET  /users/[id] | yes           |  get user            |
 | POST /auth/      | no            |  auth                |
 
-Authorization is performed via the header X-Api-Key
+Authorization is performed via the `X-Api-Key` header.
 
 
 ## Codeception testing

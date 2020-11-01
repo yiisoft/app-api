@@ -1,13 +1,13 @@
 {
     "name": "yiisoft/app-api",
     "type": "project",
-    "description": "Yii Framework Project Api Demo",
+    "description": "Yii Framework API project template",
     "keywords": [
         "yii3",
         "app",
         "api"
     ],
-    "homepage": "https://github.com/romkatsu/yii-api-demo",
+    "homepage": "https://github.com/yiisoft/app-api/",
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/yiisoft/app-api/issues?state=open",
