@@ -5,7 +5,8 @@
     "keywords": [
         "yii3",
         "app",
-        "api"
+        "api",
+        "rest"
     ],
     "homepage": "https://github.com/yiisoft/app-api/",
     "license": "BSD-3-Clause",
@@ -80,7 +81,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.0.x-dev"
+            "dev-master": "1.0.x-dev"
         },
         "config-plugin-output-dir": "runtime/build/config",
         "config-plugin": {

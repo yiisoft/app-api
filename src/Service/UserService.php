@@ -31,11 +31,11 @@ final class UserService
     {
         $identity = $this->identityRepository->findByLogin($login);
         if ($identity === null) {
-            throw new BadRequestException('No such user');
+            throw new BadRequestException('No such user.');
         }
 
         if (!$identity->validatePassword($password)) {
-            throw new BadRequestException('Invalid password');
+            throw new BadRequestException('Invalid password.');
         }
 
         if (!$this->user->login($identity)) {

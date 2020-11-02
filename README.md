@@ -12,39 +12,42 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/app-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/app-api/?branch=master)
 [![static analysis](https://github.com/yiisoft/app-api/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/app-api/actions?query=workflow%3A%22static+analysis%22)
 
-Yii API application template for Yii 3
+API application template for Yii 3.
 
 ## Installation
 
 Install docker:
+
 ```
 docker-compose up -d
 ```
 
 Enter into the container:
+
 ```
 docker exec -it yii-php bash
 ```
 
-install packages:
+Install packages:
+
 ```
 composer install
 ```
 
-Usually it is http://localhost:8080.
+Usually the application is available at http://localhost:8080.
 
 ### Endpoints:
 
-| Method           | Require Auth  | Description          |
-| :--------------- |:-------------| :--------------------|
+| Method           | Requires auth | Description          |
+| :--------------- |:--------------| :--------------------|
 | GET  /           | no            | get application info |
 | GET  /blog/      | no            | get blog records     |
 | GET  /blog/[id]  | no            | get blog record      |
 | POST /blog/      | yes           | create blog record   |
 | PUT  /blog/[id]  | yes           | update blog record   |
-| GET  /users/     | yes           |  get users           |
-| GET  /users/[id] | yes           |  get user            |
-| POST /auth/      | no            |  auth                |
+| GET  /users/     | yes           | get users            |
+| GET  /users/[id] | yes           | get user             |
+| POST /auth/      | no            | auth                 |
 
 Authorization is performed via the `X-Api-Key` header.
 
