@@ -10,12 +10,14 @@ return [
         'enabled' => false,
     ],
     'supportEmail' => 'support@example.com',
-    'aliases' => [
-        '@root' => dirname(__DIR__),
-        '@resources' => '@root/resources',
-        '@src' => '@root/src',
-        '@data' => '@root/data',
-        '@tests' => '@root/tests',
+    'yiisoft/aliases' => [
+        'aliases' => [
+            '@root' => dirname(__DIR__),
+            '@resources' => '@root/resources',
+            '@src' => '@root/src',
+            '@data' => '@root/data',
+            '@tests' => '@root/tests',
+        ],
     ],
     'yiisoft/yii-cycle' => [
         'dbal' => [
