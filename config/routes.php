@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Blog\BlogController;
+use App\Controller\BlogController;
 use App\Controller\AuthController;
 use App\Controller\SiteController;
 use App\Controller\UserController;
