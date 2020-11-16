@@ -14,8 +14,8 @@ Builder::rebuild();
 
 $startTime = microtime(true);
 $container = new Container(
-    require Builder::path('tests/web'),
-    require Builder::path('tests/providers'),
+    require Builder::path('web'),
+    require Builder::path('providers')
 );
 
 $container = $container->get(ContainerInterface::class);
