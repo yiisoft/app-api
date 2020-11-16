@@ -7,7 +7,11 @@ use App\Controller\AuthController;
 use App\Controller\SiteController;
 use App\Controller\UserController;
 use Yiisoft\Auth\Middleware\Authentication;
+use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
+use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
+use Yiisoft\Swagger\Middleware\SwaggerJson;
+use Yiisoft\Swagger\Middleware\SwaggerUi;
 
 return [
     Route::get('/', [SiteController::class, 'index'])
@@ -40,4 +44,21 @@ return [
 
     Route::post('/logout/', [AuthController::class, 'logout'])
         ->name('logout'),
+
+    // Swagger routes
+    Group::create('/swagger', [
+        Route::get('')
+            ->addMiddleware(fn (SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/swagger/json-url'))
+            ->name('swagger/index'),
+        Route::get('/json-url')
+            ->addMiddleware(static function (SwaggerJson $swaggerJson) {
+                return $swaggerJson
+                    // Uncomment cache for production environment
+                    // ->withCache(60)
+                    ->withAnnotationPaths([
+                        '@src/Controller' // Path to API controllers
+                    ]);
+            })
+            ->addMiddleware(FormatDataResponseAsJson::class),
+    ]),
 ];
