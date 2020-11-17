@@ -38,6 +38,12 @@ final class BlogController
         $this->blogService = $blogService;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/blog",
+     *     @OA\Response(response="200", description="Blog ibdex")
+     * )
+     */
     public function index(PageRequest $request, PaginatorFormatter $paginatorFormatter): Response
     {
         $paginator = $this->blogService->getPosts($request->getPage());
