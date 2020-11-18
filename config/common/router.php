@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Middleware\ExceptionMiddleware;
 use Yiisoft\Composer\Config\Builder;
 use Yiisoft\DataResponse\Middleware\FormatDataResponse;
+use Yiisoft\Injector\Injector;
 use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\RouteCollection;
@@ -16,7 +17,13 @@ use Yiisoft\Router\FastRoute\UrlGenerator;
 use Yiisoft\Router\FastRoute\UrlMatcher;
 
 return [
-    UrlMatcherInterface::class => UrlMatcher::class,
+    UrlMatcherInterface::class => static function (Injector $injector) {
+        $arguments = [];
+        if (true) { // TODO: make it configurable via params
+            $arguments['cache'] = null;
+        }
+        return $injector->make(UrlMatcher::class, $arguments);
+    },
 
     UrlGeneratorInterface::class => UrlGenerator::class,
 
