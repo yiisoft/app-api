@@ -57,8 +57,6 @@ final class UserRepository extends Select\Repository implements IdentityReposito
         /**
          * @var $identity IdentityInterface|null
          */
-        $identity = $this->findOne([$field => $value]);
-
-        return $identity;
+        return $this->findOne([$field => $value]);
     }
 }

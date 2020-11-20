@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Acceptance;
 
 use App\Tests\AcceptanceTester;
@@ -19,8 +21,8 @@ final class SiteCest
                 'error_code' => null,
                 'data' => [
                     'version' => '3.0',
-                    'author' => 'yiisoft'
-                ]
+                    'author' => 'yiisoft',
+                ],
             ]
         );
     }
@@ -35,7 +37,7 @@ final class SiteCest
                 'status' => 'failed',
                 'error_message' => 'Page not found',
                 'error_code' => 404,
-                'data' => null
+                'data' => null,
             ]
         );
     }

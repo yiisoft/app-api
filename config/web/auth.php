@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use App\Auth\AuthRequestErrorHandler;
+use App\Repository\UserRepository;
 use Yiisoft\Auth\AuthenticationMethodInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
-use App\Repository\UserRepository;
 use Yiisoft\Auth\Method\HttpHeader;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\Factory\Definitions\Reference;
@@ -16,8 +16,7 @@ return [
     Authentication::class => [
         'class' => Authentication::class,
         '__construct()' => [
-            'authenticationFailureHandler' => Reference::to(AuthRequestErrorHandler::class)
+            'authenticationFailureHandler' => Reference::to(AuthRequestErrorHandler::class),
         ],
     ],
 ];
-

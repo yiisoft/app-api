@@ -13,7 +13,7 @@ final class PaginatorFormatter
         return [
             'pageSize' => $paginator->getPageSize(),
             'currentPage' => $paginator->getCurrentPage(),
-            'totalPages' => $paginator->getTotalPages()
+            'totalPages' => $paginator->getTotalPages(),
         ];
     }
 }

@@ -22,9 +22,9 @@ final class PostRepository extends Select\Repository
 
     public function findAll(array $scope = [], array $orderBy = []): SelectDataReader
     {
-        return (new SelectDataReader(
+        return new SelectDataReader(
             $this->select()->where($scope)->orderBy($orderBy)
-        ));
+        );
     }
 
     public function save(Post $user): void

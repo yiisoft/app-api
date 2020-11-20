@@ -40,9 +40,7 @@ final class EditPostRequest extends RequestModel implements ValidatableModelInte
         /**
          * @var User $identity
          */
-        $identity = $this->getValue('attributes.' . Authentication::class);
-
-        return $identity;
+        return $this->getValue('attributes.' . Authentication::class);
     }
 
     public function getRules(): array
@@ -52,13 +50,13 @@ final class EditPostRequest extends RequestModel implements ValidatableModelInte
                 new Required(),
                 (new HasLength())
                     ->min(5)
-                    ->max(255)
+                    ->max(255),
             ],
             'body.text' => [
                 new Required(),
                 (new HasLength())
                     ->min(5)
-                    ->max(1000)
+                    ->max(1000),
             ],
             'body.status' => [
                 new Required(),
@@ -68,8 +66,8 @@ final class EditPostRequest extends RequestModel implements ValidatableModelInte
                         $result->addError('Incorrect status');
                     }
                     return $result;
-                }
-            ]
+                },
+            ],
         ];
     }
 }

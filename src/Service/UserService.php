@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Exception\BadRequestException;
+use Throwable;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\Yii\Web\User\User;
-use Throwable;
 
 final class UserService
 {
@@ -24,8 +24,10 @@ final class UserService
     /**
      * @param string $login
      * @param string $password
-     * @return IdentityInterface
+     *
      * @throws BadRequestException
+     *
+     * @return IdentityInterface
      */
     public function login(string $login, string $password): IdentityInterface
     {

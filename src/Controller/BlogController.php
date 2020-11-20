@@ -49,7 +49,7 @@ final class BlogController
         return $this->responseFactory->createResponse(
             [
                 'paginator' => $paginatorFormatter->format($paginator),
-                'posts' => $posts
+                'posts' => $posts,
             ]
         );
     }
@@ -60,7 +60,7 @@ final class BlogController
             [
                 'post' => $this->postFormatter->format(
                     $this->blogService->getPost($request->getId())
-                )
+                ),
             ]
         );
     }

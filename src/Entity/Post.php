@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Entity\User;
 use App\Enum\PostStatus;
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
 use Cycle\Annotated\Annotation\Table;
+use Cycle\ORM\Promise\Reference;
 use DateTimeImmutable;
 use Yiisoft\Security\Random;
-use Cycle\ORM\Promise\Reference;
 
 /**
  * @Entity(
@@ -59,7 +58,8 @@ class Post
 
     /**
      * @BelongsTo(target="App\Entity\User", nullable=false)
-     * @var User|Reference
+     *
+     * @var Reference|User
      */
     private $user = null;
     private ?int $user_id = null;
@@ -127,7 +127,7 @@ class Post
     }
 
     /**
-     * @return User|Reference
+     * @return Reference|User
      */
     public function getUser(): ?User
     {
