@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Acceptance;
 
 use App\Tests\AcceptanceTester;
@@ -20,7 +22,7 @@ final class BlogCest
             [
                 'title' => 'test title',
                 'text' => 'test text',
-                'status' => 0
+                'status' => 0,
             ]
         );
         $I->seeResponseCodeIs(HttpCode::OK);
@@ -30,7 +32,7 @@ final class BlogCest
                 'status' => 'success',
                 'error_message' => '',
                 'error_code' => null,
-                'data' => null
+                'data' => null,
             ]
         );
 
@@ -39,7 +41,7 @@ final class BlogCest
             [
                 'title' => 'test title',
                 'content' => 'test text',
-                'status' => 0
+                'status' => 0,
             ]
         );
     }
@@ -56,7 +58,7 @@ final class BlogCest
             '/blog/',
             [
                 'title' => 'test title',
-                'status' => 100
+                'status' => 100,
             ]
         );
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -66,7 +68,7 @@ final class BlogCest
                 'status' => 'failed',
                 'error_message' => 'Value cannot be blank.',
                 'error_code' => 400,
-                'data' => null
+                'data' => null,
             ]
         );
 
@@ -74,7 +76,7 @@ final class BlogCest
             'post',
             [
                 'title' => 'test title',
-                'status' => 100
+                'status' => 100,
             ]
         );
     }
@@ -87,7 +89,7 @@ final class BlogCest
             [
                 'title' => 'test title',
                 'text' => 'test text',
-                'status' => 0
+                'status' => 0,
             ]
         );
         $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
@@ -97,7 +99,7 @@ final class BlogCest
                 'status' => 'failed',
                 'error_message' => 'Unauthorised request',
                 'error_code' => HttpCode::UNAUTHORIZED,
-                'data' => null
+                'data' => null,
             ]
         );
     }
@@ -115,7 +117,7 @@ final class BlogCest
             [
                 'title' => 'test title',
                 'text' => 'test text',
-                'status' => 0
+                'status' => 0,
             ]
         );
         $I->seeResponseCodeIs(HttpCode::OK);
@@ -125,7 +127,7 @@ final class BlogCest
                 'status' => 'success',
                 'error_message' => '',
                 'error_code' => null,
-                'data' => null
+                'data' => null,
             ]
         );
 
@@ -135,7 +137,7 @@ final class BlogCest
                 'id' => 1,
                 'title' => 'test title',
                 'content' => 'test text',
-                'status' => 0
+                'status' => 0,
             ]
         );
     }
@@ -148,7 +150,7 @@ final class BlogCest
             [
                 'title' => 'test title',
                 'text' => 'test text',
-                'status' => 0
+                'status' => 0,
             ]
         );
         $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
@@ -158,7 +160,7 @@ final class BlogCest
                 'status' => 'failed',
                 'error_message' => 'Unauthorised request',
                 'error_code' => HttpCode::UNAUTHORIZED,
-                'data' => null
+                'data' => null,
             ]
         );
     }
@@ -182,15 +184,15 @@ final class BlogCest
                     'paginator' => [
                         'pageSize' => 10,
                         'currentPage' => 2,
-                        'totalPages' => 2
+                        'totalPages' => 2,
                     ],
                     'posts' => [
                         [
                             'id' => 11,
                             'title' => 'Eveniet est nam sapiente odit architecto et.',
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ]
         );
     }
@@ -209,8 +211,8 @@ final class BlogCest
                     'post' => [
                         'id' => 11,
                         'title' => 'Eveniet est nam sapiente odit architecto et.',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
     }

@@ -28,7 +28,7 @@ final class AuthRequest extends RequestModel implements ValidatableModelInterfac
             ],
             'body.password' => [
                 new Required(),
-            ]
+            ],
         ];
     }
 }

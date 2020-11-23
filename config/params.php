@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Cycle\Schema\Generator;
 use Spiral\Database\Driver\SQLite\SQLiteDriver;
 use Yiisoft\Assets\AssetManager;
@@ -35,7 +37,7 @@ return [
             'default' => 'default',
             'aliases' => [],
             'databases' => [
-                'default' => ['connection' => 'sqlite']
+                'default' => ['connection' => 'sqlite'],
             ],
             'connections' => [
                 'sqlite' => [
@@ -48,12 +50,12 @@ return [
         ],
         'schema-providers' => [
             SimpleCacheSchemaProvider::class => [
-                'key' => 'cycle-orm-cache-key'
+                'key' => 'cycle-orm-cache-key',
             ],
             FromConveyorSchemaProvider::class => [
                 'generators' => [
                     Generator\SyncTables::class,
-                ]
+                ],
             ],
         ],
         'annotated-entity-paths' => [

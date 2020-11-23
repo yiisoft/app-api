@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Acceptance;
 
 use App\Tests\AcceptanceTester;
@@ -15,7 +17,7 @@ final class AuthCest
             '/auth/',
             [
                 'login' => 'Opal1144',
-                'password' => 'Opal1144'
+                'password' => 'Opal1144',
             ]
         );
         $I->seeResponseCodeIs(HttpCode::OK);
@@ -33,7 +35,7 @@ final class AuthCest
             'user',
             [
                 'id' => 1,
-                'token' => $response['data']['token']
+                'token' => $response['data']['token'],
             ]
         );
     }

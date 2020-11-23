@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use App\NotFoundHandler;
 use Psr\Container\ContainerInterface;
-use Yiisoft\Router\Middleware\Router;
 use Yiisoft\ErrorHandler\ErrorCatcher;
+use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Web\Middleware\SubFolder;
 use Yiisoft\Yii\Web\MiddlewareDispatcher;
 

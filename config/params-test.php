@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Spiral\Database\Driver\SQLite\SQLiteDriver;
 
 return [

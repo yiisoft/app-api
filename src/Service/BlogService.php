@@ -31,8 +31,10 @@ final class BlogService
 
     /**
      * @param int $id
-     * @return Post
+     *
      * @throws NotFoundException
+     *
+     * @return Post
      */
     public function getPost(int $id): Post
     {

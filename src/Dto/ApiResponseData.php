@@ -64,7 +64,7 @@ final class ApiResponseData
             'status' => $this->getStatus(),
             'error_message' => $this->getErrorMessage(),
             'error_code' => $this->getErrorCode(),
-            'data' => $this->getData()
+            'data' => $this->getData(),
         ];
     }
 }

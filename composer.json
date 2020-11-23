@@ -63,7 +63,8 @@
         "yiisoft/yii-debug": "^3.0@dev",
         "yiisoft/yii-event": "^3.0@dev",
         "yiisoft/yii-web": "^3.0@dev",
-        "yiisoft/yii-swagger": "^3.0@dev"
+        "yiisoft/yii-swagger": "^3.0@dev",
+        "yiisoft/user": "^3.0@dev"
     },
     "autoload": {
         "psr-4": {

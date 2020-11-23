@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Acceptance;
 
 use App\Tests\AcceptanceTester;
@@ -26,9 +28,9 @@ final class UserCest
                         [
                             'login' => 'Athena7928',
                             'created_at' => '26.07.2020 20:18:11',
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ]
         );
     }
@@ -51,8 +53,8 @@ final class UserCest
                     'user' => [
                         'login' => 'Opal1144',
                         'created_at' => '26.07.2020 20:18:11',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
     }
@@ -71,7 +73,7 @@ final class UserCest
                 'status' => 'failed',
                 'error_message' => 'Entity not found',
                 'error_code' => HttpCode::NOT_FOUND,
-                'data' => null
+                'data' => null,
             ]
         );
     }

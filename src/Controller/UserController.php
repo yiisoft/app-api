@@ -38,7 +38,7 @@ final class UserController
 
         return $this->responseFactory->createResponse(
             [
-                'users' => $result
+                'users' => $result,
             ]
         );
     }
@@ -55,7 +55,7 @@ final class UserController
 
         return $this->responseFactory->createResponse(
             [
-                'user' => $this->userFormatter->format($user)
+                'user' => $this->userFormatter->format($user),
             ]
         );
     }

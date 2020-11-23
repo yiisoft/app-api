@@ -6,14 +6,12 @@ namespace App\Entity;
 
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
-use Cycle\Annotated\Annotation\Relation\HasMany;
 use Cycle\Annotated\Annotation\Table;
 use Cycle\Annotated\Annotation\Table\Index;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
+use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Security\PasswordHasher;
 use Yiisoft\Security\Random;
-use Yiisoft\Auth\IdentityInterface;
 
 /**
  * @Entity(repository="App\Repository\UserRepository", mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper")

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-use Throwable;
 use Exception;
+use Throwable;
 use Yiisoft\Http\Status;
 
 class BadRequestException extends Exception implements ApplicationException

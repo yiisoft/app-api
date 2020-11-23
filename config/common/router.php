@@ -6,14 +6,14 @@ use App\Middleware\ExceptionMiddleware;
 use Yiisoft\Composer\Config\Builder;
 use Yiisoft\DataResponse\Middleware\FormatDataResponse;
 use Yiisoft\Request\Body\RequestBodyParser;
-use Yiisoft\Router\Group;
-use Yiisoft\Router\RouteCollection;
-use Yiisoft\Router\RouteCollectorInterface;
-use Yiisoft\Router\RouteCollectionInterface;
-use Yiisoft\Router\UrlGeneratorInterface;
-use Yiisoft\Router\UrlMatcherInterface;
 use Yiisoft\Router\FastRoute\UrlGenerator;
 use Yiisoft\Router\FastRoute\UrlMatcher;
+use Yiisoft\Router\Group;
+use Yiisoft\Router\RouteCollection;
+use Yiisoft\Router\RouteCollectionInterface;
+use Yiisoft\Router\RouteCollectorInterface;
+use Yiisoft\Router\UrlGeneratorInterface;
+use Yiisoft\Router\UrlMatcherInterface;
 
 return [
     UrlMatcherInterface::class => UrlMatcher::class,
@@ -31,5 +31,5 @@ return [
         );
 
         return new RouteCollection($collector);
-    }
+    },
 ];

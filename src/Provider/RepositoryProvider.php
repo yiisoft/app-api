@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Provider;
 
 use App\Entity\Post;
-use App\Repository\PostRepository;
 use App\Entity\User;
+use App\Repository\PostRepository;
 use App\Repository\UserRepository;
 use Cycle\ORM\ORMInterface;
 use Yiisoft\Di\Container;
@@ -16,7 +16,7 @@ final class RepositoryProvider extends ServiceProvider
 {
     private const REPOSITORIES = [
         User::class => UserRepository::class,
-        Post::class => PostRepository::class
+        Post::class => PostRepository::class,
     ];
 
     /**

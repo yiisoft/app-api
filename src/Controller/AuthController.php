@@ -29,7 +29,7 @@ final class AuthController
                 'token' => $this->userService->login(
                     $request->getLogin(),
                     $request->getPassword()
-                )->getToken()
+                )->getToken(),
             ]
         );
     }

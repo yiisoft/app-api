@@ -13,7 +13,7 @@ final class PostFormatter
         return [
             'id' => $post->getId(),
             'title' => $post->getTitle(),
-            'content' => $post->getContent()
+            'content' => $post->getContent(),
         ];
     }
 }
