@@ -19,4 +19,4 @@ env:
         modules:
             config:
                 REST:
-                    url: 'http://127.0.0.1:8282'
+                    url: 'http://127.0.0.1:82'
