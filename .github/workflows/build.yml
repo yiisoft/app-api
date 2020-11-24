@@ -8,7 +8,7 @@ jobs:
   tests:
     name: PHP ${{ matrix.php-version }}-${{ matrix.os }}
     env:
-      extensions: curl, mbstring, dom, intl, json, libxml, xml, xmlwriter, fileinfo
+      extensions: curl, mbstring, dom, intl, json, libxml, xml, xmlwriter, fileinfo, pdo_sqlite
       key: cache-v1
 
     runs-on: ${{ matrix.os }}
@@ -61,4 +61,4 @@ jobs:
         run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ignore-platform-reqs --ansi
 
       - name: Run tests with codeception
-        run: php -S 127.0.0.1:8282 -t public public/index-test.php > ./runtime/yii.log 2>&1 & vendor/bin/codecept run acceptance --env github-ci
+        run: php -S 127.0.0.1:8080 -t public public/index-test.php > ./runtime/yii.log 2>&1 & vendor/bin/codecept run acceptance --env github-ci
