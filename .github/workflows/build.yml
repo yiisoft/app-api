@@ -61,4 +61,4 @@ jobs:
         run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ignore-platform-reqs --ansi
 
       - name: Run tests with codeception
-        run: php -S 127.0.0.1:80 -t public > ./runtime/yii.log 2>&1 & vendor/bin/codecept run acceptance --env github-ci
+        run: php -S 127.0.0.1:8282 public/index-test.php > ./runtime/yii.log 2>&1 & vendor/bin/codecept run acceptance --env github-ci
