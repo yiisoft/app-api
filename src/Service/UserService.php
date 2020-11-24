@@ -8,7 +8,7 @@ use App\Exception\BadRequestException;
 use Throwable;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
-use Yiisoft\Yii\Web\User\User;
+use Yiisoft\User\User;
 
 final class UserService
 {
