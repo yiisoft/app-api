@@ -8,6 +8,11 @@ use Yiisoft\Yii\Web\Application;
 use Yiisoft\Yii\Web\SapiEmitter;
 use Yiisoft\Yii\Web\ServerRequestFactory;
 
+// PHP built-in server should serve static files as is
+if ((PHP_SAPI === 'cli-server') && is_file(__DIR__ . $_SERVER["REQUEST_URI"])) {
+    return false;
+}
+
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 Builder::rebuild();
