@@ -23,7 +23,7 @@ return [
                         ]
                     );
             },
-            'notFoundHandler' => Reference::to(NotFoundHandler::class),
+            'fallbackHandler' => Reference::to(NotFoundHandler::class),
         ],
     ],
 ];
