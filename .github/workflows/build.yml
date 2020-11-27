@@ -6,9 +6,9 @@ name: build
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php-version }}-${{ matrix.os }}
+    name: PHP ${{ matrix.php }}-${{ matrix.os }}
     env:
-      extensions: curl, mbstring, dom, intl, json, libxml, xml, xmlwriter, fileinfo, pdo_sqlite
+      extensions: fileinfo, pdo, pdo_sqlite
       key: cache-v1
 
     runs-on: ${{ matrix.os }}
@@ -19,7 +19,7 @@ jobs:
           - ubuntu-latest
           - windows-latest
 
-        php-version:
+        php:
           - "7.4"
           - "8.0"
 
@@ -27,7 +27,7 @@ jobs:
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: ${{ matrix.php }}
           extensions: ${{ env.extensions }}
           ini-values: date.timezone='UTC'
           coverage: pcov
