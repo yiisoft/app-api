@@ -16,6 +16,12 @@ use App\Validation\ViewPostRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
+/**
+ * @OA\Tag(
+ *     name="blog",
+ *     description="Blog"
+ * )
+ */
 final class BlogController
 {
     private DataResponseFactoryInterface $responseFactory;
@@ -38,6 +44,15 @@ final class BlogController
         $this->blogService = $blogService;
     }
 
+    /**
+     * @OA\Get(
+     *     tags={"blog"},
+     *     path="/blog",
+     *     summary="Returns paginated blog posts",
+     *     description="",
+     *     @OA\Response(response="200", description="Success")
+     * )
+     */
     public function index(PageRequest $request, PaginatorFormatter $paginatorFormatter): Response
     {
         $paginator = $this->blogService->getPosts($request->getPage());
@@ -54,6 +69,15 @@ final class BlogController
         );
     }
 
+    /**
+     * @OA\Get(
+     *     tags={"blog"},
+     *     path="/blog/{id}",
+     *     summary="Returns a post with a given ID",
+     *     description="",
+     *     @OA\Response(response="200", description="Success")
+     * )
+     */
     public function view(ViewPostRequest $request): Response
     {
         return $this->responseFactory->createResponse(
@@ -65,6 +89,15 @@ final class BlogController
         );
     }
 
+    /**
+     * @OA\Post(
+     *     tags={"blog"},
+     *     path="/blog",
+     *     summary="Creates a blog post",
+     *     description="",
+     *     @OA\Response(response="200", description="Success")
+     * )
+     */
     public function create(EditPostRequest $postRequest): Response
     {
         $post = $this->postBuilder->build(new Post(), $postRequest);
@@ -75,6 +108,15 @@ final class BlogController
         return $this->responseFactory->createResponse();
     }
 
+    /**
+     * @OA\Put(
+     *     tags={"blog"},
+     *     path="/blog/{id}",
+     *     summary="Updates a blog post with a given ID",
+     *     description="",
+     *     @OA\Response(response="200", description="Success")
+     * )
+     */
     public function update(EditPostRequest $postRequest): Response
     {
         $post = $this->postBuilder->build(

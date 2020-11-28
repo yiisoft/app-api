@@ -12,6 +12,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
+/**
+ * @OA\Tag(
+ *     name="user",
+ *     description="Users"
+ * )
+ */
 final class UserController
 {
     private DataResponseFactoryInterface $responseFactory;
@@ -28,6 +34,15 @@ final class UserController
         $this->userFormatter = $userFormatter;
     }
 
+    /**
+     * @OA\Get(
+     *     tags={"user"},
+     *     path="/users",
+     *     summary="Returns paginated users",
+     *     description="",
+     *     @OA\Response(response="200", description="Success")
+     * )
+     */
     public function index(): ResponseInterface
     {
         $dataReader = $this->userRepository->findAllOrderByLogin();
@@ -43,6 +58,15 @@ final class UserController
         );
     }
 
+    /**
+     * @OA\Get(
+     *     tags={"user"},
+     *     path="/users/{id}",
+     *     summary="Returns a user with a given ID",
+     *     description="",
+     *     @OA\Response(response="200", description="Success")
+     * )
+     */
     public function view(ServerRequestInterface $request): ResponseInterface
     {
         /**
