@@ -51,7 +51,7 @@ return [
         '/docs',
         [
             Route::get('')
-                ->addMiddleware(fn(SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/docs/openapi.json'))
+                ->addMiddleware(fn (SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/docs/openapi.json'))
                 ->addMiddleware(FormatDataResponseAsHtml::class),
             Route::get('/openapi.json')
                 ->addMiddleware(
@@ -61,7 +61,7 @@ return [
                             // ->withCache(3600)
                             ->withAnnotationPaths(
                                 [
-                                    '@src/Controller' // Path to API controllers
+                                    '@src/Controller', // Path to API controllers
                                 ]
                             );
                     }
