@@ -30,8 +30,5 @@ phpunit.phar
 # phpunit cache
 .phpunit.result.cache
 
-# Phan
-analysis.txt
-
 #tests
 tests/_data/database.db_snapshot

@@ -48,12 +48,12 @@ return [
 
     // Swagger routes
     Group::create(
-        '/swagger',
+        '/docs',
         [
             Route::get('')
-                ->addMiddleware(fn (SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/swagger/json-url'))
+                ->addMiddleware(fn(SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/docs/openapi.json'))
                 ->addMiddleware(FormatDataResponseAsHtml::class),
-            Route::get('/json-url')
+            Route::get('/openapi.json')
                 ->addMiddleware(
                     static function (SwaggerJson $swaggerJson) {
                         return $swaggerJson
@@ -61,7 +61,7 @@ return [
                             // ->withCache(3600)
                             ->withAnnotationPaths(
                                 [
-                                    '@src/Controller', // Path to API controllers
+                                    '@src/Controller' // Path to API controllers
                                 ]
                             );
                     }
