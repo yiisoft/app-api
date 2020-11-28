@@ -8,14 +8,16 @@ use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
 /**
- * @OA\Info(title="My first API", version="1.0")
+ * @OA\Info(title="Yii API application", version="1.0")
  */
 class SiteController
 {
     /**
      * @OA\Get(
      *     path="/",
-     *     @OA\Response(response="200", description="API Info")
+     *     summary="Returns info about the API",
+     *     description="",
+     *     @OA\Response(response="200", description="Success")
      * )
      */
     public function index(DataResponseFactoryInterface $responseFactory): ResponseInterface
