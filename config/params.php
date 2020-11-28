@@ -62,4 +62,7 @@ return [
             '@src/Entity',
         ],
     ],
+    'yiisoft/router' => [
+        'enableCache' => false,
+    ],
 ];

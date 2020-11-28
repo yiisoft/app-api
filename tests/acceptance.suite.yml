@@ -14,3 +14,9 @@ modules:
               cleanup: true
         - App\Tests\Helper\Acceptance
     step_decorators: ~
+env:
+    github-ci:
+        modules:
+            config:
+                REST:
+                    url: 'http://127.0.0.1:8080'
