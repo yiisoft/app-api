@@ -51,7 +51,7 @@ return [
         '/swagger',
         [
             Route::get('')
-                ->addMiddleware(fn(SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/swagger/json-url'))
+                ->addMiddleware(fn (SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/swagger/json-url'))
                 ->addMiddleware(FormatDataResponseAsHtml::class),
             Route::get('/json-url')
                 ->addMiddleware(
@@ -61,7 +61,7 @@ return [
                             // ->withCache(3600)
                             ->withAnnotationPaths(
                                 [
-                                    '@src/Controller' // Path to API controllers
+                                    '@src/Controller', // Path to API controllers
                                 ]
                             );
                     }

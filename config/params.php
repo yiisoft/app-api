@@ -30,7 +30,7 @@ return [
         'basePath' => '@views',
         'defaultParameters' => [
             'assetManager' => Reference::to(AssetManager::class),
-        ]
+        ],
     ],
     'yiisoft/yii-cycle' => [
         'dbal' => [
