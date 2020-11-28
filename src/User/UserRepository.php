@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\User;
 
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;

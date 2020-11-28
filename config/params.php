@@ -59,7 +59,7 @@ return [
             ],
         ],
         'annotated-entity-paths' => [
-            '@src/Entity',
+            '@src',
         ],
     ],
     'yiisoft/router' => [
