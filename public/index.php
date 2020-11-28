@@ -1,5 +1,6 @@
 <?php
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use Psr\Container\ContainerInterface;
 use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Di\Container;
@@ -20,6 +21,9 @@ if (PHP_SAPI === 'cli-server') {
 }
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+// Ignore OpenAPI annotations so Cycle ORM works.
+AnnotationReader::addGlobalIgnoredNamespace("OA");
 
 Builder::rebuild();
 
