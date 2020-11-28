@@ -21,6 +21,9 @@ if (PHP_SAPI === 'cli-server') {
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
+// Ignore OpenAPI annotations so Cycle ORM works.
+AnnotationReader::addGlobalIgnoredNamespace("OA");
+
 Builder::rebuild();
 
 $startTime = microtime(true);
