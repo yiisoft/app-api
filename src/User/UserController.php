@@ -2,12 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\User;
 
-use App\Entity\User;
 use App\Exception\NotFoundException;
-use App\Formatter\UserFormatter;
-use App\Repository\UserRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;

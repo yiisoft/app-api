@@ -2,17 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Blog;
 
-use App\Builder\PostBuilder;
-use App\Entity\Post;
 use App\Formatter\PaginatorFormatter;
-use App\Formatter\PostFormatter;
-use App\Repository\PostRepository;
-use App\Service\BlogService;
-use App\Validation\EditPostRequest;
 use App\Validation\PageRequest;
-use App\Validation\ViewPostRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 

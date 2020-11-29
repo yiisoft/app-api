@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Auth;
 
-use App\Service\UserService;
-use App\Validation\AuthRequest;
+use App\User\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface as ResponseFactory;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\User;
 
 use App\Exception\BadRequestException;
 use Throwable;

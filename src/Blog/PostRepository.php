@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Blog;
 
-use App\Entity\Post;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;
 use Cycle\ORM\Transaction;

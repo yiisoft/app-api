@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Validation;
+namespace App\Blog;
 
-use App\Entity\User;
-use App\Enum\PostStatus;
+use App\User\User;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\RequestModel\RequestModel;
 use Yiisoft\RequestModel\ValidatableModelInterface;

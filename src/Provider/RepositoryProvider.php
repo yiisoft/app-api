@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Provider;
 
-use App\Entity\Post;
-use App\Entity\User;
-use App\Repository\PostRepository;
-use App\Repository\UserRepository;
+use App\Blog\Post;
+use App\Blog\PostRepository;
+use App\User\User;
+use App\User\UserRepository;
 use Cycle\ORM\ORMInterface;
 use Yiisoft\Di\Container;
 use Yiisoft\Di\Support\ServiceProvider;

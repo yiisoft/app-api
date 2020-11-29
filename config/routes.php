@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Controller\AuthController;
-use App\Controller\BlogController;
-use App\Controller\SiteController;
-use App\Controller\UserController;
+use App\Auth\AuthController;
+use App\Blog\BlogController;
+use App\InfoController;
+use App\User\UserController;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsHtml;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
@@ -15,7 +15,7 @@ use Yiisoft\Swagger\Middleware\SwaggerJson;
 use Yiisoft\Swagger\Middleware\SwaggerUi;
 
 return [
-    Route::get('/', [SiteController::class, 'index'])
+    Route::get('/', [InfoController::class, 'index'])
         ->name('api/info'),
 
     Route::get('/blog/', [BlogController::class, 'index'])
@@ -61,7 +61,7 @@ return [
                             // ->withCache(3600)
                             ->withAnnotationPaths(
                                 [
-                                    '@src/Controller', // Path to API controllers
+                                    '@src', // Path to API controllers
                                 ]
                             );
                     }

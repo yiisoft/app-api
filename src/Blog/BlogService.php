@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Blog;
 
-use App\Entity\Post;
 use App\Exception\NotFoundException;
-use App\Repository\PostRepository;
 use Yiisoft\Data\Paginator\OffsetPaginator;
 use Yiisoft\Data\Paginator\PaginatorInterface;
 
