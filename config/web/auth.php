@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Auth\AuthRequestErrorHandler;
-use App\Repository\UserRepository;
+use App\User\UserRepository;
 use Yiisoft\Auth\AuthenticationMethodInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\Auth\Method\HttpHeader;

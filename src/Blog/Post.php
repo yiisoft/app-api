@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Blog;
 
-use App\Enum\PostStatus;
+use App\User\User;
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
@@ -15,7 +15,7 @@ use Yiisoft\Security\Random;
 
 /**
  * @Entity(
- *     repository="App\Repository\PostRepository",
+ *     repository="App\Blog\PostRepository",
  * )
  * @Table()
  */
@@ -57,7 +57,7 @@ class Post
     private DateTimeImmutable $updated_at;
 
     /**
-     * @BelongsTo(target="App\Entity\User", nullable=false)
+     * @BelongsTo(target="App\User\User", nullable=false)
      *
      * @var Reference|User
      */

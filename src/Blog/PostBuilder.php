@@ -2,10 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Builder;
-
-use App\Entity\Post;
-use App\Validation\EditPostRequest;
+namespace App\Blog;
 
 final class PostBuilder
 {

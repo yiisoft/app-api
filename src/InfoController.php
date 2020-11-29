@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App;
 
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
@@ -10,7 +10,7 @@ use Yiisoft\DataResponse\DataResponseFactoryInterface;
 /**
  * @OA\Info(title="Yii API application", version="1.0")
  */
-class SiteController
+class InfoController
 {
     /**
      * @OA\Get(

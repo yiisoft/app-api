@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\User;
 
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
@@ -14,7 +14,7 @@ use Yiisoft\Security\PasswordHasher;
 use Yiisoft\Security\Random;
 
 /**
- * @Entity(repository="App\Repository\UserRepository", mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper")
+ * @Entity(repository="App\User\UserRepository", mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper")
  * @Table(
  *     indexes={
  *         @Index(columns={"login"}, unique=true),
