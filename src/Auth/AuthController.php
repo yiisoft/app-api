@@ -36,7 +36,18 @@ final class AuthController
      *     @OA\Response(
      *          response="200",
      *          description="Success",
-     *          @OA\JsonContent(ref="#/components/schemas/SuccessLoginResponse")
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(property="token", format="string", example="uap4X5Bd7078lxIFvxAflcGAa5D95iSSZkNjg3XFrE2EBRBlbj"),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
      *    ),
      *    @OA\Response(
      *          response="400",

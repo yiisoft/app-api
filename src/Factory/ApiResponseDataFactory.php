@@ -44,20 +44,6 @@ use Yiisoft\Http\Status;
  *          )
  *      }
  * )
- *
- * @OA\Schema(
- *      schema="SuccessLoginResponse",
- *      allOf={
- *          @OA\Schema(ref="#/components/schemas/Response"),
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="data",
- *                  type="object",
- *                  @OA\Property(property="token", format="string", example="uap4X5Bd7078lxIFvxAflcGAa5D95iSSZkNjg3XFrE2EBRBlbj"),
- *              ),
- *          )
- *      }
- * )
  */
 final class ApiResponseDataFactory
 {
