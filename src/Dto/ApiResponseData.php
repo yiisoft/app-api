@@ -35,7 +35,7 @@ final class ApiResponseData
      *      format="string",
      *      example="success",
      *      enum={"success", "failed"}
-     * ),
+     * )
      */
     private string $status = '';
 
