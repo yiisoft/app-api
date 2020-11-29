@@ -8,42 +8,6 @@ use App\Dto\ApiResponseData;
 use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\Http\Status;
 
-/**
- * @OA\Schema(
- *      schema="Response",
- *      @OA\Property(
- *          property="status",
- *          format="string",
- *          example="success",
- *          enum={"success", "failed"}
- *      ),
- *      @OA\Property(property="error_message", format="string", example=""),
- *      @OA\Property(property="error_code", format="integer", nullable=true, example=null),
- *      @OA\Property(
- *          property="data",
- *          type="object",
- *          nullable=true,
- *      ),
- * )
- * @OA\Schema(
- *      schema="BadResponse",
- *      allOf={
- *          @OA\Schema(ref="#/components/schemas/Response"),
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="status",
- *                  example="failed",
- *              ),
- *              @OA\Property(property="error_message", example="Error description message"),
- *              @OA\Property(property="error_code", nullable=true, example=400),
- *              @OA\Property(
- *                  property="data",
- *                  example=null
- *              ),
- *          )
- *      }
- * )
- */
 final class ApiResponseDataFactory
 {
     public function createFromResponse(DataResponse $response): ApiResponseData
