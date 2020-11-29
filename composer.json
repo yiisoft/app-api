@@ -24,8 +24,8 @@
         "cebe/markdown": "^1.2@dev",
         "cycle/orm": "^1.2",
         "cycle/proxy-factory": "^1.2",
-        "myclabs/php-enum": "^1.7",
         "httpsoft/http-message": "^1.0.5",
+        "myclabs/php-enum": "^1.7",
         "psr/container": "^1.0",
         "psr/http-factory": "^1.0",
         "psr/http-message": "^1.0",
@@ -56,15 +56,15 @@
         "yiisoft/security": "^1.0",
         "yiisoft/serializer": "^3.0@dev",
         "yiisoft/strings": "^1.0",
+        "yiisoft/user": "^3.0@dev",
         "yiisoft/validator": "^3.0@dev",
         "yiisoft/var-dumper": "^3.0@dev",
         "yiisoft/yii-console": "^3.0@dev",
         "yiisoft/yii-cycle": "^3.0@dev",
         "yiisoft/yii-debug": "^3.0@dev",
         "yiisoft/yii-event": "^3.0@dev",
-        "yiisoft/yii-web": "^3.0@dev",
         "yiisoft/yii-swagger": "^3.0@dev",
-        "yiisoft/user": "^3.0@dev"
+        "yiisoft/yii-web": "^3.0@dev"
     },
     "autoload": {
         "psr-4": {
@@ -140,6 +140,9 @@
         "codeception/module-db": "^1.0",
         "codeception/module-phpbrowser": "^1.0.0",
         "codeception/module-rest": "^1.2",
-        "vimeo/psalm": "^4.0"
+        "phpunit/phpunit": "^9.4",
+        "roave/infection-static-analysis-plugin": "^1.5",
+        "spatie/phpunit-watcher": "^1.23",
+        "vimeo/psalm": "^4.2"
     }
 }
