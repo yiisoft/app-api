@@ -8,7 +8,6 @@ use Yiisoft\RequestModel\RequestModel;
 use Yiisoft\RequestModel\ValidatableModelInterface;
 use Yiisoft\Validator\Rule\Required;
 
-
 /**
  * @OA\Schema(
  *      schema="AuthRequest",

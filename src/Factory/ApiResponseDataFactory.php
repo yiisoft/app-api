@@ -9,7 +9,6 @@ use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\Http\Status;
 
 /**
- *
  * @OA\Schema(
  *      schema="Response",
  *      @OA\Property(
