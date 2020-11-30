@@ -8,6 +8,13 @@ use Yiisoft\RequestModel\RequestModel;
 use Yiisoft\RequestModel\ValidatableModelInterface;
 use Yiisoft\Validator\Rule\Required;
 
+/**
+ * @OA\Schema(
+ *      schema="AuthRequest",
+ *      @OA\Property(example="Opal1144", property="login", format="string"),
+ *      @OA\Property(example="Opal1144", property="password", format="string"),
+ * )
+ */
 final class AuthRequest extends RequestModel implements ValidatableModelInterface
 {
     public function getLogin(): string
