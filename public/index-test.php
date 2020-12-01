@@ -20,6 +20,12 @@ if (PHP_SAPI === 'cli-server') {
     $_SERVER['SCRIPT_NAME'] = '/index-test.php';
 }
 
+$c3 = dirname(__DIR__) . '/c3.php';
+
+if (is_file($c3)) {
+    require_once $c3;
+}
+
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 // Ignore OpenAPI annotations so Cycle ORM works.
