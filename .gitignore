@@ -30,5 +30,8 @@ phpunit.phar
 # phpunit cache
 .phpunit.result.cache
 
+# Codeception
+c3.php
+
 #tests
 tests/_data/database.db_snapshot
