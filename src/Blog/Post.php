@@ -12,7 +12,6 @@ use Cycle\Annotated\Annotation\Table;
 use Cycle\ORM\Promise\Reference;
 use DateTimeImmutable;
 use Yiisoft\Security\Random;
-use OpenApi\Annotations as OA;
 
 /**
  * @Entity(

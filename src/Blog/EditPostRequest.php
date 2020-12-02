@@ -11,7 +11,6 @@ use Yiisoft\RequestModel\ValidatableModelInterface;
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\HasLength;
 use Yiisoft\Validator\Rule\Required;
-use OpenApi\Annotations as OA;
 
 final class EditPostRequest extends RequestModel implements ValidatableModelInterface
 {
