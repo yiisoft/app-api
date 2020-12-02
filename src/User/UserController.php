@@ -8,6 +8,7 @@ use App\Exception\NotFoundException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Tag(
