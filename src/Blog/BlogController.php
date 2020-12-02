@@ -8,6 +8,7 @@ use App\Formatter\PaginatorFormatter;
 use App\Validation\PageRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Tag(

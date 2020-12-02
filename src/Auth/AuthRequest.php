@@ -7,6 +7,7 @@ namespace App\Auth;
 use Yiisoft\RequestModel\RequestModel;
 use Yiisoft\RequestModel\ValidatableModelInterface;
 use Yiisoft\Validator\Rule\Required;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(

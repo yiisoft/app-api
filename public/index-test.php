@@ -28,9 +28,6 @@ if (is_file($c3)) {
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-// Ignore OpenAPI annotations so Cycle ORM works.
-AnnotationReader::addGlobalIgnoredNamespace("OA");
-
 Builder::rebuild();
 
 $startTime = microtime(true);

@@ -7,6 +7,7 @@ namespace App\Blog;
 use App\Exception\NotFoundException;
 use Yiisoft\Data\Paginator\OffsetPaginator;
 use Yiisoft\Data\Paginator\PaginatorInterface;
+use OpenApi\Annotations as OA;
 
 final class BlogService
 {

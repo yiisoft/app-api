@@ -7,6 +7,7 @@ namespace App\Auth;
 use App\User\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface as ResponseFactory;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Tag(
