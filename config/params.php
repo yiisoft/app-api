@@ -49,9 +49,8 @@ return [
             ],
         ],
         'schema-providers' => [
-            SimpleCacheSchemaProvider::class => [
-                'key' => 'cycle-orm-cache-key',
-            ],
+            // Uncomment next line to enable schema cache
+            // SimpleCacheSchemaProvider::class => ['key' => 'cycle-orm-cache-key'],
             FromConveyorSchemaProvider::class => [
                 'generators' => [
                     Generator\SyncTables::class,
