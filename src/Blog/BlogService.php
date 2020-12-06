@@ -37,7 +37,7 @@ final class BlogService
     public function getPost(int $id): Post
     {
         /**
-         * @var $post Post|null
+         * @var Post|null $post
          */
         $post = $this->postRepository->findOne(['id' => $id]);
         if ($post === null) {

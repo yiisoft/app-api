@@ -44,7 +44,8 @@ return [
         ->name('auth'),
 
     Route::post('/logout/', [AuthController::class, 'logout'])
-        ->name('logout'),
+        ->name('logout')
+        ->addMiddleware(Authentication::class),
 
     // Swagger routes
     Group::create(

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Auth;
 
+use App\User\UserRequest;
 use App\User\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface as ResponseFactory;
@@ -94,9 +95,9 @@ final class AuthController
      *     ),
      * )
      */
-    public function logout(): ResponseInterface
+    public function logout(UserRequest $request): ResponseInterface
     {
-        $this->userService->logout();
+        $this->userService->logout($request->getUser());
         return $this->responseFactory->createResponse();
     }
 }
