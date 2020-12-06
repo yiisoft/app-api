@@ -41,10 +41,35 @@ final class BlogController
     /**
      * @OA\Get(
      *     tags={"blog"},
-     *     path="/blog",
+     *     path="/blog/",
      *     summary="Returns paginated blog posts",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     @OA\Parameter(ref="#/components/parameters/PageRequest"),
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="posts",
+     *                              type="array",
+     *                              @OA\Items(ref="#/components/schemas/Post")
+     *                          ),
+     *                          @OA\Property(
+     *                              property="paginator",
+     *                              type="object",
+     *                              ref="#/components/schemas/Paginator"
+     *                          ),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
+     *    ),
      * )
      */
     public function index(PageRequest $request, PaginatorFormatter $paginatorFormatter): Response

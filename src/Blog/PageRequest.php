@@ -5,7 +5,20 @@ declare(strict_types=1);
 namespace App\Blog;
 
 use Yiisoft\RequestModel\RequestModel;
+use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Parameter(
+ *      @OA\Schema(
+ *          type="int",
+ *          example="2"
+ *      ),
+ *      in="query",
+ *      allowReserved=true,
+ *      name="page",
+ *      parameter="PageRequest"
+ * )
+ */
 final class PageRequest extends RequestModel
 {
     private const DEFAULT_PAGE_PARAM = 1;
