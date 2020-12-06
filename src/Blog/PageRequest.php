@@ -14,7 +14,6 @@ use OpenApi\Annotations as OA;
  *          example="2"
  *      ),
  *      in="query",
- *      allowReserved=true,
  *      name="page",
  *      parameter="PageRequest"
  * )
