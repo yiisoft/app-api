@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\User;
 
 use App\Exception\BadRequestException;
-use Throwable;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\User\User;
+use App\User\User as UserEntity;
 
 final class UserService
 {
@@ -25,9 +25,9 @@ final class UserService
      * @param string $login
      * @param string $password
      *
+     * @return IdentityInterface
      * @throws BadRequestException
      *
-     * @return IdentityInterface
      */
     public function login(string $login, string $password): IdentityInterface
     {
@@ -49,14 +49,9 @@ final class UserService
         return $identity;
     }
 
-    /**
-     * @throws BadRequestException
-     * @throws Throwable
-     */
-    public function logout(): void
+    public function logout(UserEntity $user): void
     {
-        if (!$this->user->logout()) {
-            throw new BadRequestException();
-        }
+        $user->resetToken();
+        $this->identityRepository->save($user);
     }
 }
