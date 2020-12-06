@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Blog;
 
 use App\Formatter\PaginatorFormatter;
-use App\Validation\PageRequest;
+use App\User\UserRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use OpenApi\Annotations as OA;
@@ -92,10 +92,10 @@ final class BlogController
      *     @OA\Response(response="200", description="Success")
      * )
      */
-    public function create(EditPostRequest $postRequest): Response
+    public function create(EditPostRequest $postRequest, UserRequest $userRequest): Response
     {
         $post = $this->postBuilder->build(new Post(), $postRequest);
-        $post->setUser($postRequest->getUser());
+        $post->setUser($userRequest->getUser());
 
         $this->postRepository->save($post);
 

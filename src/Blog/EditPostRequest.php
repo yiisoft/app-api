@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Blog;
 
-use App\User\User;
-use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\RequestModel\RequestModel;
 use Yiisoft\RequestModel\ValidatableModelInterface;
 use Yiisoft\Validator\Result;
@@ -32,14 +30,6 @@ final class EditPostRequest extends RequestModel implements ValidatableModelInte
     public function getStatus(): PostStatus
     {
         return new PostStatus($this->getValue('body.status'));
-    }
-
-    public function getUser(): User
-    {
-        /**
-         * @var User $identity
-         */
-        return $this->getValue('attributes.' . Authentication::class);
     }
 
     public function getRules(): array

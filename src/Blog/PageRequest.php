@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Validation;
+namespace App\Blog;
 
 use Yiisoft\RequestModel\RequestModel;
 
