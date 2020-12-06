@@ -6,6 +6,7 @@ namespace App;
 
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Info(title="Yii API application", version="1.0")

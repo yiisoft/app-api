@@ -7,6 +7,7 @@ namespace App\Auth;
 use App\User\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface as ResponseFactory;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Tag(
@@ -30,10 +31,37 @@ final class AuthController
     /**
      * @OA\Post(
      *     tags={"auth"},
-     *     path="/auth",
-     *     summary="Authenticate by token",
+     *     path="/auth/",
+     *     summary="Authenticate by params",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(property="token", format="string", example="uap4X5Bd7078lxIFvxAflcGAa5D95iSSZkNjg3XFrE2EBRBlbj"),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
+     *    ),
+     *    @OA\Response(
+     *          response="400",
+     *          description="Bad request",
+     *          @OA\JsonContent(ref="#/components/schemas/BadResponse")
+     *     ),
+     *     @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/AuthRequest"),
+     *          ),
+     *     ),
      * )
      */
     public function login(AuthRequest $request): ResponseInterface
@@ -51,10 +79,19 @@ final class AuthController
     /**
      * @OA\Post(
      *     tags={"auth"},
-     *     path="/logout",
+     *     path="/logout/",
      *     summary="Logout",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(ref="#/components/schemas/Response")
+     *    ),
+     *    @OA\Response(
+     *          response="400",
+     *          description="Bad request",
+     *          @OA\JsonContent(ref="#/components/schemas/BadResponse")
+     *     ),
      * )
      */
     public function logout(): ResponseInterface
