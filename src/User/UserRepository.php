@@ -26,7 +26,7 @@ final class UserRepository extends Select\Repository implements IdentityReposito
     {
         return (new SelectDataReader($this->select()))
             ->withSort(
-                (new Sort([]))->withOrderString('login')
+                (new Sort(['login']))->withOrderString('login')
             );
     }
 
