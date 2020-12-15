@@ -9,7 +9,16 @@ use Yiisoft\RequestModel\ValidatableModelInterface;
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\HasLength;
 use Yiisoft\Validator\Rule\Required;
+use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Schema(
+ *      schema="EditPostRequest",
+ *      @OA\Property(example="Title post", property="title", format="string"),
+ *      @OA\Property(example="Text post", property="text", format="string"),
+ *      @OA\Property(example=1, property="status", format="int"),
+ * )
+ */
 final class EditPostRequest extends RequestModel implements ValidatableModelInterface
 {
     public function getId(): int
