@@ -38,7 +38,27 @@ final class UserController
      *     path="/users",
      *     summary="Returns paginated users",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     security={{"ApiKey": {}}},
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="users",
+     *                              type="array",
+     *                              @OA\Items(ref="#/components/schemas/User")
+     *                          ),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
+     *    ),
      * )
      */
     public function index(): ResponseInterface
@@ -62,7 +82,33 @@ final class UserController
      *     path="/users/{id}",
      *     summary="Returns a user with a given ID",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     security={{"ApiKey": {}}},
+     *     @OA\Parameter(
+     *          @OA\Schema(type="int", example="2"),
+     *          in="path",
+     *          name="id",
+     *          parameter="id"
+     *     ),
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="user",
+     *                              type="object",
+     *                              ref="#/components/schemas/User"
+     *                          ),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
+     *    ),
      * )
      */
     public function view(ServerRequestInterface $request): ResponseInterface

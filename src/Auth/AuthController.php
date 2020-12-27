@@ -15,6 +15,13 @@ use OpenApi\Annotations as OA;
  *     name="auth",
  *     description="Authentication"
  * )
+ *
+ * @OA\SecurityScheme(
+ *     securityScheme="ApiKey",
+ *     type="apiKey",
+ *     in="header",
+ *     name="X-Api-Key"
+ * )
  */
 final class AuthController
 {
@@ -83,6 +90,7 @@ final class AuthController
      *     path="/logout/",
      *     summary="Logout",
      *     description="",
+     *     security={{"ApiKey": {}}},
      *     @OA\Response(
      *          response="200",
      *          description="Success",
