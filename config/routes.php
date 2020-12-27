@@ -13,6 +13,7 @@ use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 use Yiisoft\Swagger\Middleware\SwaggerJson;
 use Yiisoft\Swagger\Middleware\SwaggerUi;
+use App\Factory\RestGroupFactory;
 
 return [
     Route::get('/', [InfoController::class, 'index'])
@@ -32,12 +33,7 @@ return [
         ->name('blog/update')
         ->addMiddleware(Authentication::class),
 
-    Route::get('/users/', [UserController::class, 'index'])
-        ->name('users/index')
-        ->addMiddleware(Authentication::class),
-
-    Route::get('/users/{id:\d+}', [UserController::class, 'view'])
-        ->name('users/view')
+    RestGroupFactory::create('/users/', UserController::class)
         ->addMiddleware(Authentication::class),
 
     Route::post('/auth/', [AuthController::class, 'login'])

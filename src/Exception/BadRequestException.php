@@ -8,7 +8,7 @@ use Exception;
 use Throwable;
 use Yiisoft\Http\Status;
 
-class BadRequestException extends Exception implements ApplicationException
+final class BadRequestException extends Exception implements ApplicationException
 {
     public function __construct($message = 'Bad request', $code = Status::BAD_REQUEST, Throwable $previous = null)
     {
