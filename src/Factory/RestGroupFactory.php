@@ -27,14 +27,14 @@ final class RestGroupFactory
 
     public static function create(string $prefix, string $controller): RouteCollectorInterface
     {
-        return Group::create($prefix, static::createDefaultRoutes($controller));
+        return Group::create($prefix, self::createDefaultRoutes($controller));
     }
 
     private static function createDefaultRoutes(string $controller): array
     {
         $routes = [];
         $reflection = new ReflectionClass($controller);
-        foreach (static::METHODS as $methodName => $httpMethod) {
+        foreach (self::METHODS as $methodName => $httpMethod) {
             if ($reflection->hasMethod($methodName)) {
                 $pattern = $methodName === 'list' ? '' : self::ENTITY_PATTERN;
                 $routes[] = Route::methods([$httpMethod], $pattern, [$controller, $methodName]);
