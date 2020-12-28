@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\User;
 
 use App\Exception\NotFoundException;
+use App\RestControllerTrait;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
@@ -18,6 +19,8 @@ use OpenApi\Annotations as OA;
  */
 final class UserController
 {
+    use RestControllerTrait;
+
     private DataResponseFactoryInterface $responseFactory;
     private UserRepository $userRepository;
     private UserFormatter $userFormatter;
@@ -61,7 +64,7 @@ final class UserController
      *    ),
      * )
      */
-    public function index(): ResponseInterface
+    public function list(): ResponseInterface
     {
         $dataReader = $this->userRepository->findAllOrderByLogin();
         $result = [];
@@ -111,7 +114,7 @@ final class UserController
      *    ),
      * )
      */
-    public function view(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         /**
          * @var User $user

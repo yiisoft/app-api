@@ -77,4 +77,23 @@ final class UserCest
             ]
         );
     }
+
+    public function notAllowedMethod(AcceptanceTester $I): void
+    {
+        $I->haveHttpHeader(
+            'X-Api-Key',
+            'lev1ZsWCzqrMlXRI2sT8h4ApYpSgBMl1xf6D4bCRtiKtDqw6JN36yLznargilQ_rEJz9zTfcUxm53PLODCToF9gGin38Rd4NkhQPOVeH5VvZvBaQlUg64E6icNCubiAv'
+        );
+        $I->sendPut('/users/1');
+        $I->seeResponseCodeIs(HttpCode::METHOD_NOT_ALLOWED);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'status' => 'failed',
+                'error_message' => 'Method is not implemented yet',
+                'error_code' => HttpCode::METHOD_NOT_ALLOWED,
+                'data' => null,
+            ]
+        );
+    }
 }
