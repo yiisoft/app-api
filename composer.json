@@ -43,6 +43,7 @@
         "yiisoft/data-response": "^3.0@dev",
         "yiisoft/di": "^3.0@dev",
         "yiisoft/error-handler": "^3.0@dev",
+        "yiisoft/event-dispatcher": "3.0.x-dev",
         "yiisoft/factory": "^3.0@dev",
         "yiisoft/files": "@dev",
         "yiisoft/http": "^1.0@dev",
@@ -63,7 +64,6 @@
         "yiisoft/yii-console": "^3.0@dev",
         "yiisoft/yii-cycle": "^3.0@dev",
         "yiisoft/yii-debug": "^3.0@dev",
-        "yiisoft/yii-event": "^3.0@dev",
         "yiisoft/yii-swagger": "^3.0@dev",
         "yiisoft/yii-web": "^3.0@dev"
     },
