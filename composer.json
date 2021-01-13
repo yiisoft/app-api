@@ -44,6 +44,7 @@
         "yiisoft/di": "^3.0@dev",
         "yiisoft/error-handler": "^3.0@dev",
         "yiisoft/factory": "^3.0@dev",
+        "yiisoft/files": "@dev",
         "yiisoft/http": "^1.0@dev",
         "yiisoft/injector": "^1.0",
         "yiisoft/json": "^1.0",

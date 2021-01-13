@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\User;
 
 use App\Exception\NotFoundException;
+use App\RestControllerTrait;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
@@ -18,6 +19,8 @@ use OpenApi\Annotations as OA;
  */
 final class UserController
 {
+    use RestControllerTrait;
+
     private DataResponseFactoryInterface $responseFactory;
     private UserRepository $userRepository;
     private UserFormatter $userFormatter;
@@ -38,10 +41,30 @@ final class UserController
      *     path="/users",
      *     summary="Returns paginated users",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     security={{"ApiKey": {}}},
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="users",
+     *                              type="array",
+     *                              @OA\Items(ref="#/components/schemas/User")
+     *                          ),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
+     *    ),
      * )
      */
-    public function index(): ResponseInterface
+    public function list(): ResponseInterface
     {
         $dataReader = $this->userRepository->findAllOrderByLogin();
         $result = [];
@@ -62,10 +85,36 @@ final class UserController
      *     path="/users/{id}",
      *     summary="Returns a user with a given ID",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     security={{"ApiKey": {}}},
+     *     @OA\Parameter(
+     *          @OA\Schema(type="int", example="2"),
+     *          in="path",
+     *          name="id",
+     *          parameter="id"
+     *     ),
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="user",
+     *                              type="object",
+     *                              ref="#/components/schemas/User"
+     *                          ),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
+     *    ),
      * )
      */
-    public function view(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         /**
          * @var User $user

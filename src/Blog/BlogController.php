@@ -94,7 +94,45 @@ final class BlogController
      *     path="/blog/{id}",
      *     summary="Returns a post with a given ID",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     @OA\Parameter(
+     *          @OA\Schema(type="int", example="2"),
+     *          in="path",
+     *          name="id",
+     *          parameter="id"
+     *     ),
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/Response"),
+     *                  @OA\Schema(
+     *                      @OA\Property(
+     *                          property="data",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="post",
+     *                              type="object",
+     *                              ref="#/components/schemas/Post"
+     *                          ),
+     *                      ),
+     *                  ),
+     *              },
+     *          )
+     *    ),
+     *    @OA\Response(
+     *          response="404",
+     *          description="Not found",
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(ref="#/components/schemas/BadResponse"),
+     *                  @OA\Schema(
+     *                      @OA\Property(property="error_message", example="Entity not found"),
+     *                      @OA\Property(property="error_code", nullable=true, example=404)
+     *                  ),
+     *              },
+     *          )
+     *    ),
      * )
      */
     public function view(ViewPostRequest $request): Response
@@ -114,7 +152,21 @@ final class BlogController
      *     path="/blog",
      *     summary="Creates a blog post",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     security={{"ApiKey": {}}},
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              ref="#/components/schemas/Response"
+     *          )
+     *    ),
+     *     @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/EditPostRequest"),
+     *          ),
+     *     ),
      * )
      */
     public function create(EditPostRequest $postRequest, UserRequest $userRequest): Response
@@ -133,7 +185,27 @@ final class BlogController
      *     path="/blog/{id}",
      *     summary="Updates a blog post with a given ID",
      *     description="",
-     *     @OA\Response(response="200", description="Success")
+     *     security={{"ApiKey": {}}},
+     *     @OA\Parameter(
+     *          @OA\Schema(type="int", example="2"),
+     *          in="path",
+     *          name="id",
+     *          parameter="id"
+     *     ),
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              ref="#/components/schemas/Response"
+     *          )
+     *    ),
+     *     @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(ref="#/components/schemas/EditPostRequest"),
+     *          ),
+     *     )
      * )
      */
     public function update(EditPostRequest $postRequest): Response
