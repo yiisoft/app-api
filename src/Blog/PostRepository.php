@@ -7,7 +7,7 @@ namespace App\Blog;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;
 use Cycle\ORM\Transaction;
-use Yiisoft\Yii\Cycle\DataReader\SelectDataReader;
+use Yiisoft\Yii\Cycle\Data\Reader\EntityReader;
 
 final class PostRepository extends Select\Repository
 {
@@ -19,9 +19,9 @@ final class PostRepository extends Select\Repository
         parent::__construct($select);
     }
 
-    public function findAll(array $scope = [], array $orderBy = []): SelectDataReader
+    public function findAll(array $scope = [], array $orderBy = []): EntityReader
     {
-        return new SelectDataReader(
+        return new EntityReader(
             $this->select()->where($scope)->orderBy($orderBy)
         );
     }
