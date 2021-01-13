@@ -8,11 +8,11 @@ use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;
 use Cycle\ORM\Transaction;
 use Yiisoft\Auth\IdentityInterface;
-use Yiisoft\Auth\IdentityRepositoryInterface;
+use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 use Yiisoft\Data\Reader\Sort;
 use Yiisoft\Yii\Cycle\DataReader\SelectDataReader;
 
-final class UserRepository extends Select\Repository implements IdentityRepositoryInterface
+final class UserRepository extends Select\Repository implements IdentityWithTokenRepositoryInterface
 {
     private ORMInterface $orm;
 
