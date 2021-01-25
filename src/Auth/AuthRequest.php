@@ -20,12 +20,12 @@ final class AuthRequest extends RequestModel implements ValidatableModelInterfac
 {
     public function getLogin(): string
     {
-        return (string)$this->getValue('body.login');
+        return (string)$this->getAttributeValue('body.login');
     }
 
     public function getPassword(): string
     {
-        return (string)$this->getValue('body.password');
+        return (string)$this->getAttributeValue('body.password');
     }
 
     public function getRules(): array

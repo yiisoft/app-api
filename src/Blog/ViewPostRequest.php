@@ -10,6 +10,6 @@ final class ViewPostRequest extends RequestModel
 {
     public function getId(): int
     {
-        return (int)$this->getValue('attributes.id');
+        return (int)$this->getAttributeValue('attributes.id');
     }
 }
