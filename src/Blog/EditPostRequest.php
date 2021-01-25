@@ -38,7 +38,7 @@ final class EditPostRequest extends RequestModel implements ValidatableModelInte
 
     public function getStatus(): PostStatus
     {
-        return new PostStatus($this->getValue('body.status'));
+        return new PostStatus($this->getAttributeValue('body.status'));
     }
 
     public function getRules(): array
