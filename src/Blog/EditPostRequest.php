@@ -23,22 +23,22 @@ final class EditPostRequest extends RequestModel implements ValidatableModelInte
 {
     public function getId(): int
     {
-        return (int)$this->getValue('attributes.id');
+        return (int)$this->getAttributeValue('attributes.id');
     }
 
     public function getTitle(): string
     {
-        return (string)$this->getValue('body.title');
+        return (string)$this->getAttributeValue('body.title');
     }
 
     public function getText(): string
     {
-        return (string)$this->getValue('body.text');
+        return (string)$this->getAttributeValue('body.text');
     }
 
     public function getStatus(): PostStatus
     {
-        return new PostStatus($this->getValue('body.status'));
+        return new PostStatus($this->getAttributeValue('body.status'));
     }
 
     public function getRules(): array

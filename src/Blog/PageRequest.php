@@ -24,8 +24,8 @@ final class PageRequest extends RequestModel
 
     public function getPage(): int
     {
-        if ($this->hasValue('query.page')) {
-            return (int)$this->getValue('query.page');
+        if ($this->hasAttribute('query.page')) {
+            return (int)$this->getAttributeValue('query.page');
         }
 
         return self::DEFAULT_PAGE_PARAM;
