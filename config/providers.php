@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Provider\RepositoryProvider;
-use Yiisoft\Arrays\Modifier\ReverseBlockMerge;
+use Yiisoft\Composer\Config\Merger\Modifier\ReverseBlockMerge;
 
 return [
     RepositoryProvider::class => RepositoryProvider::class,
