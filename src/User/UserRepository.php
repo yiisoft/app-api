@@ -10,8 +10,6 @@ use Cycle\ORM\Transaction;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
-use Yiisoft\Data\Reader\Sort;
-use Yiisoft\Yii\Cycle\Data\Reader\EntityReader;
 
 final class UserRepository extends Select\Repository implements IdentityWithTokenRepositoryInterface, IdentityRepositoryInterface
 {
@@ -21,14 +19,6 @@ final class UserRepository extends Select\Repository implements IdentityWithToke
     {
         $this->orm = $orm;
         parent::__construct($select);
-    }
-
-    public function findAllOrderByLogin(): EntityReader
-    {
-        return (new EntityReader($this->select()))
-            ->withSort(
-                Sort::only(['login'])->withOrderString('login')
-            );
     }
 
     public function findIdentity(string $id): ?IdentityInterface
