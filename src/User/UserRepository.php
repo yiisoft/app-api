@@ -27,7 +27,7 @@ final class UserRepository extends Select\Repository implements IdentityWithToke
     {
         return (new EntityReader($this->select()))
             ->withSort(
-                (new Sort(['login']))->withOrderString('login')
+                Sort::only(['login'])->withOrderString('login')
             );
     }
 
