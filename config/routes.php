@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Auth\AuthController;
 use App\Blog\BlogController;
 use App\InfoController;
-use App\User\UserController;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsHtml;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
@@ -13,7 +12,6 @@ use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 use Yiisoft\Swagger\Middleware\SwaggerJson;
 use Yiisoft\Swagger\Middleware\SwaggerUi;
-use App\Factory\RestGroupFactory;
 
 return [
     Route::get('/', [InfoController::class, 'index'])
@@ -31,9 +29,6 @@ return [
 
     Route::put('/blog/{id:\d+}', [BlogController::class, 'update'])
         ->name('blog/update')
-        ->addMiddleware(Authentication::class),
-
-    RestGroupFactory::create('/users/', UserController::class)
         ->addMiddleware(Authentication::class),
 
     Route::post('/auth/', [AuthController::class, 'login'])
