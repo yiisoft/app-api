@@ -50,7 +50,7 @@
         "yiisoft/json": "^1.0",
         "yiisoft/log": "^3.0@dev",
         "yiisoft/log-target-file": "^3.0@dev",
-        "yiisoft/request-body-parser": "^3.0@dev",
+        "yiisoft/request-body-parser": "^1.0",
         "yiisoft/request-model": "^1.0@dev",
         "yiisoft/router": "^3.0@dev",
         "yiisoft/router-fastroute": "^3.0@dev",
