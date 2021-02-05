@@ -59,7 +59,6 @@
         "yiisoft/strings": "^1.0",
         "yiisoft/user": "^3.0@dev",
         "yiisoft/validator": "^3.0@dev",
-        "yiisoft/var-dumper": "^3.0@dev",
         "yiisoft/yii-console": "^3.0@dev",
         "yiisoft/yii-cycle": "^3.0@dev",
         "yiisoft/yii-debug": "^3.0@dev",
