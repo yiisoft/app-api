@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\NotFoundHandler;
-use Yiisoft\ErrorHandler\ErrorCatcher;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Injector\Injector;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
 use Yiisoft\Router\Middleware\Router;
