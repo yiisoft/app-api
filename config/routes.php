@@ -23,14 +23,6 @@ return [
     Route::get('/blog/{id:\d+}', [BlogController::class, 'view'])
         ->name('blog/view'),
 
-    Route::post('/blog/', [BlogController::class, 'create'])
-        ->name('blog/create')
-        ->addMiddleware(Authentication::class),
-
-    Route::put('/blog/{id:\d+}', [BlogController::class, 'update'])
-        ->name('blog/update')
-        ->addMiddleware(Authentication::class),
-
     Route::post('/auth/', [AuthController::class, 'login'])
         ->name('auth'),
 

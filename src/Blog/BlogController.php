@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Blog;
 
 use App\Formatter\PaginatorFormatter;
-use App\User\UserRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use OpenApi\Annotations as OA;
@@ -19,22 +18,16 @@ use OpenApi\Annotations as OA;
 final class BlogController
 {
     private DataResponseFactoryInterface $responseFactory;
-    private PostRepository $postRepository;
     private PostFormatter $postFormatter;
-    private PostBuilder $postBuilder;
     private BlogService $blogService;
 
     public function __construct(
-        PostRepository $postRepository,
         DataResponseFactoryInterface $responseFactory,
         PostFormatter $postFormatter,
-        PostBuilder $postBuilder,
         BlogService $blogService
     ) {
-        $this->postRepository = $postRepository;
         $this->responseFactory = $responseFactory;
         $this->postFormatter = $postFormatter;
-        $this->postBuilder = $postBuilder;
         $this->blogService = $blogService;
     }
 
@@ -144,79 +137,5 @@ final class BlogController
                 ),
             ]
         );
-    }
-
-    /**
-     * @OA\Post(
-     *     tags={"blog"},
-     *     path="/blog",
-     *     summary="Creates a blog post",
-     *     description="",
-     *     security={{"ApiKey": {}}},
-     *     @OA\Response(
-     *          response="200",
-     *          description="Success",
-     *          @OA\JsonContent(
-     *              ref="#/components/schemas/Response"
-     *          )
-     *    ),
-     *     @OA\RequestBody(
-     *          required=true,
-     *          @OA\MediaType(
-     *              mediaType="application/json",
-     *              @OA\Schema(ref="#/components/schemas/EditPostRequest"),
-     *          ),
-     *     ),
-     * )
-     */
-    public function create(EditPostRequest $postRequest, UserRequest $userRequest): Response
-    {
-        $post = $this->postBuilder->build(new Post(), $postRequest);
-        $post->setUser($userRequest->getUser());
-
-        $this->postRepository->save($post);
-
-        return $this->responseFactory->createResponse();
-    }
-
-    /**
-     * @OA\Put(
-     *     tags={"blog"},
-     *     path="/blog/{id}",
-     *     summary="Updates a blog post with a given ID",
-     *     description="",
-     *     security={{"ApiKey": {}}},
-     *     @OA\Parameter(
-     *          @OA\Schema(type="int", example="2"),
-     *          in="path",
-     *          name="id",
-     *          parameter="id"
-     *     ),
-     *     @OA\Response(
-     *          response="200",
-     *          description="Success",
-     *          @OA\JsonContent(
-     *              ref="#/components/schemas/Response"
-     *          )
-     *    ),
-     *     @OA\RequestBody(
-     *          required=true,
-     *          @OA\MediaType(
-     *              mediaType="application/json",
-     *              @OA\Schema(ref="#/components/schemas/EditPostRequest"),
-     *          ),
-     *     )
-     * )
-     */
-    public function update(EditPostRequest $postRequest): Response
-    {
-        $post = $this->postBuilder->build(
-            $this->blogService->getPost($postRequest->getId()),
-            $postRequest
-        );
-
-        $this->postRepository->save($post);
-
-        return $this->responseFactory->createResponse();
     }
 }
