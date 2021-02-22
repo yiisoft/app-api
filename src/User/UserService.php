@@ -7,16 +7,16 @@ namespace App\User;
 use App\Exception\BadRequestException;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
-use Yiisoft\User\CurrentIdentity\CurrentIdentity;
+use Yiisoft\User\CurrentUser\CurrentUser;
 
 final class UserService
 {
     private IdentityRepositoryInterface $identityRepository;
-    private CurrentIdentity $currentIdentity;
+    private CurrentUser $currentUser;
 
-    public function __construct(CurrentIdentity $currentIdentity, IdentityRepositoryInterface $identityRepository)
+    public function __construct(CurrentUser $currentUser, IdentityRepositoryInterface $identityRepository)
     {
-        $this->currentIdentity = $currentIdentity;
+        $this->currentUser = $currentUser;
         $this->identityRepository = $identityRepository;
     }
 
@@ -37,7 +37,7 @@ final class UserService
             throw new BadRequestException('Invalid password.');
         }
 
-        if (!$this->currentIdentity->login($identity)) {
+        if (!$this->currentUser->login($identity)) {
             throw new BadRequestException();
         }
 
