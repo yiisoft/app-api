@@ -7,7 +7,7 @@ namespace App\User;
 use App\Exception\BadRequestException;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
-use Yiisoft\User\CurrentUser\CurrentUser;
+use Yiisoft\User\CurrentUser;
 
 final class UserService
 {
