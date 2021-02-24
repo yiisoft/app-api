@@ -33,8 +33,6 @@
         "psr/http-server-middleware": "^1.0",
         "psr/log": "^1.1",
         "yiisoft/access": "^1.0",
-        "yiisoft/aliases": "^1.0",
-        "yiisoft/arrays": "^1.0",
         "yiisoft/auth": "^3.0",
         "yiisoft/cache": "^1.0",
         "yiisoft/cache-file": "^1.0",
@@ -47,7 +45,6 @@
         "yiisoft/files": "^1.0",
         "yiisoft/http": "^1.0@dev",
         "yiisoft/injector": "^1.0",
-        "yiisoft/json": "^1.0",
         "yiisoft/log": "^1.0",
         "yiisoft/log-target-file": "^1.0",
         "yiisoft/request-body-parser": "^1.0",
@@ -55,8 +52,6 @@
         "yiisoft/router": "^3.0@dev",
         "yiisoft/router-fastroute": "^3.0@dev",
         "yiisoft/security": "^1.0",
-        "yiisoft/serializer": "^3.0@dev",
-        "yiisoft/strings": "^2.0",
         "yiisoft/user": "^3.0@dev",
         "yiisoft/validator": "^3.0@dev",
         "yiisoft/yii-console": "^3.0@dev",
@@ -143,6 +138,7 @@
         "phpunit/phpunit": "^9.4",
         "roave/infection-static-analysis-plugin": "^1.5",
         "spatie/phpunit-watcher": "^1.23",
-        "vimeo/psalm": "^4.2"
+        "vimeo/psalm": "^4.2",
+        "yiisoft/json": "^1.0"
     }
 }
