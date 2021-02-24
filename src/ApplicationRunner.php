@@ -15,7 +15,7 @@ use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Di\Container;
 use Yiisoft\ErrorHandler\ErrorHandler;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
-use Yiisoft\ErrorHandler\Renderer\HtmlRenderer;
+use Yiisoft\ErrorHandler\Renderer\JsonRenderer;
 use Yiisoft\Files\FileHelper;
 use Yiisoft\Http\Method;
 use Yiisoft\Yii\Web\Application;
@@ -38,7 +38,7 @@ final class ApplicationRunner
     {
         $startTime = microtime(true);
         // Register temporary error handler to catch error while container is building.
-        $errorHandler = new ErrorHandler(new NullLogger(), new HtmlRenderer());
+        $errorHandler = new ErrorHandler(new NullLogger(), new JsonRenderer());
         $this->registerErrorHandler($errorHandler);
 
         if ($this->debug && $this->shouldRebuildConfigs()) {
