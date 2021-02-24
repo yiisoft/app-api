@@ -1,6 +1,5 @@
 <?php
 
-use Doctrine\Common\Annotations\AnnotationReader;
 use Psr\Container\ContainerInterface;
 use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Di\Container;
