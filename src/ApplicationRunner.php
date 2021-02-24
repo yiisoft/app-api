@@ -47,7 +47,7 @@ final class ApplicationRunner
 
         $container = new Container(
             require Builder::path('web'),
-            require Builder::path('providers-web')
+            require Builder::path('providers')
         );
 
         // Register error handler with real container-configured dependencies.
