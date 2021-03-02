@@ -1,7 +1,7 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Yiisoft\Composer\Config\Builder;
+use Yiisoft\Config\Config;
 use Yiisoft\Di\Container;
 use Yiisoft\Http\Method;
 use Yiisoft\Yii\Web\Application;
@@ -27,12 +27,15 @@ if (is_file($c3)) {
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-Builder::rebuild();
+$config = new Config(
+    dirname(__DIR__),
+    '/config/packages', // Configs path.
+);
 
 $startTime = microtime(true);
 $container = new Container(
-    require Builder::path('tests/web'),
-    require Builder::path('tests/providers'),
+    $config->get('tests/web'),
+    $config->get('tests/providers'),
 );
 
 $container = $container->get(ContainerInterface::class);
