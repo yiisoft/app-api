@@ -40,7 +40,9 @@ return [
             'connections' => [
                 'sqlite' => [
                     'driver' => SQLiteDriver::class,
-                    'connection' => 'sqlite:@data/db/database.db',
+                    'connection' => YII_ENV === 'production'
+                        ? 'sqlite:@data/db/database.db'
+                        : 'sqlite:@tests/_data/database.db',
                     'username' => '',
                     'password' => '',
                 ],

@@ -118,11 +118,6 @@
                 "config/providers-console.php"
             ],
             "routes": "config/routes.php"
-        },
-        "config-plugin-alternatives": {
-            "tests": {
-                "params": "config/params-test.php"
-            }
         }
     },
     "config": {

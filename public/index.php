@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use App\ApplicationRunner;
 
+define('YII_ENV', 'production');
+
 // PHP built-in server routing.
 if (PHP_SAPI === 'cli-server') {
     // Serve static files as is.

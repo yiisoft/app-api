@@ -8,6 +8,8 @@ use Yiisoft\Yii\Web\Application;
 use Yiisoft\Yii\Web\SapiEmitter;
 use Yiisoft\Yii\Web\ServerRequestFactory;
 
+define('YII_ENV', 'testing');
+
 // PHP built-in server routing.
 if (PHP_SAPI === 'cli-server') {
     // Serve static files as is.
@@ -34,8 +36,8 @@ $config = new Config(
 
 $startTime = microtime(true);
 $container = new Container(
-    $config->get('tests/web'),
-    $config->get('tests/providers'),
+    $config->get('web'),
+    $config->get('providers'),
 );
 
 $container = $container->get(ContainerInterface::class);
