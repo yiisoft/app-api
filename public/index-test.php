@@ -1,12 +1,14 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Yiisoft\Composer\Config\Builder;
+use Yiisoft\Config\Config;
 use Yiisoft\Di\Container;
 use Yiisoft\Http\Method;
 use Yiisoft\Yii\Web\Application;
 use Yiisoft\Yii\Web\SapiEmitter;
 use Yiisoft\Yii\Web\ServerRequestFactory;
+
+define('YII_ENV', 'testing');
 
 // PHP built-in server routing.
 if (PHP_SAPI === 'cli-server') {
@@ -27,12 +29,15 @@ if (is_file($c3)) {
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-Builder::rebuild();
+$config = new Config(
+    dirname(__DIR__),
+    '/config/packages', // Configs path.
+);
 
 $startTime = microtime(true);
 $container = new Container(
-    require Builder::path('tests/web'),
-    require Builder::path('tests/providers'),
+    $config->get('web'),
+    $config->get('providers'),
 );
 
 $container = $container->get(ContainerInterface::class);

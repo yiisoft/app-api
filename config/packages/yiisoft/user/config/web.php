@@ -5,11 +5,13 @@ declare(strict_types=1);
 use App\Auth\AuthRequestErrorHandler;
 use App\User\UserRepository;
 use Yiisoft\Auth\AuthenticationMethodInterface;
-use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
+use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 use Yiisoft\Auth\Method\HttpHeader;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\Factory\Definitions\Reference;
+
+/** @var array $params */
 
 return [
     IdentityRepositoryInterface::class => UserRepository::class,
