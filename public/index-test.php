@@ -29,29 +29,8 @@ if (is_file($c3)) {
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-$config = new Config(
-    dirname(__DIR__),
-    '/config/packages', // Configs path.
-);
-
-$startTime = microtime(true);
-$container = new Container(
-    $config->get('web'),
-    $config->get('providers'),
-);
-
-$container = $container->get(ContainerInterface::class);
-$application = $container->get(Application::class);
-
-$request = $container->get(ServerRequestFactory::class)->createFromGlobals();
-$request = $request->withAttribute('applicationStartTime', $startTime);
-
-try {
-    $application->start();
-    $response = $application->handle($request);
-    $emitter = new SapiEmitter();
-    $emitter->emit($response, $request->getMethod() === Method::HEAD);
-} finally {
-    $application->afterEmit($response ?? null);
-    $application->shutdown();
-}
+$runner = new ApplicationRunner();
+// Development mode:
+$runner->debug();
+// Run application:
+$runner->run();
