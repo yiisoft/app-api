@@ -1,12 +1,6 @@
 <?php
 
-use Psr\Container\ContainerInterface;
-use Yiisoft\Config\Config;
-use Yiisoft\Di\Container;
-use Yiisoft\Http\Method;
-use Yiisoft\Yii\Web\Application;
-use Yiisoft\Yii\Web\SapiEmitter;
-use Yiisoft\Yii\Web\ServerRequestFactory;
+use App\ApplicationRunner;
 
 define('YII_ENV', 'testing');
 
