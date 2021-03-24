@@ -9,46 +9,46 @@ return [
             'config/common/*.php',
         ],
         'yiisoft/cache-file' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/log-target-file' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/request-model' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/yii-cycle' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/yii-debug' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/cache' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/yii-event' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/profiler' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/yii-filesystem' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/aliases' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/validator' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/router' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/router-fastroute' => [
-            'config/common.php',
+            'common.php',
         ],
         'yiisoft/view' => [
-            'config/common.php',
+            'common.php',
         ],
     ],
     'console' => [
@@ -57,16 +57,16 @@ return [
             'config/console/*.php',
         ],
         'yiisoft/yii-cycle' => [
-            'config/console.php',
+            'console.php',
         ],
         'yiisoft/yii-debug' => [
-            'config/console.php',
+            'console.php',
         ],
         'yiisoft/yii-console' => [
-            'config/console.php',
+            'console.php',
         ],
         'yiisoft/yii-event' => [
-            'config/console.php',
+            'console.php',
         ],
     ],
     'events' => [
@@ -74,7 +74,7 @@ return [
             'config/events.php',
         ],
         'yiisoft/yii-event' => [
-            'config/events.php',
+            'events.php',
         ],
     ],
     'events-console' => [
@@ -83,14 +83,14 @@ return [
             'config/events-console.php',
         ],
         'yiisoft/yii-cycle' => [
-            'config/events-console.php',
+            'events-console.php',
         ],
         'yiisoft/yii-debug' => [
-            'config/events-console.php',
+            'events-console.php',
         ],
         'yiisoft/yii-event' => [
             '$events',
-            'config/events-console.php',
+            'events-console.php',
         ],
     ],
     'events-web' => [
@@ -99,17 +99,17 @@ return [
             'config/events-web.php',
         ],
         'yiisoft/yii-debug' => [
-            'config/events-web.php',
+            'events-web.php',
         ],
         'yiisoft/log' => [
-            'config/events-web.php',
+            'events-web.php',
         ],
         'yiisoft/yii-event' => [
             '$events',
-            'config/events-web.php',
+            'events-web.php',
         ],
         'yiisoft/profiler' => [
-            'config/events-web.php',
+            'events-web.php',
         ],
     ],
     'params' => [
@@ -118,49 +118,49 @@ return [
             '?config/params-local.php',
         ],
         'yiisoft/cache-file' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/log-target-file' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/user' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/yii-cycle' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/yii-debug' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/yii-console' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/assets' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/profiler' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/yii-web' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/yii-view' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/aliases' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/router-fastroute' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/session' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/view' => [
-            'config/params.php',
+            'params.php',
         ],
         'yiisoft/csrf' => [
-            'config/params.php',
+            'params.php',
         ],
     ],
     'providers' => [
@@ -168,10 +168,10 @@ return [
             'config/providers.php',
         ],
         'yiisoft/yii-debug' => [
-            'config/providers.php',
+            'providers.php',
         ],
         'yiisoft/yii-filesystem' => [
-            'config/providers.php',
+            'providers.php',
         ],
     ],
     'providers-console' => [
@@ -180,7 +180,7 @@ return [
             'config/providers-console.php',
         ],
         'yiisoft/yii-console' => [
-            'config/providers-console.php',
+            'providers-console.php',
         ],
     ],
     'providers-web' => [
@@ -189,7 +189,7 @@ return [
             'config/providers-web.php',
         ],
         'yiisoft/yii-cycle' => [
-            'config/providers-web.php',
+            'providers-web.php',
         ],
     ],
     'routes' => [
@@ -199,7 +199,7 @@ return [
     ],
     'tests' => [
         'yiisoft/yii-debug' => [
-            'config/tests.php',
+            'tests.php',
         ],
         'yiisoft/yii-web' => [
             '$web',
@@ -211,43 +211,43 @@ return [
             'config/web/*.php',
         ],
         'yiisoft/error-handler' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/user' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/yii-debug' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/yii-event' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/assets' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/yii-web' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/yii-view' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/data-response' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/middleware-dispatcher' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/router-fastroute' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/session' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/view' => [
-            'config/web.php',
+            'web.php',
         ],
         'yiisoft/csrf' => [
-            'config/web.php',
+            'web.php',
         ],
     ],
 ];
