@@ -15,12 +15,11 @@ use Yiisoft\Router\RouteCollectorInterface;
 
 return [
     RouteCollectionInterface::class => static function (RouteCollectorInterface $collector) use ($config) {
-        $collector->addGroup(
-            Group::create(null, $config->get('routes'))
-                ->addMiddleware(ExceptionMiddleware::class)
-                ->addMiddleware(FormatDataResponse::class)
-                ->addMiddleware(RequestBodyParser::class)
-        );
+        $collector
+            ->middleware(RequestBodyParser::class)
+            ->middleware(FormatDataResponse::class)
+            ->middleware(ExceptionMiddleware::class)
+            ->addGroup(Group::create()->routes(...$config->get('routes')));
 
         return new RouteCollection($collector);
     },
