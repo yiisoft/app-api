@@ -17,6 +17,9 @@ return [
         'yiisoft/request-model' => [
             'common.php',
         ],
+        'yiisoft/router-fastroute' => [
+            'common.php',
+        ],
         'yiisoft/yii-cycle' => [
             'common.php',
         ],
@@ -35,16 +38,13 @@ return [
         'yiisoft/yii-filesystem' => [
             'common.php',
         ],
-        'yiisoft/aliases' => [
-            'common.php',
-        ],
         'yiisoft/validator' => [
             'common.php',
         ],
         'yiisoft/router' => [
             'common.php',
         ],
-        'yiisoft/router-fastroute' => [
+        'yiisoft/aliases' => [
             'common.php',
         ],
         'yiisoft/view' => [
@@ -123,6 +123,9 @@ return [
         'yiisoft/log-target-file' => [
             'params.php',
         ],
+        'yiisoft/router-fastroute' => [
+            'params.php',
+        ],
         'yiisoft/user' => [
             'params.php',
         ],
@@ -141,19 +144,13 @@ return [
         'yiisoft/profiler' => [
             'params.php',
         ],
-        'yiisoft/yii-web' => [
-            'params.php',
-        ],
         'yiisoft/yii-view' => [
             'params.php',
         ],
-        'yiisoft/aliases' => [
-            'params.php',
-        ],
-        'yiisoft/router-fastroute' => [
-            'params.php',
-        ],
         'yiisoft/session' => [
+            'params.php',
+        ],
+        'yiisoft/aliases' => [
             'params.php',
         ],
         'yiisoft/view' => [
@@ -201,9 +198,6 @@ return [
         'yiisoft/yii-debug' => [
             'tests.php',
         ],
-        'yiisoft/yii-web' => [
-            '$web',
-        ],
     ],
     'web' => [
         '/' => [
@@ -211,6 +205,9 @@ return [
             'config/web/*.php',
         ],
         'yiisoft/error-handler' => [
+            'web.php',
+        ],
+        'yiisoft/router-fastroute' => [
             'web.php',
         ],
         'yiisoft/user' => [
@@ -225,9 +222,6 @@ return [
         'yiisoft/assets' => [
             'web.php',
         ],
-        'yiisoft/yii-web' => [
-            'web.php',
-        ],
         'yiisoft/yii-view' => [
             'web.php',
         ],
@@ -235,9 +229,6 @@ return [
             'web.php',
         ],
         'yiisoft/middleware-dispatcher' => [
-            'web.php',
-        ],
-        'yiisoft/router-fastroute' => [
             'web.php',
         ],
         'yiisoft/session' => [
