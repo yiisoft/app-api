@@ -11,7 +11,7 @@ use Yiisoft\Csrf\Synchronizer\Storage\SessionCsrfTokenStorage;
 use Yiisoft\Csrf\Synchronizer\SynchronizerCsrfToken;
 use Yiisoft\Csrf\Hmac\IdentityGenerator\SessionCsrfTokenIdentityGenerator;
 use Yiisoft\Csrf\Hmac\HmacCsrfToken;
-use Yiisoft\Factory\Definitions\Reference;
+use Yiisoft\Factory\Definition\Reference;
 
 return [
     CsrfTokenInterface::class => [
