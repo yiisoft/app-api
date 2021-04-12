@@ -13,14 +13,14 @@ use Yiisoft\Yii\Console\SymfonyEventDispatcher;
 
 return [
     CommandLoaderInterface::class => [
-        '__class' => CommandLoader::class,
+        'class' => CommandLoader::class,
         '__construct()' => [
             'commandMap' => $params['yiisoft/yii-console']['commands'],
         ],
     ],
 
     Application::class => [
-        '__class' => Application::class,
+        'class' => Application::class,
         'setDispatcher()' => [Reference::to(SymfonyEventDispatcher::class)],
         'setCommandLoader()' => [Reference::to(CommandLoaderInterface::class)],
         'addOptions()' => [

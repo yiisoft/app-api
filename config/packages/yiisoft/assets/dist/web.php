@@ -16,7 +16,7 @@ use Yiisoft\Factory\Definition\Reference;
 
 return [
     AssetConverterInterface::class => [
-        '__class' => AssetConverter::class,
+        'class' => AssetConverter::class,
         'setCommand()' => [
             $params['yiisoft/assets']['assetConverter']['command']['from'],
             $params['yiisoft/assets']['assetConverter']['command']['to'],
@@ -26,7 +26,7 @@ return [
     ],
 
     AssetLoaderInterface::class => [
-        '__class' => AssetLoader::class,
+        'class' => AssetLoader::class,
         'setAppendTimestamp()' => [$params['yiisoft/assets']['assetLoader']['appendTimestamp']],
         'setAssetMap()' => [$params['yiisoft/assets']['assetLoader']['assetMap']],
         'setBasePath()' => [$params['yiisoft/assets']['assetLoader']['basePath']],
@@ -34,13 +34,13 @@ return [
     ],
 
     AssetPublisherInterface::class => [
-        '__class' => AssetPublisher::class,
+        'class' => AssetPublisher::class,
         'setForceCopy()' => [$params['yiisoft/assets']['assetPublisher']['forceCopy']],
         'setLinkAssets()' => [$params['yiisoft/assets']['assetPublisher']['linkAssets']],
     ],
 
     AssetManager::class => [
-        '__class' => AssetManager::class,
+        'class' => AssetManager::class,
         '__construct()' => [
             Reference::to(Aliases::class),
             Reference::to(AssetLoaderInterface::class),

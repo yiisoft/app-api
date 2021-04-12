@@ -15,7 +15,7 @@ use Yiisoft\Factory\Definition\Reference;
 
 return [
     CsrfTokenInterface::class => [
-        '__class' => MaskedCsrfToken::class,
+        'class' => MaskedCsrfToken::class,
         '__construct()' => [
             'token' => Reference::to(SynchronizerCsrfToken::class),
         ],
