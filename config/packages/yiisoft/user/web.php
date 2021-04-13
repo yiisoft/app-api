@@ -9,7 +9,7 @@ use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 use Yiisoft\Auth\Method\HttpHeader;
 use Yiisoft\Auth\Middleware\Authentication;
-use Yiisoft\Factory\Definitions\Reference;
+use Yiisoft\Factory\Definition\Reference;
 
 /** @var array $params */
 
