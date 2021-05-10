@@ -12,7 +12,7 @@ return [
             '@assetsUrl' => '@baseUrl/assets',
             '@data' => '@root/data',
             '@resources' => '@root/resources',
-            '@runtime' => '@root/runrime',
+            '@runtime' => '@root/runtime',
             '@src' => '@root/src',
             '@tests' => '@root/tests',
             '@views' => '@root/views',

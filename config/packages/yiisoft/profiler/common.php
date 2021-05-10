@@ -22,26 +22,31 @@ return [
         }
         return new Profiler($logger, $targets);
     },
-    LogTarget::class => static function (LoggerInterface $logger) use ($params) {
-        $params = $params['yiisoft/profiler']['targets'][LogTarget::class];
-        $target = new LogTarget($logger, $params['level']);
+    LogTarget::class => [
+        'definition' => static function (LoggerInterface $logger) use ($params) {
+            $params = $params['yiisoft/profiler']['targets'][LogTarget::class];
+            $target = (new LogTarget($logger, $params['level']))
+                ->include($params['include'])
+                ->exclude($params['exclude']);
+            $target->enable((bool)$params['enabled']);
+            return $target;
+        },
+        'reset' => function () use ($params) {
+            $this->enable((bool)$params['enabled']);
+        },
+    ],
+    FileTarget::class => [
+        'definition' => static function (Aliases $aliases) use ($params) {
+            $params = $params['yiisoft/profiler']['targets'][FileTarget::class];
+            $target = (new FileTarget($aliases->get($params['filename']), $params['requestBeginTime'], $params['directoryMode']))
+                ->include($params['include'])
+                ->exclude($params['exclude']);
 
-        if ((bool)$params['enabled']) {
-            $target = $target->enable();
-        } else {
-            $target = $target->disable();
-        }
-        return $target->include($params['include'])->exclude($params['exclude']);
-    },
-    FileTarget::class => static function (Aliases $aliases) use ($params) {
-        $params = $params['yiisoft/profiler']['targets'][FileTarget::class];
-        $target = new FileTarget($aliases->get($params['filename']), $params['requestBeginTime'], $params['directoryMode']);
-
-        if ((bool)$params['enabled']) {
-            $target = $target->enable();
-        } else {
-            $target = $target->disable();
-        }
-        return $target->include($params['include'])->exclude($params['exclude']);
-    },
+            $target->enable((bool)$params['enabled']);
+            return $target;
+        },
+        'reset' => function () use ($params) {
+            $this->enable((bool)$params['enabled']);
+        },
+    ],
 ];
