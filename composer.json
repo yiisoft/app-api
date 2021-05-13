@@ -40,7 +40,7 @@
         "yiisoft/data": "^3.0@dev",
         "yiisoft/data-response": "^3.0@dev",
         "yiisoft/di": "^3.0@dev",
-        "yiisoft/error-handler": "^3.0@dev",
+        "yiisoft/error-handler": "^1.0",
         "yiisoft/factory": "^3.0@dev",
         "yiisoft/files": "^1.0",
         "yiisoft/http": "^1.0@dev",
