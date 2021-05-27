@@ -8,7 +8,7 @@ use Yiisoft\Factory\Definition\Reference;
 return [
     'yiisoft/view' => [
         'basePath' => '@views',
-        'defaultParameters' => [
+        'commonParameters' => [
             'assetManager' => Reference::to(AssetManager::class),
         ],
         'theme' => [
