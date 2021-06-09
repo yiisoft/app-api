@@ -23,10 +23,10 @@ final class ApiResponseFormatter implements DataResponseFormatterInterface
         $this->jsonDataResponseFormatter = $jsonDataResponseFormatter;
     }
 
-    public function format(DataResponse $response): ResponseInterface
+    public function format(DataResponse $dataResponse): ResponseInterface
     {
-        $response = $response->withData(
-            $this->apiResponseDataFactory->createFromResponse($response)->toArray(),
+        $response = $dataResponse->withData(
+            $this->apiResponseDataFactory->createFromResponse($dataResponse)->toArray(),
         );
 
         return $this->jsonDataResponseFormatter->format($response);
