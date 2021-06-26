@@ -3,7 +3,7 @@ version: '3'
 services:
     php:
         container_name: yii-php
-        image: yiisoftware/yii-php:7.4-fpm
+        image: yiisoftware/yii-php:8.0-fpm
         working_dir: /app
         volumes:
             - ./:/app

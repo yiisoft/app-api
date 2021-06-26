@@ -20,7 +20,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "cebe/markdown": "^1.2@dev",
         "cycle/orm": "^1.2",
         "cycle/proxy-factory": "^1.2",
