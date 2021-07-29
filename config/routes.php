@@ -12,9 +12,11 @@ use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 use Yiisoft\Swagger\Middleware\SwaggerJson;
 use Yiisoft\Swagger\Middleware\SwaggerUi;
+use Yiisoft\Yii\Sentry\SentryMiddleware;
 
 return [
     Route::get('/')
+        ->middleware(SentryMiddleware::class)
         ->action([InfoController::class, 'index'])
         ->name('api/info'),
 
