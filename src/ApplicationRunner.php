@@ -52,7 +52,6 @@ final class ApplicationRunner
             $config->get('web'),
             $config->get('providers'),
             [],
-            null,
             $this->debug
         );
 

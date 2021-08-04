@@ -5,5 +5,5 @@ declare(strict_types=1);
 use App\Provider\RepositoryProvider;
 
 return [
-    RepositoryProvider::class => RepositoryProvider::class,
+    'yiisoft/cycle-orm/repository-provider' => \Yiisoft\Yii\Cycle\Factory\RepositoryProvider::class,
 ];
