@@ -121,7 +121,8 @@
                 "$providers",
                 "config/providers-console.php"
             ],
-            "routes": "config/routes.php"
+            "routes": "config/routes.php",
+            "bootstrap": "config/bootstrap.php"
         }
     },
     "config": {
