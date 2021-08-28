@@ -8,8 +8,8 @@ use Yiisoft\Injector\Injector;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Web\Middleware\SubFolder;
-use Yiisoft\Factory\Definition\Reference;
-use Yiisoft\Factory\Definition\DynamicReference;
+use Yiisoft\Definitions\Reference;
+use Yiisoft\Definitions\DynamicReference;
 
 return [
     Yiisoft\Yii\Web\Application::class => [
