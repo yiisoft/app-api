@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Yiisoft\Assets\AssetManager;
-use Yiisoft\Factory\Definition\Reference;
+use Yiisoft\Definitions\Reference;
 
 return [
     'yiisoft/view' => [
