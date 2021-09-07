@@ -108,7 +108,7 @@ final class ApplicationRunner
 
     private function createThrowableHandler(Throwable $throwable): RequestHandlerInterface
     {
-        return new class($throwable) implements RequestHandlerInterface {
+        return new class ($throwable) implements RequestHandlerInterface {
             private Throwable $throwable;
 
             public function __construct(Throwable $throwable)
