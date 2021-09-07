@@ -57,9 +57,10 @@ final class ApplicationRunner
 
         $container = new Container(
             $config->get('web'),
-            $config->get('providers'),
+            $config->get('providers-web'),
             [],
-            $this->debug
+            $this->debug,
+            $config->get('delegates-web')
         );
 
         // Register error handler with real container-configured dependencies.

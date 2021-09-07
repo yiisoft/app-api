@@ -22,12 +22,15 @@ $config = new Config(
         'events',
         'events-web',
         'events-console',
-    ]
+    ],
 );
 
 $container = new Container(
     $config->get('console'),
-    $config->get('providers-console')
+    $config->get('providers-console'),
+    [],
+    true,
+    $config->get('delegates-console')
 );
 
 /** @var ContainerInterface $container */
