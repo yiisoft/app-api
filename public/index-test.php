@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\ApplicationRunner;
+use App\Runner\WebApplicationRunner;
 
 // PHP built-in server routing.
 if (PHP_SAPI === 'cli-server') {
@@ -21,12 +21,21 @@ if (is_file($c3)) {
     require_once $c3;
 }
 
-define('YII_ENV', getenv('env') ?: 'test');
-
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-$runner = new ApplicationRunner();
-// Development mode:
-$runner->debug();
-// Run application:
+/**
+ *  Set debug value for web application runner, for default its `true` add additionally the validation of the
+ *  container-di configurations (debug mode).
+ */
+define('YII_DEBUG', getenv('YII_DEBUG') ?: true);
+
+/**
+ *  Set environment value for web application runner, for default its `null`.
+ *
+ *  @link https://github.com/yiisoft/config#environments
+ */
+define('YII_ENV', getenv('YII_ENV') ?: null);
+
+// Run web application runner
+$runner = new WebApplicationRunner(YII_DEBUG, YII_ENV);
 $runner->run();

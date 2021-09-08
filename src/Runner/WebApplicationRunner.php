@@ -2,15 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Runner;
 
+use App\Handler\ThrowableHandler;
+use ErrorException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 use Yiisoft\Config\Config;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotFoundException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
 use Yiisoft\Di\Container;
 use Yiisoft\ErrorHandler\ErrorHandler;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
@@ -20,44 +25,51 @@ use Yiisoft\Log\Logger;
 use Yiisoft\Log\Target\File\FileTarget;
 use Yiisoft\Yii\Event\ListenerConfigurationChecker;
 use Yiisoft\Yii\Web\Application;
+use Yiisoft\Yii\Web\Exception\HeadersHaveBeenSentException;
 use Yiisoft\Yii\Web\SapiEmitter;
 use Yiisoft\Yii\Web\ServerRequestFactory;
 
 use function dirname;
 use function microtime;
 
-final class ApplicationRunner
+final class WebApplicationRunner
 {
-    private bool $debug = false;
+    private bool $debug;
+    private ?string $environment;
 
-    public function debug(bool $enable = true): void
+    public function __construct(bool $debug, ?string $environment)
     {
-        $this->debug = $enable;
+        $this->debug = $debug;
+        $this->environment = $environment;
     }
 
+    /**
+     * @throws CircularReferenceException|ErrorException|HeadersHaveBeenSentException|InvalidConfigException
+     * @throws NotFoundException|NotInstantiableException|
+     */
     public function run(): void
     {
         $startTime = microtime(true);
+
         // Register temporary error handler to catch error while container is building.
-        $tmpLogger = new Logger([new FileTarget(dirname(__DIR__) . '/runtime/logs/app.log')]);
-        $errorHandler = new ErrorHandler($tmpLogger, new JsonRenderer());
+        $errorHandler = $this->createTemporaryErrorHandler();
         $this->registerErrorHandler($errorHandler);
 
         $config = new Config(
-            dirname(__DIR__),
-            '/config/packages',
-            null,
+            dirname(__DIR__, 2),
+            '/config/packages', // Configs path.
+            $this->environment,
             [
                 'params',
                 'events',
                 'events-web',
                 'events-console',
-            ]
+            ],
         );
 
         $container = new Container(
             $config->get('web'),
-            $config->get('providers-web'),
+            $config->get('providers'),
             [],
             $this->debug,
             $config->get('delegates-web')
@@ -66,33 +78,36 @@ final class ApplicationRunner
         // Register error handler with real container-configured dependencies.
         $this->registerErrorHandler($container->get(ErrorHandler::class), $errorHandler);
 
+        // Run bootstrap
+        $this->runBootstrap($container, $config->get('bootstrap-web'));
+
         $container = $container->get(ContainerInterface::class);
 
-        $bootstrapList = $config->get('bootstrap-web');
-        foreach ($bootstrapList as $callback) {
-            if (!(is_callable($callback))) {
-                $type = is_object($callback) ? get_class($callback) : gettype($callback);
-
-                throw new \RuntimeException("Bootstrap callback must be callable, $type given.");
-            }
-            $callback($container);
-        }
-
         if ($this->debug) {
+            /** @psalm-suppress MixedMethodCall */
             $container->get(ListenerConfigurationChecker::class)->check($config->get('events-web'));
         }
 
+        /** @var Application */
         $application = $container->get(Application::class);
 
-        $request = $container->get(ServerRequestFactory::class)->createFromGlobals();
-        $request = $request->withAttribute('applicationStartTime', $startTime);
+        /**
+         * @var ServerRequestInterface
+         * @psalm-suppress MixedMethodCall
+         */
+        $serverRequest = $container->get(ServerRequestFactory::class)->createFromGlobals();
+        $request = $serverRequest->withAttribute('applicationStartTime', $startTime);
 
         try {
             $application->start();
             $response = $application->handle($request);
             $this->emit($request, $response);
         } catch (Throwable $throwable) {
-            $handler = $this->createThrowableHandler($throwable);
+            $handler = new ThrowableHandler($throwable);
+            /**
+             * @var ResponseInterface
+             * @psalm-suppress MixedMethodCall
+             */
             $response = $container->get(ErrorCatcher::class)->process($request, $handler);
             $this->emit($request, $response);
         } finally {
@@ -101,28 +116,23 @@ final class ApplicationRunner
         }
     }
 
+    private function createTemporaryErrorHandler(): ErrorHandler
+    {
+        $logger = new Logger([new FileTarget(dirname(__DIR__) . '/runtime/logs/app.log')]);
+        return new ErrorHandler($logger, new JsonRenderer());
+    }
+
+    /**
+     * @throws HeadersHaveBeenSentException
+     */
     private function emit(RequestInterface $request, ResponseInterface $response): void
     {
         (new SapiEmitter())->emit($response, $request->getMethod() === Method::HEAD);
     }
 
-    private function createThrowableHandler(Throwable $throwable): RequestHandlerInterface
-    {
-        return new class ($throwable) implements RequestHandlerInterface {
-            private Throwable $throwable;
-
-            public function __construct(Throwable $throwable)
-            {
-                $this->throwable = $throwable;
-            }
-
-            public function handle(ServerRequestInterface $request): ResponseInterface
-            {
-                throw $this->throwable;
-            }
-        };
-    }
-
+    /**
+     * @throws ErrorException
+     */
     private function registerErrorHandler(ErrorHandler $registered, ErrorHandler $unregistered = null): void
     {
         if ($unregistered !== null) {
@@ -134,5 +144,10 @@ final class ApplicationRunner
         }
 
         $registered->register();
+    }
+
+    private function runBootstrap(Container $container, array $bootstrapList): void
+    {
+        (new BootstrapRunner($container, $bootstrapList))->run();
     }
 }

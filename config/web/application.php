@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\NotFoundHandler;
+use App\Handler\NotFoundHandler;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Injector\Injector;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
