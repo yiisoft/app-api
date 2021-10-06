@@ -31,4 +31,11 @@ final class Installer
             chmod($item, $mode);
         }
     }
+
+    public static function copyEnvFile(): void
+    {
+        if (!file_exists('.env')) {
+            copy('.env.example', '.env');
+        }
+    }
 }
