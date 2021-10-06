@@ -32,6 +32,7 @@
         "psr/http-server-handler": "^1.0",
         "psr/http-server-middleware": "^1.0",
         "psr/log": "^1.1",
+        "vlucas/phpdotenv": "^5.3",
         "yiisoft/access": "^1.0",
         "yiisoft/auth": "^3.0",
         "yiisoft/cache": "^1.0",
@@ -78,7 +79,11 @@
     "scripts": {
         "serve": "./yii serve",
         "post-update-cmd": [
-            "App\\Installer::postUpdate"
+            "App\\Installer::postUpdate",
+            "App\\Installer::copyEnvFile"
+        ],
+        "post-create-project-cmd": [
+            "App\\Installer::copyEnvFile"
         ],
         "test": "phpunit --testdox --no-interaction",
         "test-watch": "phpunit-watcher watch"

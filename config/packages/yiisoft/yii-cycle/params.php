@@ -40,7 +40,7 @@ return [
             'connections' => [
                 'sqlite' => [
                     'driver' => SQLiteDriver::class,
-                    'connection' => YII_ENV === 'production'
+                    'connection' => $_ENV['YII_ENV'] === 'production'
                         ? 'sqlite:@data/db/database.db'
                         : 'sqlite:@tests/_data/database.db',
                     'username' => '',
