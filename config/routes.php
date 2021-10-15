@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Auth\AuthController;
-use App\Blog\BlogController;
 use App\InfoController;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsHtml;
@@ -17,14 +16,6 @@ return [
     Route::get('/')
         ->action([InfoController::class, 'index'])
         ->name('api/info'),
-
-    Route::get('/blog/')
-        ->action([BlogController::class, 'index'])
-        ->name('blog/index'),
-
-    Route::get('/blog/{id:\d+}')
-        ->action([BlogController::class, 'view'])
-        ->name('blog/view'),
 
     Route::post('/auth/')
         ->action([AuthController::class, 'login'])
