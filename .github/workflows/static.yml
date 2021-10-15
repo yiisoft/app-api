@@ -3,10 +3,19 @@ on:
     paths-ignore:
       - 'docs/**'
       - 'README.md'
+      - 'CHANGELOG.md'
+      - 'gitignore.md'
+      - '.env.example'
+      - '.gitattributes'
+
   push:
     paths-ignore:
       - 'docs/**'
       - 'README.md'
+      - 'CHANGELOG.md'
+      - 'gitignore.md'
+      - '.env.example'
+      - '.gitattributes'
 
 name: static analysis
 
