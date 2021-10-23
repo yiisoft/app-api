@@ -11,7 +11,6 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
-use Yiisoft\Config\Config;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Definitions\Exception\NotFoundException;
@@ -55,17 +54,7 @@ final class WebApplicationRunner
         $errorHandler = $this->createTemporaryErrorHandler();
         $this->registerErrorHandler($errorHandler);
 
-        $config = new Config(
-            dirname(__DIR__, 2),
-            '/config/packages', // Configs path.
-            $this->environment,
-            [
-                'params',
-                'events',
-                'events-web',
-                'events-console',
-            ],
-        );
+        $config = ConfigFactory::create($this->environment);
 
         $container = new Container(
             $config->get('web'),
