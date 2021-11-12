@@ -12,7 +12,7 @@ use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Command\Migration;
 use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
 use Yiisoft\Yii\Cycle\Schema\SchemaProviderInterface;
-use Yiisoft\Yii\Web\Middleware\SubFolder;
+use Yiisoft\Yii\Middleware\SubFolder;
 
 return [
     'supportEmail' => 'support@example.com',
