@@ -41,7 +41,7 @@
         "yiisoft/data": "^3.0@dev",
         "yiisoft/data-response": "^1.0",
         "yiisoft/definitions": "^1.0",
-        "yiisoft/di": "^3.0@dev",
+        "yiisoft/di": "^1.0",
         "yiisoft/error-handler": "^2.0",
         "yiisoft/factory": "^3.0@dev",
         "yiisoft/files": "^1.0",
