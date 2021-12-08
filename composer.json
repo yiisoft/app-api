@@ -162,7 +162,7 @@
         "codeception/module-cli": "^1.1",
         "codeception/module-db": "^1.0",
         "codeception/module-phpbrowser": "^1.0.0",
-        "codeception/module-rest": "^1.2",
+        "codeception/module-rest": "^2.0",
         "phpunit/phpunit": "^9.4",
         "roave/infection-static-analysis-plugin": "^1.5",
         "spatie/phpunit-watcher": "^1.23",
