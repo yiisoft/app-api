@@ -65,7 +65,7 @@
         "yiisoft/yii-middleware": "dev-master",
         "yiisoft/yii-runner-console": "dev-master",
         "yiisoft/yii-runner-http": "dev-master",
-        "yiisoft/yii-swagger": "^3.0@dev"
+        "yiisoft/yii-swagger": "^1.0"
     },
     "autoload": {
         "psr-4": {
