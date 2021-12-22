@@ -54,7 +54,7 @@
         "yiisoft/router": "^3.0@dev",
         "yiisoft/router-fastroute": "^3.0@dev",
         "yiisoft/security": "^1.0",
-        "yiisoft/user": "^3.0@dev",
+        "yiisoft/user": "^1.0",
         "yiisoft/validator": "^3.0@dev",
         "yiisoft/yii-console": "^1.0",
         "yiisoft/yii-cycle": "^3.0@dev",
