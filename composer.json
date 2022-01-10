@@ -164,7 +164,7 @@
         "codeception/module-phpbrowser": "^1.0.0",
         "codeception/module-rest": "^1.2",
         "phpunit/phpunit": "^9.4",
-        "roave/infection-static-analysis-plugin": "^1.5",
+        "roave/infection-static-analysis-plugin": "^1.14",
         "spatie/phpunit-watcher": "^1.23",
         "vimeo/psalm": "^4.2",
         "yiisoft/json": "^1.0",
