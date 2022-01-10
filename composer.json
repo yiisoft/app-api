@@ -161,7 +161,7 @@
         "codeception/module-asserts": "^1.0.0",
         "codeception/module-cli": "^1.1",
         "codeception/module-db": "^1.0",
-        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-phpbrowser": "^2.0.2",
         "codeception/module-rest": "^1.2",
         "phpunit/phpunit": "^9.4",
         "roave/infection-static-analysis-plugin": "^1.14",
