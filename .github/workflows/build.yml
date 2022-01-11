@@ -17,6 +17,9 @@ on:
       - '.env.example'
       - '.gitattributes'
 
+  schedule:
+    - cron: '0 0 * * *'
+
 name: build
 
 jobs:
