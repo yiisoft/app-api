@@ -133,4 +133,9 @@ return [
             '@src',
         ],
     ],
+    'yiisoft/yii-swagger' => [
+        'annotation-paths' => [
+            '@src',
+        ],
+    ],
 ];

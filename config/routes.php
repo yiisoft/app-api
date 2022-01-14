@@ -34,15 +34,6 @@ return [
                 ->action(fn (SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/docs/openapi.json')),
             Route::get('/openapi.json')
                 ->middleware(FormatDataResponseAsJson::class)
-                ->action(
-                    static function (SwaggerJson $swaggerJson) {
-                        return $swaggerJson
-                            // Uncomment cache for production environment
-                            // ->withCache(3600)
-                            ->withAnnotationPaths(
-                                '@src', // Path to API controllers
-                            );
-                    }
-                ),
+                ->action(SwaggerJson::class),
         ),
 ];
