@@ -26,7 +26,9 @@ final class ApiResponseFormatter implements DataResponseFormatterInterface
     public function format(DataResponse $dataResponse): ResponseInterface
     {
         $response = $dataResponse->withData(
-            $this->apiResponseDataFactory->createFromResponse($dataResponse)->toArray(),
+            $this->apiResponseDataFactory
+                ->createFromResponse($dataResponse)
+                ->toArray(),
         );
 
         return $this->jsonDataResponseFormatter->format($response);
