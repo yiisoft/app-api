@@ -76,10 +76,12 @@ final class AuthController
     {
         return $this->responseFactory->createResponse(
             [
-                'token' => $this->userService->login(
-                    $request->getLogin(),
-                    $request->getPassword()
-                )->getToken(),
+                'token' => $this->userService
+                    ->login(
+                        $request->getLogin(),
+                        $request->getPassword()
+                    )
+                    ->getToken(),
             ]
         );
     }

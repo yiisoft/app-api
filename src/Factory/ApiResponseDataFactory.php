@@ -13,23 +13,29 @@ final class ApiResponseDataFactory
     public function createFromResponse(DataResponse $response): ApiResponseData
     {
         if ($response->getStatusCode() !== Status::OK) {
-            return $this->createErrorResponse()
+            return $this
+                ->createErrorResponse()
                 ->setErrorCode($response->getStatusCode())
                 ->setErrorMessage($this->getErrorMessage($response));
         }
 
-        return $this->createSuccessResponse()
+        return $this
+            ->createSuccessResponse()
             ->setData($response->getData());
     }
 
     public function createSuccessResponse(): ApiResponseData
     {
-        return $this->createResponse()->setStatus('success');
+        return $this
+            ->createResponse()
+            ->setStatus('success');
     }
 
     public function createErrorResponse(): ApiResponseData
     {
-        return $this->createResponse()->setStatus('failed');
+        return $this
+            ->createResponse()
+            ->setStatus('failed');
     }
 
     public function createResponse(): ApiResponseData
