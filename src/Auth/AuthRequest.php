@@ -32,10 +32,10 @@ final class AuthRequest extends RequestModel implements RulesProviderInterface
     {
         return [
             'body.login' => [
-                Required::rule(),
+                new Required(),
             ],
             'body.password' => [
-                Required::rule(),
+                new Required(),
             ],
         ];
     }
