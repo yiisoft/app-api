@@ -48,7 +48,7 @@
         "yiisoft/http": "^1.2",
         "yiisoft/injector": "^1.0",
         "yiisoft/log": "^2.0",
-        "yiisoft/log-target-file": "^1.1",
+        "yiisoft/log-target-file": "^2.0",
         "yiisoft/request-body-parser": "^1.1",
         "yiisoft/request-model": "^1.0@dev",
         "yiisoft/router": "^1.0",
