@@ -2,15 +2,13 @@
 
 declare(strict_types=1);
 
-use Cycle\Schema\Generator;
-use Spiral\Database\Driver\SQLite\SQLiteDriver;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Command\Migration;
-use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
+use Yiisoft\Yii\Cycle\Schema\Conveyor\AttributedSchemaConveyor;
 use Yiisoft\Yii\Cycle\Schema\SchemaProviderInterface;
 use Yiisoft\Yii\Middleware\SubFolder;
 
@@ -69,6 +67,7 @@ return [
         // DBAL config
         'dbal' => [
             // SQL query logger. Definition of Psr\Log\LoggerInterface
+            // For example, \Yiisoft\Yii\Cycle\Logger\StdoutQueryLogger::class
             'query-logger' => null,
             // Default database
             'default' => 'default',
@@ -77,14 +76,13 @@ return [
                 'default' => ['connection' => 'sqlite'],
             ],
             'connections' => [
-                'sqlite' => [
-                    'driver' => SQLiteDriver::class,
-                    'connection' => $_ENV['YII_ENV'] === 'production'
-                        ? 'sqlite:@data/db/database.db'
-                        : 'sqlite:@tests/_data/database.db',
-                    'username' => '',
-                    'password' => '',
-                ],
+                'sqlite' => new \Cycle\Database\Config\SQLiteDriverConfig(
+                    connection: new \Cycle\Database\Config\SQLite\FileConnectionConfig(
+                        database: $_ENV['YII_ENV'] === 'production'
+                            ? '@data/db/database.db'
+                            : 'sqlite:@tests/_data/database.db'
+                    )
+                ),
             ],
         ],
 
@@ -115,11 +113,18 @@ return [
          * ]
          */
         'schema-providers' => [
-            // Uncomment next line to enable schema cache
-            // SimpleCacheSchemaProvider::class => ['key' => 'cycle-orm-cache-key'],
-            FromConveyorSchemaProvider::class => [
+            // Uncomment next line to enable a Schema caching in the common cache
+            // \Yiisoft\Yii\Cycle\Schema\Provider\SimpleCacheSchemaProvider::class => ['key' => 'cycle-orm-cache-key'],
+
+            // Store generated Schema in the file
+            \Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider::class => [
+                'mode' => \Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider::MODE_WRITE_ONLY,
+                'file' => 'runtime/schema.php',
+            ],
+
+            \Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider::class => [
                 'generators' => [
-                    Generator\SyncTables::class,
+                    Cycle\Schema\Generator\SyncTables::class, // sync table changes to database
                 ],
             ],
         ],
@@ -129,10 +134,12 @@ return [
          * Annotated entity directories list.
          * {@see \Yiisoft\Aliases\Aliases} are also supported.
          */
-        'annotated-entity-paths' => [
+        'entity-paths' => [
             '@src',
         ],
+        'conveyor' => AttributedSchemaConveyor::class,
     ],
+
     'yiisoft/yii-swagger' => [
         'annotation-paths' => [
             '@src',
