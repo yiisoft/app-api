@@ -6,42 +6,30 @@ namespace App\User;
 
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
-use Cycle\Annotated\Annotation\Table;
 use Cycle\Annotated\Annotation\Table\Index;
+use Cycle\ORM\Entity\Behavior\CreatedAt;
+use Cycle\ORM\Entity\Behavior\UpdatedAt;
 use DateTimeImmutable;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Security\PasswordHasher;
 use Yiisoft\Security\Random;
 
-/**
- * @Entity(repository="App\User\UserRepository", mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper")
- * @Table(
- *     indexes={
- *         @Index(columns={"login"}, unique=true),
- *         @Index(columns={"token"}, unique=true)
- *     }
- * )
- */
+#[Entity(repository: UserRepository::class)]
+#[Index(columns: ['login', 'token'], unique: true)]
+#[CreatedAt(field: 'created_at', column: 'created_at')]
+#[UpdatedAt(field: 'updated_at', column: 'updated_at')]
 class User implements IdentityInterface
 {
-    /**
-     * @Column(type="primary")
-     */
+    #[Column(type: 'primary')]
     private ?int $id = null;
 
-    /**
-     * @Column(type="string(128)")
-     */
+    #[Column(type: 'string(128)')]
     private string $token;
 
-    /**
-     * @Column(type="string(48)")
-     */
+    #[Column(type: 'string(48)')]
     private string $login;
 
-    /**
-     * @Column(type="string")
-     */
+    #[Column(type: 'string')]
     private string $passwordHash;
 
     /**
