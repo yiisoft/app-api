@@ -10,7 +10,9 @@ use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Command\Migration;
+use Yiisoft\Yii\Cycle\Schema\Conveyor\AttributedSchemaConveyor;
 use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
+use Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider;
 use Yiisoft\Yii\Cycle\Schema\SchemaProviderInterface;
 use Yiisoft\Yii\Middleware\SubFolder;
 
@@ -77,14 +79,11 @@ return [
                 'default' => ['connection' => 'sqlite'],
             ],
             'connections' => [
-                'sqlite' => [
-                    'driver' => SQLiteDriver::class,
-                    'connection' => $_ENV['YII_ENV'] === 'production'
-                        ? 'sqlite:@data/db/database.db'
-                        : 'sqlite:@tests/_data/database.db',
-                    'username' => '',
-                    'password' => '',
-                ],
+                'sqlite' => new \Cycle\Database\Config\SQLiteDriverConfig(
+                    connection: new \Cycle\Database\Config\SQLite\FileConnectionConfig(
+                        database: '@runtime/database.db'
+                    )
+                ),
             ],
         ],
 
@@ -115,11 +114,18 @@ return [
          * ]
          */
         'schema-providers' => [
-            // Uncomment next line to enable schema cache
-            // SimpleCacheSchemaProvider::class => ['key' => 'cycle-orm-cache-key'],
+            // Uncomment next line to enable a Schema caching in the common cache
+            // \Yiisoft\Yii\Cycle\Schema\Provider\SimpleCacheSchemaProvider::class => ['key' => 'cycle-orm-cache-key'],
+
+            // Store generated Schema in the file
+            PhpFileSchemaProvider::class => [
+                'mode' => PhpFileSchemaProvider::MODE_WRITE_ONLY,
+                'file' => '@runtime/schema.php',
+            ],
+
             FromConveyorSchemaProvider::class => [
                 'generators' => [
-                    Generator\SyncTables::class,
+                    Cycle\Schema\Generator\SyncTables::class, // sync table changes to database
                 ],
             ],
         ],
@@ -129,9 +135,10 @@ return [
          * Annotated entity directories list.
          * {@see \Yiisoft\Aliases\Aliases} are also supported.
          */
-        'annotated-entity-paths' => [
+        'entity-paths' => [
             '@src',
         ],
+        'conveyor' => AttributedSchemaConveyor::class,
     ],
     'yiisoft/yii-swagger' => [
         'annotation-paths' => [
