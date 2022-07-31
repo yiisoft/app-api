@@ -72,7 +72,7 @@
         "codeception/lib-innerbrowser": "^3.0",
         "codeception/module-asserts": "^3.0",
         "codeception/module-cli": "^2.0",
-        "codeception/module-db": "^2.0",
+        "codeception/module-db": "^3.0",
         "codeception/module-phpbrowser": "^3.0",
         "codeception/module-rest": "^3.0",
         "phpunit/phpunit": "^9.5",
