@@ -80,7 +80,9 @@ return [
             'connections' => [
                 'sqlite' => new \Cycle\Database\Config\SQLiteDriverConfig(
                     connection: new \Cycle\Database\Config\SQLite\FileConnectionConfig(
-                        database: dirname(__DIR__) . '/runtime/database.db'
+                        database: $_ENV['YII_ENV'] === 'production'
+                            ? dirname(__DIR__) . '/runtime/database.db'
+                            : dirname(__DIR__) . '/tests/_data/database.db'
                     )
                 ),
             ],
