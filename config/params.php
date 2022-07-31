@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Cycle\Schema\Generator;
-use Spiral\Database\Driver\SQLite\SQLiteDriver;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
