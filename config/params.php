@@ -80,7 +80,7 @@ return [
             'connections' => [
                 'sqlite' => new \Cycle\Database\Config\SQLiteDriverConfig(
                     connection: new \Cycle\Database\Config\SQLite\FileConnectionConfig(
-                        database: '@runtime/database.db'
+                        database: '@data/db/database.db'
                     )
                 ),
             ],
