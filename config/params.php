@@ -9,6 +9,8 @@ use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Command\Migration;
 use Yiisoft\Yii\Cycle\Schema\Conveyor\AttributedSchemaConveyor;
+use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
+use Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider;
 use Yiisoft\Yii\Cycle\Schema\SchemaProviderInterface;
 use Yiisoft\Yii\Middleware\SubFolder;
 
@@ -79,8 +81,8 @@ return [
                 'sqlite' => new \Cycle\Database\Config\SQLiteDriverConfig(
                     connection: new \Cycle\Database\Config\SQLite\FileConnectionConfig(
                         database: $_ENV['YII_ENV'] === 'production'
-                            ? '@data/db/database.db'
-                            : 'sqlite:@tests/_data/database.db'
+                            ? dirname(__DIR__) . '/data/db/database.db'
+                            : dirname(__DIR__) . '/tests/_data/database.db'
                     )
                 ),
             ],
@@ -117,12 +119,12 @@ return [
             // \Yiisoft\Yii\Cycle\Schema\Provider\SimpleCacheSchemaProvider::class => ['key' => 'cycle-orm-cache-key'],
 
             // Store generated Schema in the file
-            \Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider::class => [
-                'mode' => \Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider::MODE_WRITE_ONLY,
-                'file' => 'runtime/schema.php',
+            PhpFileSchemaProvider::class => [
+                'mode' => PhpFileSchemaProvider::MODE_WRITE_ONLY,
+                'file' => '@runtime/schema.php',
             ],
 
-            \Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider::class => [
+            FromConveyorSchemaProvider::class => [
                 'generators' => [
                     Cycle\Schema\Generator\SyncTables::class, // sync table changes to database
                 ],
