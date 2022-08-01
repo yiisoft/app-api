@@ -16,6 +16,13 @@ API application template for Yii 3.
 
 ## Installation
 
+Creating a project:
+
+```
+composer create-project yiisoft/app-api --stability=dev myproject
+cd myproject
+```
+
 Install docker:
 
 ```

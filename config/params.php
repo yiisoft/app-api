@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Cycle\Schema\Generator;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
@@ -70,6 +69,7 @@ return [
         // DBAL config
         'dbal' => [
             // SQL query logger. Definition of Psr\Log\LoggerInterface
+            // For example, \Yiisoft\Yii\Cycle\Logger\StdoutQueryLogger::class
             'query-logger' => null,
             // Default database
             'default' => 'default',
@@ -141,6 +141,7 @@ return [
         ],
         'conveyor' => AttributedSchemaConveyor::class,
     ],
+
     'yiisoft/yii-swagger' => [
         'annotation-paths' => [
             '@src',
