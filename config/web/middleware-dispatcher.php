@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use Yiisoft\Middleware\Dispatcher\MiddlewareFactoryInterface;
-use Yiisoft\RequestModel\MiddlewareFactory;
+use Yiisoft\Middleware\Dispatcher\WrapperFactoryInterface;
+use Yiisoft\RequestModel\WrapperFactory;
 
 /**
  * @var array $params
  */
 
 return [
-    MiddlewareFactoryInterface::class => MiddlewareFactory::class,
+    WrapperFactoryInterface::class => WrapperFactory::class,
 ];
