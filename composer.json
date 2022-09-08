@@ -53,7 +53,7 @@
         "yiisoft/log-target-file": "^2.0",
         "yiisoft/request-body-parser": "^1.1",
         "yiisoft/request-model": "^1.0@dev",
-        "yiisoft/router": "^1.0",
+        "yiisoft/router": "^1.2",
         "yiisoft/router-fastroute": "^1.0",
         "yiisoft/security": "^1.0",
         "yiisoft/user": "^1.0",
