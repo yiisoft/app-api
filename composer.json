@@ -56,6 +56,8 @@
         "yiisoft/router": "^1.2",
         "yiisoft/router-fastroute": "^1.0",
         "yiisoft/security": "^1.0",
+        "yiisoft/translator-formatter-intl": "^1.0",
+        "yiisoft/translator-message-php": "^1.0",
         "yiisoft/user": "^1.0",
         "yiisoft/validator": "^3.0@dev",
         "yiisoft/yii-console": "^1.0",
