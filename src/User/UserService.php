@@ -11,19 +11,11 @@ use Yiisoft\User\CurrentUser;
 
 final class UserService
 {
-    private IdentityRepositoryInterface $identityRepository;
-    private CurrentUser $currentUser;
-
-    public function __construct(CurrentUser $currentUser, IdentityRepositoryInterface $identityRepository)
+    public function __construct(private CurrentUser $currentUser, private IdentityRepositoryInterface $identityRepository)
     {
-        $this->currentUser = $currentUser;
-        $this->identityRepository = $identityRepository;
     }
 
     /**
-     * @param string $login
-     * @param string $password
-     *
      * @throws BadRequestException
      */
     public function login(string $login, string $password): IdentityInterface

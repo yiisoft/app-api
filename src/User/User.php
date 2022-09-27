@@ -26,9 +26,6 @@ class User implements IdentityInterface
     #[Column(type: 'string(128)')]
     private string $token;
 
-    #[Column(type: 'string(48)')]
-    private string $login;
-
     #[Column(type: 'string')]
     private string $passwordHash;
 
@@ -42,9 +39,8 @@ class User implements IdentityInterface
      */
     private DateTimeImmutable $updated_at;
 
-    public function __construct(string $login, string $password)
+    public function __construct(#[Column(type: 'string(48)')] private string $login, string $password)
     {
-        $this->login = $login;
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
         $this->setPassword($password);
