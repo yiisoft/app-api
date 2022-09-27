@@ -16,7 +16,6 @@ final class UserService
     }
 
     /**
-     *
      * @throws BadRequestException
      */
     public function login(string $login, string $password): IdentityInterface
