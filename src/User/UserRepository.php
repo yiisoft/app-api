@@ -13,11 +13,8 @@ use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 
 final class UserRepository extends Select\Repository implements IdentityWithTokenRepositoryInterface, IdentityRepositoryInterface
 {
-    private ORMInterface $orm;
-
-    public function __construct(Select $select, ORMInterface $orm)
+    public function __construct(Select $select, private ORMInterface $orm)
     {
-        $this->orm = $orm;
         parent::__construct($select);
     }
 

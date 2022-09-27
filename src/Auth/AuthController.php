@@ -25,15 +25,8 @@ use OpenApi\Annotations as OA;
  */
 final class AuthController
 {
-    private ResponseFactory $responseFactory;
-    private UserService $userService;
-
-    public function __construct(
-        ResponseFactory $responseFactory,
-        UserService $userService
-    ) {
-        $this->responseFactory = $responseFactory;
-        $this->userService = $userService;
+    public function __construct(private ResponseFactory $responseFactory, private UserService $userService)
+    {
     }
 
     /**
