@@ -34,7 +34,7 @@ final class AuthCest
         $I->seeInDatabase(
             'user',
             [
-                'id' => $response['data']['id'],
+                'id' => 1,
                 'token' => $response['data']['token'],
             ]
         );

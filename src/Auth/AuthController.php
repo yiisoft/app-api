@@ -79,7 +79,6 @@ final class AuthController
             $request->getPassword()
         );
         return $this->responseFactory->createResponse([
-            'id' => $identity->getId(),
             'token' => $identity->getToken(),
         ]);
     }
