@@ -61,6 +61,6 @@ final class HelloCest
 
     private function getConfig(): Config
     {
-        return ConfigFactory::create(new ConfigPaths(dirname(__DIR__, 2), 'config'), null);
+        return ConfigFactory::create(new ConfigPaths(dirname(__DIR__, 2), 'config'), $_ENV['YII_ENV']);
     }
 }

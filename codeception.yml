@@ -1,6 +1,5 @@
 namespace: App\Tests
 support_namespace: Support
-bootstrap: ../autoload.php # relative to tests/ directory
 paths:
   tests: tests
   output: runtime/tests/_output
@@ -23,3 +22,6 @@ coverage:
     exclude:
       - src/Asset/*
       - src/Installer.php
+params:
+  - .env
+  - .env.test
