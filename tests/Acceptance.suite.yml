@@ -1,18 +1,17 @@
 actor: AcceptanceTester
-
 modules:
     enabled:
         - REST:
               url: http://127.0.0.1:8080
               depends: PhpBrowser
         - Db:
-              dsn: 'sqlite:tests/_data/database.db'
+              dsn: 'sqlite:tests/Support/Data/database.db'
               user: ''
               password: ''
-              dump: 'tests/_data/dump.sql'
+              dump: 'tests/Support/Data/dump.sql'
               populate: true
               cleanup: true
-        - App\Tests\Helper\Acceptance
+        - App\Tests\Support\Helper\Acceptance
     step_decorators: ~
 env:
     github-ci:

@@ -74,16 +74,14 @@ final class AuthController
      */
     public function login(AuthRequest $request): ResponseInterface
     {
-        return $this->responseFactory->createResponse(
-            [
-                'token' => $this->userService
-                    ->login(
-                        $request->getLogin(),
-                        $request->getPassword()
-                    )
-                    ->getToken(),
-            ]
+        $identity = $this->userService->login(
+            $request->getLogin(),
+            $request->getPassword()
         );
+        return $this->responseFactory->createResponse([
+            'id' => $identity->getId(),
+            'token' => $identity->getToken(),
+        ]);
     }
 
     /**

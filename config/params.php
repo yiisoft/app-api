@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Command\Hello;
+use Cycle\Database\Config\SQLite\FileConnectionConfig;
+use Cycle\Database\Config\SQLiteDriverConfig;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
@@ -54,6 +57,7 @@ return [
     // Console commands
     'yiisoft/yii-console' => [
         'commands' => [
+            'hello' => Hello::class,
             'cycle/schema' => Schema\SchemaCommand::class,
             'cycle/schema/php' => Schema\SchemaPhpCommand::class,
             'cycle/schema/clear' => Schema\SchemaClearCommand::class,
@@ -79,11 +83,11 @@ return [
                 'default' => ['connection' => 'sqlite'],
             ],
             'connections' => [
-                'sqlite' => new \Cycle\Database\Config\SQLiteDriverConfig(
-                    connection: new \Cycle\Database\Config\SQLite\FileConnectionConfig(
+                'sqlite' => new SQLiteDriverConfig(
+                    connection: new FileConnectionConfig(
                         database: $_ENV['YII_ENV'] === 'production'
                             ? dirname(__DIR__) . '/data/db/database.db'
-                            : dirname(__DIR__) . '/tests/_data/database.db'
+                            : dirname(__DIR__) . '/tests/Support/Data/database.db'
                     )
                 ),
             ],

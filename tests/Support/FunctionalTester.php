@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests;
+namespace App\Tests\Support;
+
+use Codeception\Actor;
 
 /**
  * Inherited Methods
@@ -16,13 +18,13 @@ namespace App\Tests;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method void pause()
+ * @method void pause($vars = [])
  *
  * @SuppressWarnings(PHPMD)
 */
-class CliTester extends \Codeception\Actor
+class FunctionalTester extends Actor
 {
-    use _generated\CliTesterActions;
+    use _generated\FunctionalTesterActions;
 
     /**
      * Define custom actions here

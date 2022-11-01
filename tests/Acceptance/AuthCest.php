@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Acceptance;
 
-use App\Tests\AcceptanceTester;
+use App\Tests\Support\AcceptanceTester;
 use Codeception\Util\HttpCode;
 use Yiisoft\Json\Json;
 
@@ -31,10 +31,11 @@ final class AuthCest
         );
 
         $response = Json::decode($I->grabResponse());
+        codecept_debug($response);
         $I->seeInDatabase(
             'user',
             [
-                'id' => 1,
+                'id' => $response['data']['id'],
                 'token' => $response['data']['token'],
             ]
         );
