@@ -31,7 +31,6 @@ final class AuthCest
         );
 
         $response = Json::decode($I->grabResponse());
-        codecept_debug($response);
         $I->seeInDatabase(
             'user',
             [
