@@ -1,21 +1,15 @@
 actor: AcceptanceTester
 modules:
-    enabled:
-        - REST:
-              url: http://127.0.0.1:8080
-              depends: PhpBrowser
-        - Db:
-              dsn: 'sqlite:tests/Support/Data/database.db'
-              user: ''
-              password: ''
-              dump: 'tests/Support/Data/dump.sql'
-              populate: true
-              cleanup: true
-        - App\Tests\Support\Helper\Acceptance
-    step_decorators: ~
-env:
-    github-ci:
-        modules:
-            config:
-                REST:
-                    url: 'http://127.0.0.1:8080'
+  enabled:
+    - REST:
+        url: http://127.0.0.1:8080
+        depends: PhpBrowser
+    - Db:
+        dsn: 'sqlite:tests/Support/Data/database.db'
+        user: ''
+        password: ''
+        dump: 'tests/Support/Data/dump.sql'
+        populate: true
+        cleanup: true
+    - App\Tests\Support\Helper\Acceptance
+  step_decorators: ~
