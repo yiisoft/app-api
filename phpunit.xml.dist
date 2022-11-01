@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit bootstrap="autoload.php"
          colors="true"
          verbose="true"
          failOnRisky="true"
@@ -16,7 +16,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="Yii _____ tests">
+        <testsuite name="Tests">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
