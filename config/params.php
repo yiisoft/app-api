@@ -84,11 +84,7 @@ return [
             ],
             'connections' => [
                 'sqlite' => new SQLiteDriverConfig(
-                    connection: new FileConnectionConfig(
-                        database: $_ENV['YII_ENV'] === 'production'
-                            ? dirname(__DIR__) . '/data/db/database.db'
-                            : dirname(__DIR__) . '/tests/Support/Data/database.db'
-                    )
+                    connection: new FileConnectionConfig(database: dirname(__DIR__) . '/data/db/database.db')
                 ),
             ],
         ],
