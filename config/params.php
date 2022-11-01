@@ -9,8 +9,8 @@ use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Router\Middleware\Router;
-use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Command\Migration;
+use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Schema\Conveyor\AttributedSchemaConveyor;
 use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
 use Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider;
@@ -84,7 +84,7 @@ return [
             ],
             'connections' => [
                 'sqlite' => new SQLiteDriverConfig(
-                    connection: new FileConnectionConfig(database: dirname(__DIR__) . '/data/db/database.db')
+                    new FileConnectionConfig(dirname(__DIR__) . '/data/db/database.db')
                 ),
             ],
         ],
