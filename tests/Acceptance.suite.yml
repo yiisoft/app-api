@@ -1,4 +1,9 @@
 actor: AcceptanceTester
+extensions:
+  enabled:
+    - Codeception\Extension\RunProcess:
+        0: php -S 127.0.0.1:8080 -t public
+        sleep: 1
 modules:
   enabled:
     - REST:
