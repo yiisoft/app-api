@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
+use App\Command\Hello;
+use Cycle\Database\Config\SQLite\FileConnectionConfig;
+use Cycle\Database\Config\SQLiteDriverConfig;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Router\Middleware\Router;
-use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Command\Migration;
+use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Schema\Conveyor\AttributedSchemaConveyor;
 use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
 use Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider;
@@ -54,6 +57,7 @@ return [
     // Console commands
     'yiisoft/yii-console' => [
         'commands' => [
+            'hello' => Hello::class,
             'cycle/schema' => Schema\SchemaCommand::class,
             'cycle/schema/php' => Schema\SchemaPhpCommand::class,
             'cycle/schema/clear' => Schema\SchemaClearCommand::class,
@@ -79,12 +83,8 @@ return [
                 'default' => ['connection' => 'sqlite'],
             ],
             'connections' => [
-                'sqlite' => new \Cycle\Database\Config\SQLiteDriverConfig(
-                    connection: new \Cycle\Database\Config\SQLite\FileConnectionConfig(
-                        database: $_ENV['YII_ENV'] === 'production'
-                            ? dirname(__DIR__) . '/data/db/database.db'
-                            : dirname(__DIR__) . '/tests/_data/database.db'
-                    )
+                'sqlite' => new SQLiteDriverConfig(
+                    new FileConnectionConfig(dirname(__DIR__) . '/data/db/database.db')
                 ),
             ],
         ],
