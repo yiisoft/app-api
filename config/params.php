@@ -18,10 +18,17 @@ use Yiisoft\Yii\Cycle\Schema\SchemaProviderInterface;
 use Yiisoft\Yii\Middleware\SubFolder;
 
 return [
+    'locale' => [
+        'locales' => ['en' => 'en-US', 'ru' => 'ru-RU'],
+        'ignoredRequests' => [
+            '/debug**',
+        ],
+    ],
     'supportEmail' => 'support@example.com',
     'middlewares' => [
         ErrorCatcher::class,
         SubFolder::class,
+        \Yiisoft\Yii\Middleware\Locale::class,
         Router::class,
     ],
 
@@ -45,6 +52,17 @@ return [
 
     'yiisoft/router-fastroute' => [
         'enableCache' => false,
+    ],
+
+    'yiisoft/translator' => [
+        'locale' => 'en',
+        'fallbackLocale' => 'en',
+        'defaultCategory' => 'app',
+        'categorySources' => [
+            // You can add categories from your application and additional modules using `Reference::to` below
+            // Reference::to(ApplicationCategorySource::class),
+            Reference::to('translation.app'),
+        ],
     ],
 
     'yiisoft/view' => [
