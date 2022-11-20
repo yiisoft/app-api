@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional;
 
-use App\VersionProvider;
-use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use Yiisoft\DataResponse\DataResponse;
-use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\Yii\Testing\FunctionalTester;
 
 final class InfoControllerTest extends TestCase
