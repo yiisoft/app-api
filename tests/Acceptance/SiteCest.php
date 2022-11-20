@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Acceptance;
 
-use App\Tests\AcceptanceTester;
+use App\Tests\Support\AcceptanceTester;
 use Codeception\Util\HttpCode;
 
 final class SiteCest
@@ -36,6 +36,21 @@ final class SiteCest
             [
                 'status' => 'failed',
                 'error_message' => 'Page not found',
+                'error_code' => 404,
+                'data' => null,
+            ]
+        );
+    }
+
+    public function testNotFoundPageRu(AcceptanceTester $I): void
+    {
+        $I->sendGET('/ru/not_found_page');
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'status' => 'failed',
+                'error_message' => 'Страница не найдена',
                 'error_code' => 404,
                 'data' => null,
             ]
