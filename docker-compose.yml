@@ -3,10 +3,14 @@ version: '3'
 services:
     php:
         container_name: yii-php
-        image: yiisoftware/yii-php:8.0-fpm
+        image: yiisoftware/yii-php:8.1-fpm
         working_dir: /app
         volumes:
             - ./:/app
+            - /projects/yii-dev-tool/dev/yii-runner:/app/vendor/yiisoft/yii-runner
+            - /projects/yii-dev-tool/dev/yii-runner-http:/app/vendor/yiisoft/yii-runner-http
+            - /projects/yii-dev-tool/dev/yii-runner-console:/app/vendor/yiisoft/yii-runner-console
+            - /projects/yii-dev-tool/dev/yii-testing:/app/vendor/yiisoft/yii-testing
     nginx:
         image: nginx:alpine
         container_name: yii-nginx
@@ -16,6 +20,10 @@ services:
         volumes:
             - ./:/app
             - ./data/nginx/:/etc/nginx/conf.d/
+            - /projects/yii-dev-tool/dev/yii-runner:/app/vendor/yiisoft/yii-runner
+            - /projects/yii-dev-tool/dev/yii-runner-http:/app/vendor/yiisoft/yii-runner-http
+            - /projects/yii-dev-tool/dev/yii-runner-console:/app/vendor/yiisoft/yii-runner-console
+            - /projects/yii-dev-tool/dev/yii-testing:/app/vendor/yiisoft/yii-testing
         depends_on:
             - php
         restart: always
