@@ -38,7 +38,7 @@
         "yiisoft/access": "^1.0",
         "yiisoft/auth": "^3.0",
         "yiisoft/cache": "^2.0",
-        "yiisoft/cache-file": "^2.0",
+        "yiisoft/cache-file": "^3.0",
         "yiisoft/config": "^1.0",
         "yiisoft/data": "^1.0",
         "yiisoft/data-response": "^1.0",
