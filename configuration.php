@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 return [
     'config-plugin' => [
-        'params' => [
-            'common/params.php',
-        ],
+        'params' => 'common/params.php',
         'params-web' => [
             '$params',
             'web/params.php',
@@ -15,24 +13,16 @@ return [
             '$params',
             'console/params.php',
         ],
-        'di' => [
-            '$common',
-            'common/di/*.php',
-        ],
+        'di' => 'common/di/*.php',
         'di-web' => [
             '$di',
-            '$web',
             'web/di/*.php',
         ],
-        'di-console' => [
-            '$di',
-            '$console',
-        ],
-        'delegates-console' => [],
-        'di-delegates' => ['$delegates'],
-        'di-delegates-console' => ['$di-delegates', '$delegates-console'],
+        'di-console' => '$di',
+        'di-delegates' => [],
+        'di-delegates-console' => '$di-delegates',
         'di-delegates-web' => '$di-delegates',
-        'di-providers' => '$providers',
+        'di-providers' => [],
         'di-providers-console' => '$di-providers',
         'di-providers-web' => '$di-providers',
         'events' => [],
