@@ -2,39 +2,21 @@
 
 declare(strict_types=1);
 
-use App\Command\Hello;
 use Cycle\Database\Config\SQLite\FileConnectionConfig;
 use Cycle\Database\Config\SQLiteDriverConfig;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
-use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
-use Yiisoft\Router\Middleware\Router;
-use Yiisoft\Yii\Cycle\Command\Migration;
-use Yiisoft\Yii\Cycle\Command\Schema;
 use Yiisoft\Yii\Cycle\Schema\Conveyor\AttributedSchemaConveyor;
 use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
 use Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider;
 use Yiisoft\Yii\Cycle\Schema\SchemaProviderInterface;
-use Yiisoft\Yii\Middleware\SubFolder;
 
 return [
-    'locale' => [
-        'locales' => ['en' => 'en-US', 'ru' => 'ru-RU'],
-        'ignoredRequests' => [
-            '/debug**',
-        ],
-    ],
     'supportEmail' => 'support@example.com',
-    'middlewares' => [
-        ErrorCatcher::class,
-        SubFolder::class,
-        \Yiisoft\Yii\Middleware\Locale::class,
-        Router::class,
-    ],
 
     'yiisoft/aliases' => [
         'aliases' => [
-            '@root' => dirname(__DIR__),
+            '@root' => dirname(__DIR__, 2),
             '@assets' => '@public/assets',
             '@assetsUrl' => '@baseUrl/assets',
             '@baseUrl' => '/',
@@ -67,22 +49,6 @@ return [
         ],
     ],
 
-    // Console commands
-    'yiisoft/yii-console' => [
-        'commands' => [
-            'hello' => Hello::class,
-            'cycle/schema' => Schema\SchemaCommand::class,
-            'cycle/schema/php' => Schema\SchemaPhpCommand::class,
-            'cycle/schema/clear' => Schema\SchemaClearCommand::class,
-            'cycle/schema/rebuild' => Schema\SchemaRebuildCommand::class,
-            'migrate/create' => Migration\CreateCommand::class,
-            'migrate/generate' => Migration\GenerateCommand::class,
-            'migrate/up' => Migration\UpCommand::class,
-            'migrate/down' => Migration\DownCommand::class,
-            'migrate/list' => Migration\ListCommand::class,
-        ],
-    ],
-
     'yiisoft/yii-cycle' => [
         // DBAL config
         'dbal' => [
@@ -97,7 +63,7 @@ return [
             ],
             'connections' => [
                 'sqlite' => new SQLiteDriverConfig(
-                    new FileConnectionConfig(dirname(__DIR__) . '/data/db/database.db')
+                    new FileConnectionConfig(dirname(__DIR__, 2) . '/data/db/database.db')
                 ),
             ],
         ],
