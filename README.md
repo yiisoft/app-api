@@ -48,7 +48,7 @@ Authorization is performed via the `X-Api-Key` header.
 ## API documentation
 
 API documentation is available at `/docs`. It is built from OpenAPI annotations (`@OA`).
-See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/Getting-started.html#write-annotations) for details
+See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
 on how to annotate your code.
 
 ## Codeception testing

@@ -10,22 +10,24 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\DataResponse\DataResponseFormatterInterface;
 use Yiisoft\Http\Status;
+use Yiisoft\Translator\TranslatorInterface;
 
 final class NotFoundHandler implements RequestHandlerInterface
 {
-    private DataResponseFormatterInterface $formatter;
-    private DataResponseFactoryInterface $dataResponseFactory;
-
-    public function __construct(DataResponseFormatterInterface $formatter, DataResponseFactoryInterface $dataResponseFactory)
-    {
-        $this->formatter = $formatter;
-        $this->dataResponseFactory = $dataResponseFactory;
+    public function __construct(
+        private DataResponseFormatterInterface $formatter,
+        private DataResponseFactoryInterface $dataResponseFactory,
+        private TranslatorInterface $translator,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return $this->formatter->format(
-            $this->dataResponseFactory->createResponse('Page not found', Status::NOT_FOUND)
+            $this->dataResponseFactory->createResponse(
+                $this->translator->translate('404.title'),
+                Status::NOT_FOUND,
+            )
         );
     }
 }

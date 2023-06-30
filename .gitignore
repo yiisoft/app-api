@@ -34,6 +34,6 @@ phpunit.phar
 c3.php
 
 #tests
-tests/_data/database.db_snapshot
+tests/Support/Data/database.db_snapshot
 
 .env
