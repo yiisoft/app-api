@@ -27,11 +27,14 @@ return [
         'di-providers-web' => '$di-providers',
         'events' => [],
         'events-console' => '$events',
-        'events-web' => '$events',
+        'events-web' => [
+            '$events',
+            'web/events.php',
+        ],
         'bootstrap' => [],
         'bootstrap-console' => '$bootstrap',
         'bootstrap-web' => '$bootstrap',
-        'routes' => 'common/routes.php',
+        'app-routes' => 'common/routes.php',
     ],
     'config-plugin-environments' => [
         'dev' => [
