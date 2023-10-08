@@ -8,6 +8,12 @@ use Yiisoft\Yii\Middleware\Locale;
 use Yiisoft\Yii\Middleware\Subfolder;
 
 return [
+    'yiisoft/input-http' => [
+        'requestInputParametersResolver' => [
+            'throwInputValidationException' => true,
+        ],
+    ],
+
     'middlewares' => [
         ErrorCatcher::class,
         Subfolder::class,
