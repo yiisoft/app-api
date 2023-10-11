@@ -13,6 +13,7 @@ use Yiisoft\Validator\RulesProviderInterface;
 /**
  * @OA\Schema(
  *      schema="AuthRequest",
+ *
  *      @OA\Property(example="Opal1144", property="login", format="string"),
  *      @OA\Property(example="Opal1144", property="password", format="string"),
  * )

@@ -11,6 +11,9 @@ use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 
+/**
+ * @extends Select\Repository<User>
+ */
 final class UserRepository extends Select\Repository implements IdentityWithTokenRepositoryInterface, IdentityRepositoryInterface
 {
     private ORMInterface $orm;
