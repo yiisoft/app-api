@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Formatter\ApiResponseFormatter;
+use App\Http\ApiResponseFormatter;
 use Yiisoft\DataResponse\DataResponseFactory;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\DataResponse\DataResponseFormatterInterface;
 use Yiisoft\DataResponse\Formatter\HtmlDataResponseFormatter;
-use Yiisoft\DataResponse\Formatter\XmlDataResponseFormatter;
 use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
+use Yiisoft\DataResponse\Formatter\XmlDataResponseFormatter;
 use Yiisoft\DataResponse\Middleware\ContentNegotiator;
 
 /* @var $params array */

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Formatter;
+namespace App\Http;
 
-use App\Factory\ApiResponseDataFactory;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\DataResponse\DataResponseFormatterInterface;

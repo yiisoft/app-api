@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Factory;
+namespace App\Http;
 
-use App\Dto\ApiResponseData;
 use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\Http\Status;
 

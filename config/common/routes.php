@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\InfoController;
+use App\Controller\IndexController;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsHtml;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
 use Yiisoft\Router\Group;
@@ -13,10 +13,9 @@ use Yiisoft\Yii\Middleware\CorsAllowAll;
 
 return [
     Route::get('/')
-        ->action([InfoController::class, 'index'])
-        ->name('api/info'),
+        ->action([IndexController::class, 'index'])
+        ->name('app/index'),
 
-    // Swagger routes
     Group::create('/docs')
         ->routes(
             Route::get('')
