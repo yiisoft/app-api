@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit;
+namespace App\Tests\Cli;
 
 use App\Tests\Support\ApplicationDataProvider;
 use App\Tests\Support\UnitTester;
@@ -11,7 +11,7 @@ use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
 use Symfony\Component\Console\Tester\CommandTester;
 use Yiisoft\Yii\Console\ExitCode;
 
-final class HelloCest
+final class HelloCommandCest
 {
     public function testExecute(UnitTester $I): void
     {
