@@ -11,7 +11,8 @@ use Yiisoft\Yii\Console\ExitCode;
 
 final class Hello extends Command
 {
-    protected static $defaultName = 'hello';
+    public const NAME = 'hello';
+    protected static $defaultName = self::NAME;
     protected static $defaultDescription = 'An example command';
 
     public function __construct()

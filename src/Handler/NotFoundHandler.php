@@ -10,14 +10,12 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\DataResponse\DataResponseFormatterInterface;
 use Yiisoft\Http\Status;
-use Yiisoft\Translator\TranslatorInterface;
 
 final class NotFoundHandler implements RequestHandlerInterface
 {
     public function __construct(
         private DataResponseFormatterInterface $formatter,
         private DataResponseFactoryInterface $dataResponseFactory,
-        private TranslatorInterface $translator,
     ) {
     }
 
@@ -25,7 +23,7 @@ final class NotFoundHandler implements RequestHandlerInterface
     {
         return $this->formatter->format(
             $this->dataResponseFactory->createResponse(
-                $this->translator->translate('404.title'),
+                'Not found.',
                 Status::NOT_FOUND,
             )
         );
