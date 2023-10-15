@@ -20,9 +20,6 @@ return [
             ->middleware(FormatDataResponse::class)
             ->middleware(ExceptionMiddleware::class)
             ->addGroup(
-                Group::create('/{_language}')->routes(...$config->get('app-routes')),
-            )
-            ->addGroup(
                 Group::create()->routes(...$config->get('routes')),
             );
 

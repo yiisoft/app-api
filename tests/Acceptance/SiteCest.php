@@ -35,7 +35,7 @@ final class SiteCest
         $I->seeResponseContainsJson(
             [
                 'status' => 'failed',
-                'error_message' => 'Page not found',
+                'error_message' => 'Not found.',
                 'error_code' => 404,
                 'data' => null,
             ]
