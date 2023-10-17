@@ -2,32 +2,20 @@
 
 declare(strict_types=1);
 
-use App\Auth\AuthController;
-use App\InfoController;
-use Yiisoft\Auth\Middleware\Authentication;
+use App\Controller\IndexController;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsHtml;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 use Yiisoft\Swagger\Action\SwaggerJson;
-use Yiisoft\Swagger\Middleware\SwaggerUi;
+use Yiisoft\Swagger\Action\SwaggerUi;
 use Yiisoft\Yii\Middleware\CorsAllowAll;
 
 return [
     Route::get('/')
-        ->action([InfoController::class, 'index'])
-        ->name('api/info'),
+        ->action([IndexController::class, 'index'])
+        ->name('app/index'),
 
-    Route::post('/auth/')
-        ->action([AuthController::class, 'login'])
-        ->name('auth'),
-
-    Route::post('/logout/')
-        ->middleware(Authentication::class)
-        ->action([AuthController::class, 'logout'])
-        ->name('logout'),
-
-    // Swagger routes
     Group::create('/docs')
         ->routes(
             Route::get('')

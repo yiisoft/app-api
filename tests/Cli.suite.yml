@@ -2,4 +2,5 @@ actor: CliTester
 modules:
   enabled:
     - Cli
+    - Asserts
   step_decorators: ~

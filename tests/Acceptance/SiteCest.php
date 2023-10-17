@@ -35,22 +35,7 @@ final class SiteCest
         $I->seeResponseContainsJson(
             [
                 'status' => 'failed',
-                'error_message' => 'Page not found',
-                'error_code' => 404,
-                'data' => null,
-            ]
-        );
-    }
-
-    public function testNotFoundPageRu(AcceptanceTester $I): void
-    {
-        $I->sendGET('/ru/not_found_page');
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-        $I->seeResponseContainsJson(
-            [
-                'status' => 'failed',
-                'error_message' => 'Страница не найдена',
+                'error_message' => 'Not found.',
                 'error_code' => 404,
                 'data' => null,
             ]

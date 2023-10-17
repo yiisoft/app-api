@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Formatter;
+namespace App\Http;
 
-use Yiisoft\Data\Paginator\OffsetPaginator;
 use OpenApi\Annotations as OA;
+use Yiisoft\Data\Paginator\OffsetPaginator;
 
 /**
  * @OA\Schema(

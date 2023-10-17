@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Controller;
 
+use OpenApi\Annotations as OA;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
-use OpenApi\Annotations as OA;
 
 /**
  * @OA\Info(title="Yii API application", version="1.0")
  */
-class InfoController
+class IndexController
 {
     /**
      * @OA\Get(

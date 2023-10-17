@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Middleware\ExceptionMiddleware;
+use App\Http\ExceptionMiddleware;
 use Yiisoft\Config\Config;
 use Yiisoft\DataResponse\Middleware\FormatDataResponse;
 use Yiisoft\Request\Body\RequestBodyParser;
@@ -19,9 +19,6 @@ return [
             ->middleware(RequestBodyParser::class)
             ->middleware(FormatDataResponse::class)
             ->middleware(ExceptionMiddleware::class)
-            ->addGroup(
-                Group::create('/{_language}')->routes(...$config->get('app-routes')),
-            )
             ->addGroup(
                 Group::create()->routes(...$config->get('routes')),
             );

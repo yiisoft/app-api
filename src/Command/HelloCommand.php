@@ -9,9 +9,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Yiisoft\Yii\Console\ExitCode;
 
-final class Hello extends Command
+final class HelloCommand extends Command
 {
-    protected static $defaultName = 'hello';
+    public const NAME = 'hello';
+    protected static $defaultName = self::NAME;
     protected static $defaultDescription = 'An example command';
 
     public function __construct()
