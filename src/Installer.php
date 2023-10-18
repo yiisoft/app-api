@@ -23,10 +23,13 @@ final class Installer
     private static function chmodRecursive(string $path, int $mode): void
     {
         chmod($path, $mode);
+
+        /** @var iterable<string, string> $iterator */
         $iterator = new RIterator(
             new DirIterator($path, FSIterator::SKIP_DOTS | FSIterator::CURRENT_AS_PATHNAME),
             RIterator::SELF_FIRST
         );
+
         foreach ($iterator as $item) {
             chmod($item, $mode);
         }

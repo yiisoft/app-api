@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http;
 
+use RuntimeException;
 use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\Http\Status;
 
@@ -18,9 +19,15 @@ final class ApiResponseDataFactory
                 ->setErrorMessage($this->getErrorMessage($response));
         }
 
+        $data = $response->getData();
+
+        if ($data !== null && !is_array($data)) {
+            throw new RuntimeException('The response data must be either null or an array');
+        }
+
         return $this
             ->createSuccessResponse()
-            ->setData($response->getData());
+            ->setData($data);
     }
 
     public function createSuccessResponse(): ApiResponseData
