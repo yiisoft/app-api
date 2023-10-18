@@ -21,9 +21,7 @@ final class ApiResponseDataFactory
 
         $data = $response->getData();
 
-        if (empty($data)) {
-            $data = null;
-        } elseif (!is_array($data)) {
+        if ($data !== null && !is_array($data)) {
             throw new RuntimeException('The response data must be either null or an array');
         }
 
