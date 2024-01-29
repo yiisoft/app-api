@@ -39,7 +39,7 @@
         "yiisoft/factory": "^1.1",
         "yiisoft/files": "^2.0",
         "yiisoft/http": "^1.2",
-        "yiisoft/hydrator": "dev-master",
+        "yiisoft/hydrator": "^1.0",
         "yiisoft/hydrator-validator": "dev-master",
         "yiisoft/injector": "^1.1",
         "yiisoft/input-http": "dev-master",
