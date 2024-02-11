@@ -1,5 +1,4 @@
 namespace: App\Tests
-bootstrap: ../autoload.php
 support_namespace: Support
 paths:
   tests: tests
