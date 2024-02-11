@@ -4,6 +4,7 @@ on:
       - 'docs/**'
       - 'README.md'
       - 'CHANGELOG.md'
+      - '.env.example'
       - '.gitignore'
       - '.gitattributes'
       - 'infection.json.dist'
@@ -25,6 +26,7 @@ jobs:
   build:
     uses: yiisoft/actions/.github/workflows/codeception.yml@master
     with:
+      codeception-command: codecept build && vendor/bin/codecept run --coverage-xml
       extensions: fileinfo, pdo, pdo_sqlite, intl
       os: >-
         ['ubuntu-latest', 'windows-latest']

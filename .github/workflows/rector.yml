@@ -4,6 +4,7 @@ on:
       - 'docs/**'
       - 'README.md'
       - 'CHANGELOG.md'
+      - '.env.example'
       - '.gitignore'
       - '.gitattributes'
       - 'infection.json.dist'
