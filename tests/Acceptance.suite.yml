@@ -2,12 +2,12 @@ actor: AcceptanceTester
 extensions:
   enabled:
     - Codeception\Extension\RunProcess:
-        0: php -d variables_order=EGPCS -S 127.0.0.1:8881 -t public
-        sleep: 1
+        0: composer serve
+        sleep: 3
 modules:
   enabled:
     - REST:
-        url: http://127.0.0.1:8881
+        url: http://127.0.0.1:8080
         depends: PhpBrowser
     - App\Tests\Support\Helper\Acceptance
   step_decorators: ~

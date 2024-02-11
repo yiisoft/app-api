@@ -15,11 +15,8 @@ use Yiisoft\Input\Http\InputValidationException;
 
 final class ExceptionMiddleware implements MiddlewareInterface
 {
-    private DataResponseFactoryInterface $dataResponseFactory;
-
-    public function __construct(DataResponseFactoryInterface $dataResponseFactory)
+    public function __construct(private DataResponseFactoryInterface $dataResponseFactory)
     {
-        $this->dataResponseFactory = $dataResponseFactory;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

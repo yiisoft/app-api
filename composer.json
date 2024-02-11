@@ -40,7 +40,7 @@
         "yiisoft/files": "^2.0",
         "yiisoft/http": "^1.2",
         "yiisoft/hydrator": "^1.0",
-        "yiisoft/hydrator-validator": "dev-master",
+        "yiisoft/hydrator-validator": "^1.0",
         "yiisoft/injector": "^1.1",
         "yiisoft/input-http": "dev-master",
         "yiisoft/log": "^2.0",
@@ -69,9 +69,10 @@
         "codeception/module-phpbrowser": "^3.0",
         "codeception/module-rest": "^3.0",
         "phpunit/phpunit": "^9.5",
-        "roave/infection-static-analysis-plugin": "^1.16",
+        "roave/infection-static-analysis-plugin": "^1.34",
         "spatie/phpunit-watcher": "^1.23",
-        "vimeo/psalm": "^4.30|^5.8",
+        "rector/rector": "^1.0.0",
+        "vimeo/psalm": "^5.20",
         "yiisoft/json": "^1.0",
         "yiisoft/yii-debug-api": "^3.0@dev",
         "yiisoft/yii-debug-viewer": "^3.0@dev",
@@ -88,7 +89,10 @@
         }
     },
     "scripts": {
-        "serve": "./yii serve",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php ./yii serve"
+        ],
         "post-update-cmd": [
             "App\\Installer::postUpdate",
             "App\\Installer::copyEnvFile"
