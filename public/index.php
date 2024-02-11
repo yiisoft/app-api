@@ -42,8 +42,8 @@ if (getenv('YII_C3')) {
 $runner = (
     new HttpApplicationRunner(
         rootPath: dirname(__DIR__),
-        debug: $_ENV['YII_DEBUG'],
-        checkEvents: $_ENV['YII_DEBUG'],
+        debug: (bool) $_ENV['YII_DEBUG'],
+        checkEvents: (bool) $_ENV['YII_DEBUG'],
         environment: $_ENV['YII_ENV']
     )
 )
