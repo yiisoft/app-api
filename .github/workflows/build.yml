@@ -28,7 +28,7 @@ jobs:
     with:
       codeception-command: |
         vendor/bin/codecept build
-        vendor/bin/codecept run --coverage-xml --env github-ci
+        vendor/bin/codecept run
       extensions: fileinfo, pdo, pdo_sqlite, intl
       os: >-
         ['ubuntu-latest', 'windows-latest']
