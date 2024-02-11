@@ -26,7 +26,7 @@ jobs:
   build:
     uses: yiisoft/actions/.github/workflows/codeception.yml@master
     with:
-      codeception-command: codecept build && vendor/bin/codecept run --coverage-xml
+      codeception-command: vendor/bin/codecept build && vendor/bin/codecept run --coverage-xml
       extensions: fileinfo, pdo, pdo_sqlite, intl
       os: >-
         ['ubuntu-latest', 'windows-latest']
