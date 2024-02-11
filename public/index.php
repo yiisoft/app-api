@@ -27,7 +27,7 @@ if (PHP_SAPI === 'cli-server') {
 
 require_once dirname(__DIR__) . '/autoload.php';
 
-if (getenv('YII_ENV') === 'test') {
+if (getenv('YII_C3')) {
     $c3 = dirname(__DIR__) . '/c3.php';
     if (file_exists($c3)) {
         require_once $c3;
@@ -42,8 +42,8 @@ if (getenv('YII_ENV') === 'test') {
 $runner = (
     new HttpApplicationRunner(
         rootPath: dirname(__DIR__),
-        debug: (bool) $_ENV['YII_DEBUG'],
-        checkEvents: (bool) $_ENV['YII_DEBUG'],
+        debug: $_ENV['YII_DEBUG'],
+        checkEvents: $_ENV['YII_DEBUG'],
         environment: $_ENV['YII_ENV']
     )
 )
