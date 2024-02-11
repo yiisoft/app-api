@@ -33,7 +33,7 @@ build:
         override:
           - command: |
               ./yii serve 127.0.0.1:8080 > ./runtime/yii.log 2>&1 &
-              vendor/bin/codecept run acceptance --coverage-xml --env github-ci
+              vendor/bin/codecept run Acceptance --coverage-xml --env github-ci
             on_node: 1
             coverage:
               file: runtime/tests/_output/coverage.xml
