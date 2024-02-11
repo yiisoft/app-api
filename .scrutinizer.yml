@@ -11,6 +11,7 @@ build:
   environment:
     variables:
       YII_ENV: test
+      YII_DEBUG: false
 
     php:
       version: 8.1
