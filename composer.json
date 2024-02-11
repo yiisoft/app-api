@@ -29,6 +29,7 @@
         "psr/http-server-handler": "^1.0",
         "psr/http-server-middleware": "^1.0",
         "psr/log": "^3.0",
+        "symfony/console": "^6.0",
         "vlucas/phpdotenv": "^5.3",
         "yiisoft/config": "^1.0",
         "yiisoft/data": "^1.0",
