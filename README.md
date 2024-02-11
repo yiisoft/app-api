@@ -10,6 +10,7 @@
 [![Total Downloads](https://poser.pugx.org/yiisoft/app-api/downloads.png)](https://packagist.org/packages/yiisoft/app-api)
 [![Build status](https://github.com/yiisoft/app-api/workflows/build/badge.svg)](https://github.com/yiisoft/app-api/actions?query=workflow%3Abuild)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/app-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/app-api/?branch=master)
+[![codecov](https://codecov.io/gh/yiisoft/app-api/graph/badge.svg?token=8XE1MPAZD4)](https://codecov.io/gh/yiisoft/app-api)
 [![static analysis](https://github.com/yiisoft/app-api/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/app-api/actions?query=workflow%3A%22static+analysis%22)
 
 API application template for Yii 3.
