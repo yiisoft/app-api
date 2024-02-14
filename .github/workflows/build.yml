@@ -24,7 +24,7 @@ name: build
 
 jobs:
   build:
-    uses: yiisoft/actions/.github/workflows/codeception.yml@master
+    uses: yiisoft/actions/.github/workflows/codeception.yml@fix-codecov-codeception
     with:
       codeception-command: |
         vendor/bin/codecept build
