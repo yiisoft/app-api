@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use OpenApi\Attributes\Get;
-use OpenApi\Attributes\Info;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
-use OpenApi\Attributes\Schema;
+use OpenApi\Attributes as OA;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
@@ -17,21 +12,21 @@ use Yiisoft\DataResponse\DataResponseFactoryInterface;
 class IndexController
 {
 
-    #[Get(
+    #[OA\Get(
         path: "/",
         description: "",
         summary: "Returns info about the API",
         responses: [
-            new Response(
+            new OA\Response(
                 response:"200",
                 description:"Success",
-                content: new JsonContent(
+                content: new OA\JsonContent(
                     allOf: [
-                        new Schema(ref: "#/components/schemas/Response"),
-                        new Schema(properties: [
-                            new Property(property: "data", properties: [
-                                new Property(property: "version", type: "string", example: "3.0"),
-                                new Property(property: "author", type: "string", example: "yiisoft"),
+                        new OA\Schema(ref: "#/components/schemas/Response"),
+                        new OA\Schema(properties: [
+                            new OA\Property(property: "data", properties: [
+                                new OA\Property(property: "version", type: "string", example: "3.0"),
+                                new OA\Property(property: "author", type: "string", example: "yiisoft"),
                             ], type: "object"),
                         ]),
                     ]

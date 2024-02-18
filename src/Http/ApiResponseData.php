@@ -4,28 +4,26 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Schema;
+use OpenApi\Attributes as OA;
 
-
-#[Schema(
+#[OA\Schema(
     schema: "Response"
 )]
-#[Schema(
+#[OA\Schema(
     schema: "BadResponse",
     allOf: [
-        new Schema(ref: "#/components/schemas/Response"),
-        new Schema(properties: [
-            new Property(property: "status", example: "failed"),
-            new Property(property: "error_message", example: "Error description message"),
-            new Property(property: "error_code", example: "400", nullable: true),
-            new Property(property: "data", example: null),
+        new OA\Schema(ref: "#/components/schemas/Response"),
+        new OA\Schema(properties: [
+            new OA\Property(property: "status", example: "failed"),
+            new OA\Property(property: "error_message", example: "Error description message"),
+            new OA\Property(property: "error_code", example: "400", nullable: true),
+            new OA\Property(property: "data", example: null),
         ])
     ]
 )]
 final class ApiResponseData
 {
-    #[Property(
+    #[OA\Property(
         property: "status",
         format: "string",
         enum: ['success', 'failed'],
@@ -33,14 +31,14 @@ final class ApiResponseData
     )]
     private string $status = '';
 
-    #[Property(
+    #[OA\Property(
         property: "error_message",
         format: "string",
         example: ""
     )]
     private string $errorMessage = '';
 
-    #[Property(
+    #[OA\Property(
         property: "error_code",
         format: "integer",
         example: null,
@@ -48,7 +46,7 @@ final class ApiResponseData
     )]
     private ?int $errorCode = null;
 
-    #[Property(
+    #[OA\Property(
         property: "data",
         type: "object",
         nullable: true
