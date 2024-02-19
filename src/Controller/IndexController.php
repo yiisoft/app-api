@@ -8,7 +8,7 @@ use OpenApi\Attributes as OA;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
-#[Info(title:"Yii API application", version:"1.0")]
+#[OA\Info(title:"Yii API application", version:"1.0")]
 class IndexController
 {
 
