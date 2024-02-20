@@ -51,6 +51,7 @@
         "yiisoft/router": "^3.0",
         "yiisoft/router-fastroute": "^3.0",
         "yiisoft/validator": "^1.0",
+        "yiisoft/cache-file": "^3.0",
         "yiisoft/yii-console": "^2.0",
         "yiisoft/yii-debug": "^3.0@dev",
         "yiisoft/yii-event": "^2.0",
