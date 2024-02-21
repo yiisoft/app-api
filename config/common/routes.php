@@ -7,8 +7,8 @@ use Yiisoft\DataResponse\Middleware\FormatDataResponseAsHtml;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
-use Yiisoft\Swagger\Action\SwaggerJson;
-use Yiisoft\Swagger\Action\SwaggerUi;
+use Yiisoft\Swagger\Middleware\SwaggerJson;
+use Yiisoft\Swagger\Middleware\SwaggerUi;
 use Yiisoft\Yii\Middleware\CorsAllowAll;
 
 return [
@@ -24,6 +24,6 @@ return [
             Route::get('/openapi.json')
                 ->middleware(FormatDataResponseAsJson::class)
                 ->middleware(CorsAllowAll::class)
-                ->action([SwaggerJson::class, 'handle']),
+                ->action([SwaggerJson::class, 'process']),
         ),
 ];
