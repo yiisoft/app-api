@@ -42,7 +42,7 @@ Install packages:
 composer install
 ```
 
-Usually the application is available at http://localhost:8080.
+Usually the application is available at <http://localhost:8080>.
 
 Authorization is performed via the `X-Api-Key` header.
 
@@ -57,7 +57,6 @@ on how to annotate your code.
 ```php
 ./vendor/bin/codecept run
 ```
-
 
 ## Static analysis
 
