@@ -19,7 +19,7 @@ API application template for Yii 3.
 
 Creating a project:
 
-```
+```shell
 composer create-project yiisoft/app-api --stability=dev myproject
 cd myproject
 ```
@@ -38,7 +38,7 @@ docker-compose exec php bash
 
 Install packages:
 
-```
+```shell
 composer install
 ```
 
