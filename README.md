@@ -15,6 +15,10 @@
 
 API application template for Yii 3.
 
+## Requirements
+
+- PHP 8.1 or higher.
+
 ## Installation
 
 Creating a project:
