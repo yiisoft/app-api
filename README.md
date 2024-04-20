@@ -2,7 +2,7 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px">
     </a>
-    <h1 align="center">Yii API template</h1>
+    <h1 align="center">Yii API Template</h1>
     <br>
 </p>
 
@@ -50,21 +50,11 @@ Usually the application is available at <http://localhost:8080>.
 
 Authorization is performed via the `X-Api-Key` header.
 
-## API documentation
+## Documentation
 
-API documentation is available at `/docs`. It is built from OpenAPI annotations (`@OA`).
+It is built from OpenAPI annotations (`@OA`).
 See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
 on how to annotate your code.
-
-## Testing
-
-The template comes with ready to use [Codeception](https://codeception.com/) configuration.
-In order to execute tests run:
-
-```shell
-composer run serve > ./runtime/yii.log 2>&1 &
-vendor/bin/codecept run
-```
 
 - More information can be found in the [Internals.](docs/internals.md)
 
@@ -87,7 +77,7 @@ You may also check out other [Yii Community Resources](https://www.yiiframework.
 
 ## License
 
-The Yii Access is free software. It is released under the terms of the BSD License.
+The Yii API Template is free software. It is released under the terms of the BSD License.
 Please see [`LICENSE`](./LICENSE.md) for more information.
 
 Maintained by [Yii Software](https://www.yiiframework.com/).
