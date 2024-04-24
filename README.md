@@ -36,7 +36,7 @@ docker-compose up -d
 
 Enter into the container:
 
-```dockerfile
+```shell
 docker-compose exec php bash
 ```
 
