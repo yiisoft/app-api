@@ -30,7 +30,7 @@ cd myproject
 
 Install docker:
 
-```dockerfile
+```shell
 docker-compose up -d
 ```
 
@@ -52,7 +52,7 @@ Authorization is performed via the `X-Api-Key` header.
 
 ## Documentation
 
-It is built from OpenAPI annotations (`@OA`).
+API documentation is available at `/docs`. It is built from OpenAPI annotations (`@OA`).
 See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
 on how to annotate your code.
 
