@@ -30,7 +30,7 @@ cd myproject
 
 Install docker:
 
-```dockerfile
+```shell
 docker-compose up -d
 ```
 
