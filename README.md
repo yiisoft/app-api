@@ -58,8 +58,6 @@ on how to annotate your code.
 
 - [Internals](docs/internals.md)
 
-## Support
-
 If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
 You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
 
