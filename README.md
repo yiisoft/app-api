@@ -15,30 +15,34 @@
 
 API application template for Yii 3.
 
+## Requirements
+
+- PHP 8.1 or higher.
+
 ## Installation
 
 Creating a project:
 
-```
+```shell
 composer create-project yiisoft/app-api --stability=dev myproject
 cd myproject
 ```
 
 Install docker:
 
-```
+```shell
 docker-compose up -d
 ```
 
 Enter into the container:
 
-```
+```shell
 docker-compose exec php bash
 ```
 
 Install packages:
 
-```
+```shell
 composer install
 ```
 
@@ -57,7 +61,6 @@ on how to annotate your code.
 ```php
 ./vendor/bin/codecept run
 ```
-
 
 ## Static analysis
 
