@@ -50,15 +50,15 @@ Usually the application is available at `http://localhost:8080`.
 
 Authorization is performed via the `X-Api-Key` header.
 
-## Documentation
+If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
+You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
+
+## API Documentation
 
 API documentation is available at `/docs`. It is built from OpenAPI annotations (`@OA`).
 
 See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
 on how to annotate your code.
-
-If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
-You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
 
 ## Codeception testing
 
