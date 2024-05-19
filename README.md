@@ -50,12 +50,29 @@ Usually the application is available at `http://localhost:8080`.
 
 Authorization is performed via the `X-Api-Key` header.
 
+## Codeception testing
+
+The template comes with ready to use [Codeception](https://codeception.com/) configuration.
+In order to execute tests run:
+
+```shell
+composer run serve > ./runtime/yii.log 2>&1 &
+vendor/bin/codecept run
+```
+
+## Static analysis
+
+The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
+
+```shell
+./vendor/bin/psalm
+```
+
 ## Documentation
 
 - API documentation is available at `/docs`. It is built from OpenAPI annotations (`@OA`).
 - See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
 on how to annotate your code.
-- [Internals](docs/internals.md)
 
 If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
 You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
