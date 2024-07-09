@@ -64,7 +64,7 @@
         "yiisoft/validator": "^1.0",
         "yiisoft/cache-file": "^3.0",
         "yiisoft/yii-console": "^2.0",
-        "yiisoft/yii-debug": "^3.0@dev",
+        "yiisoft/yii-debug": "dev-master",
         "yiisoft/yii-event": "^2.0",
         "yiisoft/yii-http": "^1.0",
         "yiisoft/yii-middleware": "^1.0",
@@ -88,8 +88,8 @@
         "rector/rector": "^1.0.0",
         "vimeo/psalm": "^5.20",
         "yiisoft/json": "^1.0",
-        "yiisoft/yii-debug-api": "^3.0@dev",
-        "yiisoft/yii-debug-viewer": "^3.0@dev",
+        "yiisoft/yii-debug-api": "dev-master",
+        "yiisoft/yii-debug-viewer": "dev-master",
         "yiisoft/yii-testing": "dev-master"
     },
     "autoload": {
