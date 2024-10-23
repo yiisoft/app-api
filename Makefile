@@ -33,6 +33,9 @@ cmd: ## Run a command within the container
 shell: CMD="/bin/sh" ## Get into container shell
 shell: cmd
 
+yii: CMD="./yii" ## Execute Yii command
+yii: cmd
+
 composer: CMD="composer" ## Run Composer
 composer: cmd
 
