@@ -21,11 +21,18 @@ API application template for Yii 3.
 
 ## Installation
 
-Creating a project:
+If you have composer locally, create a project:
 
 ```shell
 composer create-project yiisoft/app-api --stability=dev myproject
 cd myproject
+```
+
+If you don't have, fork the repository, clone it, then:
+
+```shell
+cd myproject
+make composer update
 ```
 
 ## Running the app

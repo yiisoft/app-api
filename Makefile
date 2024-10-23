@@ -9,6 +9,9 @@ help: ## This help.
 # run silent
 MAKEFLAGS += --silent
 
+RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+$(eval $(RUN_ARGS):;@:)
+
 build: ## Build an image
 	docker build --target prod --pull -t app-api:latest .
 
@@ -23,3 +26,13 @@ down: ## Down the dev environment
 
 deploy: ## Deploy to production
 	docker -H ssh://docker-web stack deploy --with-registry-auth -d -c docker-compose.prod.yml app-api
+
+cmd: ## Run a command within the container
+	docker exec -it app-api $(CMD) $(RUN_ARGS)
+
+shell: CMD="/bin/sh" ## Get into container shell
+shell: cmd
+
+composer: CMD="composer" ## Run Composer
+composer: cmd
+
