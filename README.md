@@ -28,30 +28,24 @@ composer create-project yiisoft/app-api --stability=dev myproject
 cd myproject
 ```
 
-Install docker:
+## Running the app
+
+To run the app:
 
 ```shell
-docker-compose up -d
+make up
 ```
 
-Enter into the container:
+The application is available at `https://localhost`.
+
+
+To stop the app:
 
 ```shell
-docker-compose exec php bash
+make down
 ```
-
-Install packages:
-
-```shell
-composer install
-```
-
-Usually the application is available at `http://localhost:8080`.
 
 Authorization is performed via the `X-Api-Key` header.
-
-If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
-You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
 
 ## API Documentation
 
@@ -60,10 +54,15 @@ API documentation is available at `/docs`. It is built from OpenAPI annotations 
 See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
 on how to annotate your code.
 
+## Getting help
+
+If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
+You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
+
 ## Codeception testing
 
 The template comes with ready to use [Codeception](https://codeception.com/) configuration.
-In order to execute tests run:
+To execute tests, run:
 
 ```shell
 composer run serve > ./runtime/yii.log 2>&1 &

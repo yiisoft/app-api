@@ -1,0 +1,12 @@
+.git
+.github
+.idea
+.gitignore
+.dockerignore
+/Dockerfile
+/docker-compose.*
+/Makefile
+/README.md
+/readme.md
+/composer.json
+/composer.lock

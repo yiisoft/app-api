@@ -1,0 +1,20 @@
+services:
+  webserver:
+    build:
+      context: .
+      target: base
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/app
+      - caddy_data:/data
+      - caddy_config:/config
+      - runtime:/app/runtime
+    tty: true
+
+volumes:
+  caddy_data:
+  caddy_config:
+  runtime:
