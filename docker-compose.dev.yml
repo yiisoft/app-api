@@ -1,5 +1,5 @@
 services:
-  webserver:
+  app:
     build:
       context: .
       target: dev
