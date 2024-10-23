@@ -42,3 +42,8 @@ yii: cmd
 composer: CMD="composer" ## Run Composer.
 composer: cmd
 
+codecept: CMD="./vendor/bin/codecept" ## Run tests.
+codecept: cmd
+
+psalm: CMD="./vendor/bin/psalm" ## Run psalm.
+psalm: cmd
