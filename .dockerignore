@@ -1,0 +1,16 @@
+# This ignore file is used for COPY statement within Dockerfile when building production image.
+
+# Ignore everything
+*
+
+# except:
+
+!/config
+!/public
+!/src
+!/vendor
+!autoload.php
+!configuration.php
+!yii
+!composer.json
+!composer.lock
