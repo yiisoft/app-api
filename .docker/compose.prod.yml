@@ -1,12 +1,13 @@
+name: app-api
 services:
   app:
-    image: app-api:latest
+    image: ${IMAGE:-app-api}:${IMAGE_TAG:-latest}
     networks:
       - caddy_public
     volumes:
       - caddy_data:/data
       - caddy_config:/config
-      - runtime:/app/app/runtime
+      - runtime:/app/runtime
     environment:
       SERVER_NAME: ":80"
     deploy:
@@ -16,8 +17,10 @@ services:
         max_attempts: 3
         window: 120s
       labels:
-        caddy: app-api.example.com
+        caddy: ${PROD_HOST:-app-api.example.com}
         caddy.reverse_proxy: "{{upstreams 80}}"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 volumes:
   caddy_data:
