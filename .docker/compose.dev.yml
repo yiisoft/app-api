@@ -1,4 +1,4 @@
-name: app-api
+name: ${STACK_NAME}
 services:
   app:
     build:
@@ -6,8 +6,8 @@ services:
       context: ..
       target: dev
       args:
-        UID: ${UID:-1000}
-        GID: ${GID:-1000}
+        UID: ${UID}
+        GID: ${GID}
     environment:
       XDEBUG_MODE: "${XDEBUG_MODE:-off}"
       YII_ENV: "dev"

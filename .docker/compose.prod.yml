@@ -1,7 +1,7 @@
-name: app-api
+name: ${STACK_NAME}
 services:
   app:
-    image: ${IMAGE:-app-api}:${IMAGE_TAG:-latest}
+    image: ${IMAGE}:${IMAGE_TAG}
     networks:
       - caddy_public
     volumes:

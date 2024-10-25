@@ -46,7 +46,7 @@ push-prod: ## Push image to repository.
 	docker push ${IMAGE}:${IMAGE_TAG}
 
 deploy-prod: ## Deploy to production.
-	docker -H ssh://docker-web stack deploy --with-registry-auth -d -c .docker/compose.prod.yml ${STACK_NAME}
+	docker -H ${PROD_SSH} stack deploy --with-registry-auth -d -c .docker/compose.prod.yml ${STACK_NAME}
 
 # Output the help for each task, see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
