@@ -5,6 +5,8 @@ services:
       - caddy_public
     volumes:
       - runtime:/app/runtime
+      - caddy_data:/data
+      - caddy_config:/config
     environment:
       SERVER_NAME: ":80"
     deploy:

@@ -20,5 +20,7 @@ services:
       - ../:/app
       - ../runtime:/app/runtime
       - ${COMPOSER_CACHE_DIR:-~/.cache/composer}:/var/www/.composer
+      - caddy_data:/data
+      - caddy_config:/config
     tty: true
 
