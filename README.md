@@ -19,23 +19,32 @@ API application template for Yii 3.
 
 - PHP 8.1 or higher.
 
-## Installation
+## Local installation
 
-If you have composer locally, create a project:
+Create a project:
 
 ```shell
 composer create-project yiisoft/app-api --stability=dev myproject
 cd myproject
 ```
 
-If you don't have, fork the repository, clone it, then:
+To run the app:
+
+```
+./yii serve
+```
+
+The application is available at `https://127.0.0.1:8080`.
+Authorization is performed via the `X-Api-Key` header.
+
+## Installation with Docker
+
+Fork the repository, clone it, then:
 
 ```shell
 cd myproject
 make composer update
 ```
-
-## Running the app
 
 To run the app:
 
@@ -43,15 +52,13 @@ To run the app:
 make up
 ```
 
-The application is available at `https://localhost`.
-
-
 To stop the app:
 
 ```shell
 make down
 ```
 
+The application is available at `https://localhost`.
 Authorization is performed via the `X-Api-Key` header.
 
 ## API Documentation
@@ -69,11 +76,21 @@ You may also check out other [Yii Community Resources](https://www.yiiframework.
 ## Codeception testing
 
 The template comes with ready to use [Codeception](https://codeception.com/) configuration.
-To execute tests, run:
+To execute tests, in local installation run:
 
 ```shell
-composer run serve > ./runtime/yii.log 2>&1 &
-vendor/bin/codecept run
+./vendor/bin/codecept build
+
+./yii serve > ./runtime/yii.log 2>&1 &
+./vendor/bin/codecept run
+```
+
+For Docker:
+
+```shell
+make codecept build
+
+make codecept run
 ```
 
 ## Static analysis
@@ -82,6 +99,12 @@ The code is statically analyzed with [Psalm](https://psalm.dev/). To run static 
 
 ```shell
 ./vendor/bin/psalm
+```
+
+or, using Docker:
+
+```shell
+make psalm
 ```
 
 ## License
