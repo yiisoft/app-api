@@ -2,7 +2,7 @@ name: ${STACK_NAME}
 services:
   app:
     build:
-      dockerfile: .docker/Dockerfile
+      dockerfile: docker/Dockerfile
       context: ..
       target: dev
       args:
