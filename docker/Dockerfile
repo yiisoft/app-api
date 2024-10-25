@@ -39,6 +39,7 @@ RUN --mount=type=cache,target=/tmp/cache \
     <<SH
     set -eo pipefail
     set -x
+
     composer install --no-dev --no-progress --no-interaction --classmap-authoritative && \
     rm composer.lock composer.json
 SH
@@ -53,6 +54,8 @@ FROM base AS dev
 RUN <<SH
     set -eo pipefail
     set -x
+
+    # Install extra packages for dev only.
     apk add --no-cache \
     php-frankenphp-8.3-xdebug
 SH
