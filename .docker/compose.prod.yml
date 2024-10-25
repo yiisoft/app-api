@@ -1,12 +1,9 @@
-name: ${STACK_NAME}
 services:
   app:
     image: ${IMAGE}:${IMAGE_TAG}
     networks:
       - caddy_public
     volumes:
-      - caddy_data:/data
-      - caddy_config:/config
       - runtime:/app/runtime
     environment:
       SERVER_NAME: ":80"
@@ -29,12 +26,8 @@ services:
       labels:
         caddy: ${PROD_HOST:-app-api.example.com}
         caddy.reverse_proxy: "{{upstreams 80}}"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
 
 volumes:
-  caddy_data:
-  caddy_config:
   runtime:
 
 networks:

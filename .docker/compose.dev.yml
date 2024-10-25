@@ -18,14 +18,7 @@ services:
       - "443:443"
     volumes:
       - ../:/app
-      - caddy_data:/data
-      - caddy_config:/config
       - ../runtime:/app/runtime
       - ${COMPOSER_CACHE_DIR:-~/.cache/composer}:/var/www/.composer
     tty: true
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
 
-volumes:
-  caddy_data:
-  caddy_config:

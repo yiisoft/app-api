@@ -13,16 +13,16 @@ export UID=$(shell id -u)
 export GID=$(shell id -g)
 
 up: ## Up the dev environment.
-	docker compose -f .docker/compose.dev.yml up -d --remove-orphans
+	docker compose -f .docker/compose.yml -f .docker/compose.dev.yml up -d --remove-orphans
 
 up-build: ## Up the dev environment rebuilding images.
-	docker compose -f .docker/compose.dev.yml up -d --remove-orphans --build
+	docker compose -f .docker/compose.yml -f .docker/compose.dev.yml up -d --remove-orphans --build
 
 down: ## Down the dev environment.
-	docker compose -f .docker/compose.dev.yml down --remove-orphans
+	docker compose -f .docker/compose.yml -f .docker/compose.dev.yml down --remove-orphans
 
 run: ## Run a command within the container.
-	docker compose -f .docker/compose.dev.yml exec app $(CMD) $(RUN_ARGS)
+	docker compose -f .docker/compose.yml -f .docker/compose.dev.yml exec app $(CMD) $(RUN_ARGS)
 
 shell: CMD="/bin/sh" ## Get into container shell.
 shell: run
@@ -46,7 +46,7 @@ push-prod: ## Push image to repository.
 	docker push ${IMAGE}:${IMAGE_TAG}
 
 deploy-prod: ## Deploy to production.
-	docker -H ${PROD_SSH} stack deploy --with-registry-auth -d -c .docker/compose.prod.yml ${STACK_NAME}
+	docker -H ${PROD_SSH} stack deploy --with-registry-auth -d -c .docker/compose.yml -c .docker/compose.prod.yml ${STACK_NAME}
 
 # Output the help for each task, see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
