@@ -5,8 +5,9 @@ ARG UID=10001
 ARG GID=10001
 RUN <<SH
     set -eo pipefail
-    adduser -u ${UID} www-data -D -H
-    adduser www-data www-data
+    set -x
+    addgroup -g ${GID} -S www-data
+    adduser -u ${UID} -D -S -G www-data www-data
 
     # Set volume permissions
     mkdir /data && chown -R www-data:www-data /data
@@ -34,6 +35,7 @@ COPY .. /app
 RUN --mount=type=cache,target=/tmp/cache \
     <<SH
     set -eo pipefail
+    set -x
     composer install --no-dev --no-progress --no-interaction
     rm composer.lock composer.json
 SH
@@ -47,7 +49,9 @@ USER www-data
 FROM base AS dev
 RUN <<SH
     set -eo pipefail
+    set -x
     apk add --no-cache \
+    php-frankenphp-8.3-xdebug \
     php-frankenphp-8.3-pdo
 SH
 

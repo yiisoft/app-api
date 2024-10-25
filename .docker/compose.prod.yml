@@ -11,6 +11,16 @@ services:
     environment:
       SERVER_NAME: ":80"
     deploy:
+      replicas: 2
+      update_config:
+        delay: 10s
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+        monitor: 10s
+      rollback_config:
+        parallelism: 0
+        order: stop-first
       restart_policy:
         condition: on-failure
         delay: 5s

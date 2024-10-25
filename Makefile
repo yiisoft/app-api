@@ -40,7 +40,7 @@ psalm: CMD="./vendor/bin/psalm" ## Run Psalm.
 psalm: run
 
 build-prod: ## Build an image.
-	docker build --file .docker/Dockerfile --build-arg UID --build-arg GID --target prod --pull -t ${IMAGE}:${IMAGE_TAG} .
+	docker build --file .docker/Dockerfile --target prod --pull -t ${IMAGE}:${IMAGE_TAG} .
 
 push-prod: ## Push image to repository.
 	docker push ${IMAGE}:${IMAGE_TAG}
