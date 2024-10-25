@@ -34,4 +34,4 @@ c3.php
 #tests
 tests/Support/Data/database.db_snapshot
 
-.env
+/.env
