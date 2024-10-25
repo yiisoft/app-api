@@ -1,7 +1,7 @@
 name: ${STACK_NAME}
 
 services:
-  app:
+  app: &appconfig
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
