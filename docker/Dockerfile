@@ -6,13 +6,16 @@ ARG GID=10001
 RUN <<SH
     set -eo pipefail
     set -x
+
+    # Add www-data group and user.
     addgroup -g ${GID} -S www-data
     adduser -u ${UID} -D -S -G www-data www-data
 
-    # Set volume permissions
+    # Set volume permissions.
     mkdir -p /data /config /app/runtime && \
     chown -R www-data:www-data /data /config /app/runtime
 
+    # Install extra packages.
     apk add --no-cache \
     php-frankenphp-8.3-opcache \
     php-frankenphp-8.3-mbstring \

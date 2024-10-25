@@ -23,11 +23,14 @@ up-build: ## Up the dev environment rebuilding images.
 down: ## Down the dev environment.
 	docker compose -f docker/compose.yml -f docker/compose.dev.yml down --remove-orphans
 
-run: ## Run a command within the container.
+exec: ## Run a command within the existing container.
 	docker compose -f docker/compose.yml -f docker/compose.dev.yml exec app $(CMD) $(RUN_ARGS)
 
+run: ## Run a command within a temporary container.
+	docker compose -f docker/compose.yml -f docker/compose.dev.yml run --rm --entrypoint $(CMD) app $(RUN_ARGS)
+
 shell: CMD="/bin/sh" ## Get into container shell.
-shell: run
+shell: exec
 
 yii: CMD="./yii" ## Execute Yii command.
 yii: run
