@@ -39,7 +39,7 @@ RUN --mount=type=cache,target=/tmp/cache \
     <<SH
     set -eo pipefail
     set -x
-    composer install --no-dev --no-progress --no-interaction && \
+    composer install --no-dev --no-progress --no-interaction --classmap-authoritative && \
     rm composer.lock composer.json
 SH
 
