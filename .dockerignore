@@ -14,3 +14,4 @@
 !yii
 !composer.json
 !composer.lock
+!.env*

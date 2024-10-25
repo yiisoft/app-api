@@ -10,9 +10,8 @@ RUN <<SH
     adduser -u ${UID} -D -S -G www-data www-data
 
     # Set volume permissions
-    mkdir /data && chown -R www-data:www-data /data
-    mkdir /config && chown -R www-data:www-data /config
-    mkdir /app/runtime && chown -R www-data:www-data /app/runtime
+    mkdir -p /data /config /app/runtime && \
+    chown -R www-data:www-data /data /config /app/runtime
 
     apk add --no-cache \
     php-frankenphp-8.3-opcache \
@@ -24,7 +23,8 @@ RUN <<SH
     php-frankenphp-8.3-openssl \
     php-frankenphp-8.3-xml \
     php-frankenphp-8.3-xmlwriter \
-    php-frankenphp-8.3-simplexml
+    php-frankenphp-8.3-simplexml \
+    php-frankenphp-8.3-pdo
 SH
 
 FROM base AS prod-builder
@@ -36,7 +36,7 @@ RUN --mount=type=cache,target=/tmp/cache \
     <<SH
     set -eo pipefail
     set -x
-    composer install --no-dev --no-progress --no-interaction
+    composer install --no-dev --no-progress --no-interaction && \
     rm composer.lock composer.json
 SH
 
@@ -51,8 +51,7 @@ RUN <<SH
     set -eo pipefail
     set -x
     apk add --no-cache \
-    php-frankenphp-8.3-xdebug \
-    php-frankenphp-8.3-pdo
+    php-frankenphp-8.3-xdebug
 SH
 
 COPY --from=composer /composer /usr/bin/composer
