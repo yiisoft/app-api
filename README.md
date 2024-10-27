@@ -19,39 +19,47 @@ API application template for Yii 3.
 
 - PHP 8.1 or higher.
 
-## Installation
+## Local installation
 
-Creating a project:
+Create a project:
 
 ```shell
 composer create-project yiisoft/app-api --stability=dev myproject
 cd myproject
 ```
 
-Install docker:
+To run the app:
 
-```shell
-docker-compose up -d
+```
+./yii serve
 ```
 
-Enter into the container:
-
-```shell
-docker-compose exec php bash
-```
-
-Install packages:
-
-```shell
-composer install
-```
-
-Usually the application is available at `http://localhost:8080`.
-
+The application is available at `https://127.0.0.1:8080`.
 Authorization is performed via the `X-Api-Key` header.
 
-If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
-You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
+## Installation with Docker
+
+Fork the repository, clone it, then:
+
+```shell
+cd myproject
+make composer update
+```
+
+To run the app:
+
+```shell
+make up
+```
+
+To stop the app:
+
+```shell
+make down
+```
+
+The application is available at `https://localhost`.
+Authorization is performed via the `X-Api-Key` header.
 
 ## API Documentation
 
@@ -60,14 +68,29 @@ API documentation is available at `/docs`. It is built from OpenAPI annotations 
 See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
 on how to annotate your code.
 
+## Getting help
+
+If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
+You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
+
 ## Codeception testing
 
 The template comes with ready to use [Codeception](https://codeception.com/) configuration.
-In order to execute tests run:
+To execute tests, in local installation run:
 
 ```shell
-composer run serve > ./runtime/yii.log 2>&1 &
-vendor/bin/codecept run
+./vendor/bin/codecept build
+
+./yii serve > ./runtime/yii.log 2>&1 &
+./vendor/bin/codecept run
+```
+
+For Docker:
+
+```shell
+make codecept build
+
+make codecept run
 ```
 
 ## Static analysis
@@ -76,6 +99,12 @@ The code is statically analyzed with [Psalm](https://psalm.dev/). To run static 
 
 ```shell
 ./vendor/bin/psalm
+```
+
+or, using Docker:
+
+```shell
+make psalm
 ```
 
 ## License
