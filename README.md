@@ -21,6 +21,9 @@ API application template for Yii 3.
 
 ## Local installation
 
+If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
+at [getcomposer.org](https://getcomposer.org/doc/00-intro.md).
+
 Create a project:
 
 ```shell
@@ -34,7 +37,9 @@ To run the app:
 ./yii serve
 ```
 
-The application is available at `https://127.0.0.1:8080`.
+Now you should be able to access the application through the URL printed to console.
+Usually it is `https://127.0.0.1:8080`.
+
 Authorization is performed via the `X-Api-Key` header.
 
 ## Installation with Docker
