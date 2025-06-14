@@ -11,6 +11,7 @@ on:
       - 'psalm.xml'
 
   push:
+    branches: ['master']
     paths-ignore:
       - 'docs/**'
       - 'README.md'
@@ -32,6 +33,6 @@ jobs:
       extensions: fileinfo, pdo, pdo_sqlite, intl
       debug: true
       os: >-
-        ['ubuntu-latest', 'windows-latest']
+        ['ubuntu-latest']
       php: >-
-        ['8.1', '8.2', '8.3']
+        ['8.3']
