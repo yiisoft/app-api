@@ -4,34 +4,34 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional;
 
-use PHPUnit\Framework\TestCase;
-use Yiisoft\Yii\Testing\FunctionalTester;
+use App\Tests\Support\FunctionalTester;
+use Codeception\Test\Unit;
+use HttpSoft\Message\ServerRequest;
 
-final class InfoControllerTest extends TestCase
+use function PHPUnit\Framework\assertJson;
+use function PHPUnit\Framework\assertSame;
+
+final class InfoControllerTest extends Unit
 {
-    private ?FunctionalTester $tester;
-
-    protected function setUp(): void
-    {
-        $this->tester = new FunctionalTester();
-    }
+    protected FunctionalTester $tester;
 
     public function testGetIndex()
     {
-        $method = 'GET';
-        $url = '/';
+        $response = $this->tester->sendRequest(
+            new ServerRequest(uri: '/'),
+        );
 
-        $this->tester->bootstrapApplication(dirname(__DIR__, 2));
-        $response = $this->tester->doRequest($method, $url);
+        $output = $response->getBody()->getContents();
+        assertJson($output);
 
-        $this->assertEquals(
+        assertSame(
             [
                 'status' => 'success',
                 'error_message' => '',
                 'error_code' => null,
                 'data' => ['version' => '3.0', 'author' => 'yiisoft'],
             ],
-            $response->getContentAsJson()
+            json_decode($output, true),
         );
     }
 }
