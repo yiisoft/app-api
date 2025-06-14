@@ -12,8 +12,8 @@ final class SiteCest
     public function getHome(AcceptanceTester $I): void
     {
         $I->sendGET('/');
-//        $I->seeResponseCodeIs(HttpCode::OK);
-//        $I->seeResponseIsJson();
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             [
                 'status' => 'success',
