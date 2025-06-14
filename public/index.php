@@ -25,8 +25,6 @@ if (PHP_SAPI === 'cli-server') {
     $_SERVER['SCRIPT_NAME'] = '/index.php';
 }
 
-require_once dirname(__DIR__) . '/autoload.php';
-
 if (getenv('YII_C3')) {
     $c3 = dirname(__DIR__) . '/c3.php';
     if (file_exists($c3)) {
@@ -34,22 +32,17 @@ if (getenv('YII_C3')) {
     }
 }
 
-/**
- * Run HTTP application runner
- *
- * @psalm-suppress RedundantCast
- */
-$runner = (
-    new HttpApplicationRunner(
-        rootPath: dirname(__DIR__),
-        debug: (bool) $_ENV['YII_DEBUG'],
-        checkEvents: (bool) $_ENV['YII_DEBUG'],
-        environment: $_ENV['YII_ENV']
-    )
-)
-    ->withTemporaryErrorHandler(new ErrorHandler(
+require_once dirname(__DIR__) . '/autoload.php';
+
+// Run HTTP application runner
+$runner = new HttpApplicationRunner(
+    rootPath: dirname(__DIR__),
+    debug: $_ENV['YII_DEBUG'],
+    checkEvents: $_ENV['YII_DEBUG'],
+    environment: $_ENV['YII_ENV'],
+    temporaryErrorHandler: new ErrorHandler(
         new Logger([new FileTarget(dirname(__DIR__) . '/runtime/logs/app.log')]),
         new JsonRenderer(),
-    ))
-;
+    ),
+);
 $runner->run();
