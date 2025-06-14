@@ -33,7 +33,7 @@ if (getenv('YII_C3')) {
         require_once $c3;
     }
 }
-
+var_dump($_ENV);
 // Run HTTP application runner
 $runner = new HttpApplicationRunner(
     rootPath: dirname(__DIR__),
