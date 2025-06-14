@@ -24,16 +24,16 @@ if (PHP_SAPI === 'cli-server') {
     // Explicitly set for URLs with dot.
     $_SERVER['SCRIPT_NAME'] = '/index.php';
 }
-
+echo $_ENV['YII_DEBUG'] === 'false' ? '1' : '0';
 require_once dirname(__DIR__) . '/autoload.php';
-
+echo $_ENV['YII_DEBUG'] === 'false' ? '1' : '0';
 if (getenv('YII_C3')) {
     $c3 = dirname(__DIR__) . '/c3.php';
     if (file_exists($c3)) {
         require_once $c3;
     }
 }
-var_dump($_ENV['YII_DEBUG']);
+echo $_ENV['YII_DEBUG'] === 'false' ? '1' : '0';
 // Run HTTP application runner
 $runner = new HttpApplicationRunner(
     rootPath: dirname(__DIR__),
