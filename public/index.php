@@ -30,7 +30,7 @@ echo $_ENV['YII_DEBUG'] === 'false' ? '1' : '0';
 if (getenv('YII_C3')) {
     $c3 = dirname(__DIR__) . '/c3.php';
     if (file_exists($c3)) {
-        require_once $c3;
+       // require_once $c3;
     }
 }
 echo $_ENV['YII_DEBUG'] === 'false' ? '1' : '0';
