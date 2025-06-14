@@ -90,8 +90,7 @@
         "vimeo/psalm": "^5.20",
         "yiisoft/json": "^1.0",
         "yiisoft/yii-debug-api": "dev-master",
-        "yiisoft/yii-debug-viewer": "dev-master",
-        "yiisoft/yii-testing": "dev-master"
+        "yiisoft/yii-debug-viewer": "dev-master"
     },
     "autoload": {
         "psr-4": {
