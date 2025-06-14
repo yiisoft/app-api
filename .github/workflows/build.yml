@@ -30,6 +30,7 @@ jobs:
         vendor/bin/codecept build
         vendor/bin/codecept run --coverage-xml
       extensions: fileinfo, pdo, pdo_sqlite, intl
+      debug: true
       os: >-
         ['ubuntu-latest', 'windows-latest']
       php: >-
