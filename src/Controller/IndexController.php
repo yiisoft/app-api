@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
 #[OA\Info(title:'Yii API application', version:'1.0')]
-class IndexController
+final class IndexController
 {
     #[OA\Get(
         path: '/',
