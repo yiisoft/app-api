@@ -5,11 +5,15 @@ declare(strict_types=1);
 use App\Controller\IndexController;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsHtml;
 use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
+use Yiisoft\HttpMiddleware\CorsAllowAllMiddleware;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
-use Yiisoft\Swagger\Middleware\SwaggerJson;
-use Yiisoft\Swagger\Middleware\SwaggerUi;
-use Yiisoft\Yii\Middleware\CorsAllowAll;
+use Yiisoft\Swagger\Action\SwaggerJson;
+use Yiisoft\Swagger\Action\SwaggerUi;
+
+/**
+ * @var array $params
+ */
 
 return [
     Route::get('/')
@@ -23,7 +27,7 @@ return [
                 ->action(fn (SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/docs/openapi.json')),
             Route::get('/openapi.json')
                 ->middleware(FormatDataResponseAsJson::class)
-                ->middleware(CorsAllowAll::class)
-                ->action([SwaggerJson::class, 'process']),
+                ->middleware(CorsAllowAllMiddleware::class)
+                ->action(fn(SwaggerJson $swaggerJson) => $swaggerJson->withAnnotationPaths($params['yiisoft/yii-swagger']['annotation-paths'])),
         ),
 ];
