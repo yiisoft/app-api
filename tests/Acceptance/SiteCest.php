@@ -23,7 +23,7 @@ final class SiteCest
                     'version' => '3.0',
                     'author' => 'yiisoft',
                 ],
-            ]
+            ],
         );
     }
 
@@ -38,7 +38,7 @@ final class SiteCest
                 'error_message' => 'Not found.',
                 'error_code' => 404,
                 'data' => null,
-            ]
+            ],
         );
     }
 }

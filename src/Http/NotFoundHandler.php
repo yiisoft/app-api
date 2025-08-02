@@ -16,8 +16,7 @@ final class NotFoundHandler implements RequestHandlerInterface
     public function __construct(
         private DataResponseFormatterInterface $formatter,
         private DataResponseFactoryInterface $dataResponseFactory,
-    ) {
-    }
+    ) {}
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -25,7 +24,7 @@ final class NotFoundHandler implements RequestHandlerInterface
             $this->dataResponseFactory->createResponse(
                 'Not found.',
                 Status::NOT_FOUND,
-            )
+            ),
         );
     }
 }
