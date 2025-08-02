@@ -24,7 +24,7 @@ return [
         ->routes(
             Route::get('')
                 ->middleware(FormatDataResponseAsHtml::class)
-                ->action(fn (SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/docs/openapi.json')),
+                ->action(fn(SwaggerUi $swaggerUi) => $swaggerUi->withJsonUrl('/docs/openapi.json')),
             Route::get('/openapi.json')
                 ->middleware(FormatDataResponseAsJson::class)
                 ->middleware(CorsAllowAllMiddleware::class)

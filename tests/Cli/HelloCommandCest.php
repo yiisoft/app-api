@@ -20,7 +20,7 @@ final class HelloCommandCest
 
         $loader = new ContainerCommandLoader(
             ApplicationDataProvider::getConsoleContainer(),
-            $params['yiisoft/yii-console']['commands']
+            $params['yiisoft/yii-console']['commands'],
         );
 
         $app->setCommandLoader($loader);

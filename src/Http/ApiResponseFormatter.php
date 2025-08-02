@@ -11,9 +11,7 @@ use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
 
 final class ApiResponseFormatter implements DataResponseFormatterInterface
 {
-    public function __construct(private ApiResponseDataFactory $apiResponseDataFactory, private JsonDataResponseFormatter $jsonDataResponseFormatter)
-    {
-    }
+    public function __construct(private ApiResponseDataFactory $apiResponseDataFactory, private JsonDataResponseFormatter $jsonDataResponseFormatter) {}
 
     public function format(DataResponse $dataResponse): ResponseInterface
     {
