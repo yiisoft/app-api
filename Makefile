@@ -29,6 +29,9 @@ exec: ## Run a command within the existing container.
 run: ## Run a command within a temporary container.
 	docker compose -f docker/compose.yml -f docker/compose.dev.yml run --rm --entrypoint $(CMD) app $(RUN_ARGS)
 
+cs-fix: ## Run PHP CS Fixer
+	docker compose -f docker/compose.yml -f docker/compose.dev.yml run --rm --entrypoint ./vendor/bin/php-cs-fixer app fix --config=.php-cs-fixer.php --diff
+
 shell: CMD="/bin/sh" ## Get into container shell.
 shell: exec
 

@@ -15,9 +15,7 @@ use Yiisoft\Input\Http\InputValidationException;
 
 final class ExceptionMiddleware implements MiddlewareInterface
 {
-    public function __construct(private DataResponseFactoryInterface $dataResponseFactory)
-    {
-    }
+    public function __construct(private DataResponseFactoryInterface $dataResponseFactory) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -28,7 +26,7 @@ final class ExceptionMiddleware implements MiddlewareInterface
         } catch (InputValidationException $e) {
             return $this->dataResponseFactory->createResponse(
                 $e->getResult()->getErrorMessages()[0],
-                Status::BAD_REQUEST
+                Status::BAD_REQUEST,
             );
         }
     }

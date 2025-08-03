@@ -8,7 +8,7 @@ use OpenApi\Attributes as OA;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
-#[OA\Info(title:'Yii API application', version:'1.0')]
+#[OA\Info(title: 'Yii API application', version: '1.0')]
 final class IndexController
 {
     #[OA\Get(
@@ -17,8 +17,8 @@ final class IndexController
         summary: 'Returns info about the API',
         responses: [
             new OA\Response(
-                response:'200',
-                description:'Success',
+                response: '200',
+                description: 'Success',
                 content: new OA\JsonContent(
                     allOf: [
                         new OA\Schema(ref: '#/components/schemas/Response'),
@@ -28,10 +28,10 @@ final class IndexController
                                 new OA\Property(property: 'author', type: 'string', example: 'yiisoft'),
                             ], type: 'object'),
                         ]),
-                    ]
+                    ],
                 ),
             ),
-        ]
+        ],
     )]
     public function index(DataResponseFactoryInterface $responseFactory): ResponseInterface
     {

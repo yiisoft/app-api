@@ -7,7 +7,7 @@ namespace App\Http;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    schema: 'Response'
+    schema: 'Response',
 )]
 #[OA\Schema(
     schema: 'BadResponse',
@@ -19,7 +19,7 @@ use OpenApi\Attributes as OA;
             new OA\Property(property: 'error_code', example: '400', nullable: true),
             new OA\Property(property: 'data', example: null),
         ]),
-    ]
+    ],
 )]
 final class ApiResponseData
 {
@@ -27,14 +27,14 @@ final class ApiResponseData
         property: 'status',
         format: 'string',
         enum: ['success', 'failed'],
-        example: 'success'
+        example: 'success',
     )]
     private string $status = '';
 
     #[OA\Property(
         property: 'error_message',
         format: 'string',
-        example: ''
+        example: '',
     )]
     private string $errorMessage = '';
 
@@ -42,14 +42,14 @@ final class ApiResponseData
         property: 'error_code',
         format: 'integer',
         example: null,
-        nullable: true
+        nullable: true,
     )]
     private ?int $errorCode = null;
 
     #[OA\Property(
         property: 'data',
         type: 'object',
-        nullable: true
+        nullable: true,
     )]
     private ?array $data = null;
 
