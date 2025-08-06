@@ -28,6 +28,6 @@ return [
             Route::get('/openapi.json')
                 ->middleware(FormatDataResponseAsJson::class)
                 ->middleware(CorsAllowAllMiddleware::class)
-                ->action(fn(SwaggerJson $swaggerJson) => $swaggerJson->withAnnotationPaths($params['yiisoft/yii-swagger']['annotation-paths'])),
+                ->action(fn(SwaggerJson $swaggerJson) => $swaggerJson->withAnnotationPaths(...$params['yiisoft/yii-swagger']['annotation-paths'])),
         ),
 ];

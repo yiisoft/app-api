@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use OpenApi\Annotations as OA;
+use OpenApi\Attributes as OA;
 use Yiisoft\Data\Paginator\OffsetPaginator;
 
-/**
- * @OA\Schema(
- *      schema="Paginator",
- *
- *      @OA\Property(example="10", property="pageSize", format="int"),
- *      @OA\Property(example="1", property="currentPage", format="int"),
- *      @OA\Property(example="3", property="totalPages", format="int"),
- * )
- */
+#[OA\Schema(
+    schema: "Paginator",
+    properties: [
+        new OA\Property(property: "pageSize", format: "int", example: "10"),
+        new OA\Property(property: "currentPage", format: "int", example: "1"),
+        new OA\Property(property: "totalPages", format: "int", example: "3"),
+    ],
+)]
 final class PaginatorFormatter
 {
     public function format(OffsetPaginator $paginator): array
