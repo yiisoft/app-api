@@ -3,8 +3,8 @@
 # Run silent.
 MAKEFLAGS += --silent
 
-RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-$(eval $(RUN_ARGS):;@:)
+CLI_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+$(eval $(CLI_ARGS):;@:)
 
 include docker/.env
 
@@ -13,24 +13,28 @@ export UID=$(shell id -u)
 export GID=$(shell id -g)
 
 export COMPOSE_PROJECT_NAME=${STACK_NAME}
+DOCKER_COMPOSE_DEV := docker compose -f docker/compose.yml -f docker/compose.dev.yml
 
 up: ## Up the dev environment.
-	docker compose -f docker/compose.yml -f docker/compose.dev.yml up -d --remove-orphans
+	$(DOCKER_COMPOSE_DEV) up -d --remove-orphans
 
 up-build: ## Up the dev environment rebuilding images.
-	docker compose -f docker/compose.yml -f docker/compose.dev.yml up -d --remove-orphans --build
+	$(DOCKER_COMPOSE_DEV) up -d --remove-orphans --build
 
 down: ## Down the dev environment.
-	docker compose -f docker/compose.yml -f docker/compose.dev.yml down --remove-orphans
+	$(DOCKER_COMPOSE_DEV) down --remove-orphans
 
 exec: ## Run a command within the existing container.
-	docker compose -f docker/compose.yml -f docker/compose.dev.yml exec app $(CMD) $(RUN_ARGS)
+	$(DOCKER_COMPOSE_DEV) exec app $(CMD) $(CLI_ARGS)
 
 run: ## Run a command within a temporary container.
-	docker compose -f docker/compose.yml -f docker/compose.dev.yml run --rm --entrypoint $(CMD) app $(RUN_ARGS)
+	$(DOCKER_COMPOSE_DEV) run --rm --entrypoint $(CMD) app $(CLI_ARGS)
 
 cs-fix: ## Run PHP CS Fixer
-	docker compose -f docker/compose.yml -f docker/compose.dev.yml run --rm --entrypoint ./vendor/bin/php-cs-fixer app fix --config=.php-cs-fixer.php --diff
+	$(DOCKER_COMPOSE_DEV) run --rm --entrypoint ./vendor/bin/php-cs-fixer app fix --config=.php-cs-fixer.php --diff
+
+composer-dependency-analyser: ## Run Composer Dependency Analyser
+	$(DOCKER_COMPOSE_DEV) run --rm app ./vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.php $(CLI_ARGS)
 
 shell: CMD="/bin/sh" ## Get into container shell.
 shell: exec
