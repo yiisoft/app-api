@@ -1,64 +1,61 @@
-FROM composer/composer:latest-bin AS composer
+FROM composer/composer:2-bin AS composer
 
-FROM ghcr.io/shyim/wolfi-php/frankenphp:8.3 AS base
-ARG UID=10001
-ARG GID=10001
-RUN <<SH
-    set -eo pipefail
-    set -x
+FROM dunglas/frankenphp:1-php8.2-bookworm AS base
 
-    # Add www-data group and user.
-    addgroup -g ${GID} -S www-data
-    adduser -u ${UID} -D -S -G www-data www-data
+RUN apt update && apt -y install \
+    unzip
 
-    # Set volume permissions.
-    mkdir -p /data /config /app/runtime && \
-    chown -R www-data:www-data /data /config /app/runtime
+RUN install-php-extensions \
+    opcache \
+    mbstring \
+    intl \
+    dom \
+    ctype \
+    curl \
+    phar \
+    openssl \
+    xml \
+    xmlwriter \
+    simplexml \
+    pdo
 
-    # Install extra packages.
-    apk add --no-cache \
-    php-frankenphp-8.3-opcache \
-    php-frankenphp-8.3-mbstring \
-    php-frankenphp-8.3-intl \
-    php-frankenphp-8.3-dom \
-    php-frankenphp-8.3-curl \
-    php-frankenphp-8.3-phar \
-    php-frankenphp-8.3-openssl \
-    php-frankenphp-8.3-xml \
-    php-frankenphp-8.3-xmlwriter \
-    php-frankenphp-8.3-simplexml \
-    php-frankenphp-8.3-pdo
-SH
+#
+# Development
+#
+
+FROM base AS dev
+ARG USER_ID=10001
+ARG GROUP_ID=10001
+ARG USER_NAME=appuser
+ARG GROUP_NAME=appuser
+
+RUN install-php-extensions \
+    xdebug
+
+COPY --from=composer /composer /usr/bin/composer
+
+# Based on https://frankenphp.dev/docs/docker/#running-as-a-non-root-user
+RUN \
+	groupadd --gid ${GROUP_ID} ${GROUP_NAME}; \
+    useradd --gid ${GROUP_ID} --uid ${USER_ID} ${GROUP_NAME}; \
+	# Add additional capability to bind to port 80 and 443
+	setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp; \
+	# Give write access to /data/caddy and /config/caddy
+	chown -R ${USER_NAME}:${GROUP_NAME} /data/caddy && chown -R ${USER_NAME}:${GROUP_NAME} /config/caddy
+USER ${USER_NAME}
+
+#
+# Production
+#
 
 FROM base AS prod-builder
 COPY --from=composer /composer /usr/bin/composer
-
 COPY .. /app
-
 RUN --mount=type=cache,target=/tmp/cache \
-    <<SH
-    set -eo pipefail
-    set -x
-
     composer install --no-dev --no-progress --no-interaction --classmap-authoritative && \
     rm composer.lock composer.json
-SH
 
 FROM base AS prod
 ENV YII_ENV=prod
-
 COPY --from=prod-builder --chown=www-data:www-data /app /app
-USER www-data
-
-FROM base AS dev
-RUN <<SH
-    set -eo pipefail
-    set -x
-
-    # Install extra packages for dev only.
-    apk add --no-cache \
-    php-frankenphp-8.3-xdebug
-SH
-
-COPY --from=composer /composer /usr/bin/composer
 USER www-data
