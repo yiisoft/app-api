@@ -50,6 +50,7 @@
         "yiisoft/data": "^1.0.1",
         "yiisoft/data-response": "^2.1",
         "yiisoft/definitions": "^3.4",
+        "yiisoft/di": "^1.4",
         "yiisoft/error-handler": "^4.1",
         "yiisoft/http": "^1.2",
         "yiisoft/http-middleware": "^1.1",
