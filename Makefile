@@ -66,8 +66,8 @@ codecept: ## Run Codeception
 psalm: ## Run Psalm
 	$(DOCKER_COMPOSE_DEV) run --rm app ./vendor/bin/psalm $(CLI_ARGS)
 
-composer-require-checker: ## Run Composer Require Checker
-	$(DOCKER_COMPOSE_DEV) run --rm app ./vendor/bin/composer-require-checker $(CLI_ARGS)
+composer-dependency-analyser: ## Run Composer Dependency Analyser
+	$(DOCKER_COMPOSE_DEV) run --rm app ./vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.php $(CLI_ARGS)
 
 #
 # Production
