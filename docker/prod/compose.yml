@@ -7,10 +7,10 @@ services:
       - runtime:/app/runtime
       - caddy_data:/data
       - caddy_config:/config
-    environment:
-      SERVER_NAME: ":80"
-      YII_ENV: "${YII_ENV:-prod}"
-      YII_DEBUG: ${YII_DEBUG:-false}
+    env_file:
+      - path: ./dev/.env
+      - path: ./dev/override.env
+        required: false
     deploy:
       replicas: 2
       update_config:
