@@ -25,6 +25,10 @@ name: build
 jobs:
   build:
     uses: yiisoft/actions/.github/workflows/codeception.yml@master
+    env:
+      APP_C3: true
+      APP_ENV: test
+      APP_DEBUG: false
     with:
       codeception-command: |
         vendor/bin/codecept build

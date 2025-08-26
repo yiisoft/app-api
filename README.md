@@ -32,8 +32,8 @@ cd myproject
 
 To run the app:
 
-```
-./yii serve
+```shell
+APP_ENV=dev ./yii serve
 ```
 
 Now you should be able to access the application through the URL printed to console.
