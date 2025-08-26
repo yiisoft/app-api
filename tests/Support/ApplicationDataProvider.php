@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Support;
 
+use App\Environment;
 use Psr\Container\ContainerInterface;
 use Yiisoft\Config\Config;
 use Yiisoft\Yii\Runner\Console\ConsoleApplicationRunner;
@@ -39,7 +40,7 @@ final class ApplicationDataProvider
         if (self::$consoleRunner === null) {
             self::$consoleRunner = new ConsoleApplicationRunner(
                 rootPath: dirname(__DIR__, 2),
-                environment: $_ENV['YII_ENV'],
+                environment: Environment::appEnv(),
             );
         }
         return self::$consoleRunner;
@@ -50,7 +51,7 @@ final class ApplicationDataProvider
         if (self::$webRunner === null) {
             self::$webRunner = new HttpApplicationRunner(
                 rootPath: dirname(__DIR__, 2),
-                environment: $_ENV['YII_ENV'],
+                environment: Environment::appEnv(),
             );
         }
         return self::$webRunner;

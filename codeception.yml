@@ -1,5 +1,6 @@
 namespace: App\Tests
 support_namespace: Support
+bootstrap: bootstrap.php
 paths:
   tests: tests
   output: runtime/tests/_output
@@ -10,10 +11,6 @@ actor_suffix: Tester
 extensions:
   enabled:
     - Codeception\Extension\RunFailed
-settings:
-  suite_class: \PHPUnit_Framework_TestSuite
-  memory_limit: 1024M
-  colors: true
 coverage:
   enabled: true
   whitelist:
@@ -22,6 +19,3 @@ coverage:
     exclude:
       - src/Asset/*
       - src/Installer.php
-params:
-  - .env
-  - .env.test

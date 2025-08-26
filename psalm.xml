@@ -14,7 +14,6 @@
     <directory name="src" />
 	<file name="public/index.php"/>
 	<file name="yii"/>
-	<file name="autoload.php"/>
 	<ignoreFiles>
 	  <directory name="vendor" />
 	</ignoreFiles>
