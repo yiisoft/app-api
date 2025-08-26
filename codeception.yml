@@ -11,6 +11,10 @@ actor_suffix: Tester
 extensions:
   enabled:
     - Codeception\Extension\RunFailed
+settings:
+  suite_class: \PHPUnit_Framework_TestSuite
+  memory_limit: 1024M
+  colors: true
 coverage:
   enabled: true
   whitelist:
