@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-use Yiisoft\Assets\AssetManager;
-use Yiisoft\Definitions\Reference;
-
 return [
     'supportEmail' => 'support@example.com',
 
@@ -32,9 +29,7 @@ return [
 
     'yiisoft/view' => [
         'basePath' => '@views',
-        'parameters' => [
-            'assetManager' => Reference::to(AssetManager::class),
-        ],
+        'parameters' => [],
     ],
 
     'yiisoft/yii-swagger' => [
