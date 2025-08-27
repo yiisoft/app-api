@@ -4,13 +4,13 @@ on:
       - 'docs/**'
       - 'README.md'
       - 'CHANGELOG.md'
-      - '.env.example'
       - '.gitignore'
       - '.gitattributes'
       - 'infection.json.dist'
       - 'psalm.xml'
 
   push:
+    branches: ['master']
     paths-ignore:
       - 'docs/**'
       - 'README.md'
@@ -23,14 +23,50 @@ on:
 name: build
 
 jobs:
-  build:
-    uses: yiisoft/actions/.github/workflows/codeception.yml@master
-    with:
-      codeception-command: |
-        vendor/bin/codecept build
-        vendor/bin/codecept run --coverage-xml
-      extensions: fileinfo, pdo, pdo_sqlite, intl
-      os: >-
-        ['ubuntu-latest', 'windows-latest']
-      php: >-
-        ['8.2', '8.3', '8.4']
+  codeception:
+    name: PHP ${{ matrix.php }}-${{ matrix.os }}
+
+    env:
+      key: cache-v1
+      APP_C3: true
+      APP_ENV: test
+      APP_DEBUG: false
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+        php:
+          - "8.2"
+          - "8.3"
+          - "8.4"
+
+    steps:
+      - name: Checkout.
+        uses: actions/checkout@v4
+
+      - name: Install PHP with extensions.
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: false
+          extensions: fileinfo, intl
+          ini-values: date.timezone='UTC'
+          php-version: ${{ matrix.php }}
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
+
+      - name: Run codeception build.
+        run: vendor/bin/codecept build
+
+      - name: Run tests with codeception with code coverage with shell bash.
+        if: matrix.os == 'ubuntu-latest'
+        run: vendor/bin/codecept run
+
+      - name: Run tests with codeception with code coverage with shell powershell.
+        if: matrix.os == 'windows-latest'
+        run: vendor/bin/codecept run
+        shell: powershell

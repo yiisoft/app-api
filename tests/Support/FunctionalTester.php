@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Support;
 
+use App\Environment;
 use Codeception\Actor;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,7 +39,7 @@ class FunctionalTester extends Actor
     {
         $runner = new HttpApplicationRunner(
             rootPath: dirname(__DIR__, 2),
-            environment: $_ENV['YII_ENV'],
+            environment: Environment::appEnv(),
         );
 
         $response = $runner->runAndGetResponse($request);
