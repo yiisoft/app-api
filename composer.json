@@ -51,7 +51,6 @@
         "yiisoft/di": "^1.4",
         "yiisoft/error-handler": "^4.1",
         "yiisoft/http": "^1.2",
-        "yiisoft/http-middleware": "^1.1",
         "yiisoft/hydrator": "^1.6",
         "yiisoft/injector": "^1.2",
         "yiisoft/input-http": "^1.0.1",
@@ -67,9 +66,7 @@
         "yiisoft/yii-http": "^1.0.4",
         "yiisoft/yii-middleware": "^1.1",
         "yiisoft/yii-runner-console": "^2.2",
-        "yiisoft/yii-runner-http": "^3.2",
-        "yiisoft/yii-swagger": "^2.2",
-        "zircote/swagger-php": "^4.11.1"
+        "yiisoft/yii-runner-http": "^3.2"
     },
     "require-dev": {
         "codeception/c3": "^2.9",
@@ -87,8 +84,7 @@
         "shipmonk/composer-dependency-analyser": "^1.8",
         "spatie/phpunit-watcher": "^1.24",
         "vimeo/psalm": "^6.13.0",
-        "yiisoft/json": "^1.0",
-        "yiisoft/yii-debug-api": "dev-master"
+        "yiisoft/json": "^1.0"
     },
     "autoload": {
         "psr-4": {

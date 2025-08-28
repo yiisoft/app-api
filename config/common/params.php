@@ -31,10 +31,4 @@ return [
         'basePath' => '@views',
         'parameters' => [],
     ],
-
-    'yiisoft/yii-swagger' => [
-        'annotation-paths' => [
-            '@src',
-        ],
-    ],
 ];
