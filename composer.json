@@ -82,7 +82,6 @@
         "rector/rector": "^2.1.2",
         "roave/infection-static-analysis-plugin": "^1.38",
         "shipmonk/composer-dependency-analyser": "^1.8",
-        "spatie/phpunit-watcher": "^1.24",
         "vimeo/psalm": "^6.13.0",
         "yiisoft/json": "^1.0"
     },
@@ -101,11 +100,7 @@
             "Composer\\Config::disableProcessTimeout",
             "@php ./yii serve"
         ],
-        "post-update-cmd": [
-            "App\\Installer::postUpdate"
-        ],
-        "test": "codecept run",
-        "test-watch": "phpunit-watcher watch"
+        "test": "codecept run"
     },
     "extra": {
         "branch-alias": {
