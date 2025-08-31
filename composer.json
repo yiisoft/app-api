@@ -52,7 +52,6 @@
         "yiisoft/error-handler": "^4.1",
         "yiisoft/http": "^1.2",
         "yiisoft/hydrator": "^1.6",
-        "yiisoft/injector": "^1.2",
         "yiisoft/input-http": "^1.0.1",
         "yiisoft/log": "^2.1.1",
         "yiisoft/log-target-file": "^3.0",
