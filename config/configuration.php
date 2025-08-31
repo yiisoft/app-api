@@ -30,10 +30,7 @@ return [
         'di-providers-web' => '$di-providers',
         'events' => [],
         'events-console' => '$events',
-        'events-web' => [
-            '$events',
-            'web/events.php',
-        ],
+        'events-web' => '$events',
         'bootstrap' => [],
         'bootstrap-console' => '$bootstrap',
         'bootstrap-web' => '$bootstrap',
