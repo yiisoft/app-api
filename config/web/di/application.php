@@ -6,27 +6,41 @@ use App\Http\NotFoundHandler;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
-use Yiisoft\Injector\Injector;
+use Yiisoft\Input\Http\HydratorAttributeParametersResolver;
+use Yiisoft\Input\Http\RequestInputParametersResolver;
+use Yiisoft\Middleware\Dispatcher\CompositeParametersResolver;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
+use Yiisoft\Middleware\Dispatcher\ParametersResolverInterface;
 use Yiisoft\RequestProvider\RequestCatcherMiddleware;
 use Yiisoft\Router\Middleware\Router;
+use Yiisoft\Yii\Http\Application;
 use Yiisoft\Yii\Middleware\Subfolder;
 
 /** @var array $params */
 
 return [
-    Yiisoft\Yii\Http\Application::class => [
+    Application::class => [
         '__construct()' => [
-            'dispatcher' => DynamicReference::to(static function (Injector $injector) use ($params) {
-                return $injector->make(MiddlewareDispatcher::class)
-                    ->withMiddlewares([
+            'dispatcher' => DynamicReference::to([
+                'class' => MiddlewareDispatcher::class,
+                'withMiddlewares()' => [
+                    [
                         RequestCatcherMiddleware::class,
                         ErrorCatcher::class,
                         Subfolder::class,
                         Router::class,
-                    ]);
-            }),
+                    ],
+                ],
+            ]),
             'fallbackHandler' => Reference::to(NotFoundHandler::class),
+        ],
+    ],
+
+    ParametersResolverInterface::class => [
+        'class' => CompositeParametersResolver::class,
+        '__construct()' => [
+            Reference::to(HydratorAttributeParametersResolver::class),
+            Reference::to(RequestInputParametersResolver::class),
         ],
     ],
 ];
