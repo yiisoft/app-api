@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Environment;
+
+// NOTE: After making changes in this file, run `composer yii-config-rebuild` to update the merge plan.
 return [
     'config-plugin' => [
         'params' => 'common/params.php',
@@ -27,10 +30,7 @@ return [
         'di-providers-web' => '$di-providers',
         'events' => [],
         'events-console' => '$events',
-        'events-web' => [
-            '$events',
-            'web/events.php',
-        ],
+        'events-web' => '$events',
         'bootstrap' => [],
         'bootstrap-console' => '$bootstrap',
         'bootstrap-web' => '$bootstrap',
@@ -39,19 +39,19 @@ return [
         ],
     ],
     'config-plugin-environments' => [
-        'dev' => [
+        Environment::DEV => [
             'params' => [
                 'environments/dev/params.php',
             ],
         ],
-        'prod' => [
-            'params' => [
-                'environments/prod/params.php',
-            ],
-        ],
-        'test' => [
+        Environment::TEST => [
             'params' => [
                 'environments/test/params.php',
+            ],
+        ],
+        Environment::PROD => [
+            'params' => [
+                'environments/prod/params.php',
             ],
         ],
     ],
