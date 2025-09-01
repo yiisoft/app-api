@@ -28,6 +28,7 @@ final class Environment
         self::setEnvironment();
         self::setBoolean('APP_C3', false);
         self::setBoolean('APP_DEBUG', false);
+        self::setNonEmptyStringOrNull('APP_HOST_PATH', null);
     }
 
     /**
@@ -52,6 +53,15 @@ final class Environment
     public static function isProd(): bool
     {
         return self::appEnv() === self::PROD;
+    }
+
+    /**
+     * @return non-empty-string|null
+     */
+    public static function appHostPath(): string|null
+    {
+        /** @var non-empty-string|null */
+        return self::$values['APP_HOST_PATH'];
     }
 
     public static function appC3(): bool
@@ -99,6 +109,12 @@ final class Environment
     {
         $value = self::getRawValue($key);
         self::$values[$key] = $value ?? $default;
+    }
+
+    private static function setNonEmptyStringOrNull(string $key, string|null $default): void
+    {
+        $value = self::getRawValue($key);
+        self::$values[$key] = $value === null || $value === '' ? $default : $value;
     }
 
     private static function getRawValue(string $key): ?string
