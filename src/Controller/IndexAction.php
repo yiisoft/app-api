@@ -13,8 +13,7 @@ final class IndexAction
     public function __invoke(
         DataResponseFactoryInterface $responseFactory,
         ApplicationParams $applicationParams,
-    ): ResponseInterface
-    {
+    ): ResponseInterface {
         return $responseFactory->createResponse([
             'name' => $applicationParams->name,
             'version' => $applicationParams->version,
