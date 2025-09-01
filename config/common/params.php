@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'supportEmail' => 'support@example.com',
+    'application' => require __DIR__ . '/application.php',
 
     'yiisoft/aliases' => [
         'aliases' => require __DIR__ . '/aliases.php',
@@ -11,10 +11,5 @@ return [
 
     'yiisoft/router-fastroute' => [
         'enableCache' => false,
-    ],
-
-    'yiisoft/view' => [
-        'basePath' => '@views',
-        'parameters' => [],
     ],
 ];
