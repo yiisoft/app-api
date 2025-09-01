@@ -9,10 +9,6 @@ return [
         'aliases' => require __DIR__ . '/aliases.php',
     ],
 
-    'yiisoft/router-fastroute' => [
-        'enableCache' => false,
-    ],
-
     'yiisoft/view' => [
         'basePath' => '@views',
         'parameters' => [],
