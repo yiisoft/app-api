@@ -1,7 +1,7 @@
 {
     "name": "yiisoft/app-api",
     "type": "project",
-    "description": "Yii Framework API project template",
+    "description": "Yii3 API project template",
     "keywords": [
         "yii3",
         "app",
@@ -28,37 +28,35 @@
             "url": "https://github.com/sponsors/yiisoft"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^8.2",
         "ext-filter": "*",
         "httpsoft/http-message": "^1.1.6",
-        "psr/container": "^2.0",
-        "psr/http-factory": "^1.0",
+        "psr/container": "^2.0.2",
+        "psr/http-factory": "^1.1",
         "psr/http-message": "^2.0",
-        "psr/http-server-handler": "^1.0",
-        "psr/http-server-middleware": "^1.0",
+        "psr/http-server-handler": "^1.0.2",
+        "psr/http-server-middleware": "^1.0.2",
         "psr/log": "^3.0.2",
-        "symfony/console": "^7.3.1",
+        "symfony/console": "^7.3.3",
         "yiisoft/config": "^1.6",
         "yiisoft/data": "^1.0.1",
-        "yiisoft/data-response": "^2.1",
+        "yiisoft/data-response": "^2.1.1",
         "yiisoft/definitions": "^3.4",
         "yiisoft/di": "^1.4",
         "yiisoft/error-handler": "^4.2",
         "yiisoft/http": "^1.2",
-        "yiisoft/hydrator": "^1.6",
+        "yiisoft/hydrator": "^1.6.1",
         "yiisoft/input-http": "^1.0.1",
         "yiisoft/log": "^2.1.1",
         "yiisoft/log-target-file": "^3.0",
-        "yiisoft/middleware-dispatcher": "^5.2",
-        "yiisoft/request-body-parser": "^1.1",
+        "yiisoft/middleware-dispatcher": "^5.3",
+        "yiisoft/request-body-parser": "^1.1.1",
         "yiisoft/request-provider": "^1.2",
         "yiisoft/router": "^4.0",
         "yiisoft/router-fastroute": "^4.0.1",
         "yiisoft/yii-console": "^2.3",
-        "yiisoft/yii-event": "^2.0",
+        "yiisoft/yii-event": "^2.1",
         "yiisoft/yii-http": "^1.0.4",
         "yiisoft/yii-middleware": "^1.1",
         "yiisoft/yii-runner-console": "^2.2",
@@ -73,12 +71,12 @@
         "codeception/module-db": "^3.2.2",
         "codeception/module-phpbrowser": "^3.0.1",
         "codeception/module-rest": "^3.4.1",
-        "friendsofphp/php-cs-fixer": "^3.75",
-        "phpunit/phpunit": "^11.5.28",
-        "rector/rector": "^2.1.2",
-        "roave/infection-static-analysis-plugin": "^1.38",
-        "shipmonk/composer-dependency-analyser": "^1.8",
-        "vimeo/psalm": "^6.13.0",
+        "friendsofphp/php-cs-fixer": "^3.87",
+        "phpunit/phpunit": "^11.5.35",
+        "rector/rector": "^2.1.4",
+        "roave/infection-static-analysis-plugin": "^1.39",
+        "shipmonk/composer-dependency-analyser": "^1.8.3",
+        "vimeo/psalm": "^6.13.1",
         "yiisoft/json": "^1.0"
     },
     "autoload": {
@@ -99,13 +97,11 @@
         "test": "codecept run"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        },
         "config-plugin-file": "config/configuration.php"
     },
     "config": {
         "sort-packages": true,
+        "bump-after-update": true,
         "allow-plugins": {
             "codeception/c3": true,
             "infection/extension-installer": true,
