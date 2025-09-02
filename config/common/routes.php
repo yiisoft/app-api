@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Controller\IndexController;
+use App\Controller\IndexAction;
 use Yiisoft\Router\Route;
 
 /**
@@ -11,6 +11,6 @@ use Yiisoft\Router\Route;
 
 return [
     Route::get('/')
-        ->action([IndexController::class, 'index'])
+        ->action(IndexAction::class)
         ->name('app/index'),
 ];

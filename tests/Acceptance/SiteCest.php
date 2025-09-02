@@ -20,8 +20,8 @@ final class SiteCest
                 'error_message' => '',
                 'error_code' => null,
                 'data' => [
-                    'version' => '3.0',
-                    'author' => 'yiisoft',
+                    'name' => 'My Project',
+                    'version' => '1.0',
                 ],
             ],
         );
