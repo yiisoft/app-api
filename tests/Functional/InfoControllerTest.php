@@ -29,7 +29,7 @@ final class InfoControllerTest extends Unit
                 'status' => 'success',
                 'error_message' => '',
                 'error_code' => null,
-                'data' => ['version' => '3.0', 'author' => 'yiisoft'],
+                'data' => ['name' => 'My Project', 'version' => '1.0'],
             ],
             json_decode($output, true),
         );
