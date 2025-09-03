@@ -9,7 +9,6 @@ use Codeception\Attribute\DataProvider;
 use HttpSoft\Message\ResponseFactory;
 use HttpSoft\Message\StreamFactory;
 use LogicException;
-use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponse;

@@ -17,8 +17,7 @@ final readonly class ApiResponseFormatter implements DataResponseFormatterInterf
 {
     public function __construct(
         private JsonDataResponseFormatter $jsonDataResponseFormatter,
-    ) {
-    }
+    ) {}
 
     public function format(DataResponse $dataResponse): ResponseInterface
     {
@@ -39,7 +38,7 @@ final readonly class ApiResponseFormatter implements DataResponseFormatterInterf
                 sprintf(
                     'The response data must be either null or an array. Got %s.',
                     get_debug_type($data),
-                )
+                ),
             );
         }
 
