@@ -17,8 +17,6 @@ final class SiteCest
         $I->seeResponseContainsJson(
             [
                 'status' => 'success',
-                'error_message' => '',
-                'error_code' => null,
                 'data' => [
                     'name' => 'My Project',
                     'version' => '1.0',
@@ -37,7 +35,6 @@ final class SiteCest
                 'status' => 'failed',
                 'error_message' => 'Not found.',
                 'error_code' => 404,
-                'data' => null,
             ],
         );
     }

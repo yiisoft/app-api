@@ -27,8 +27,6 @@ final class InfoControllerTest extends Unit
         assertSame(
             [
                 'status' => 'success',
-                'error_message' => '',
-                'error_code' => null,
                 'data' => ['name' => 'My Project', 'version' => '1.0'],
             ],
             json_decode($output, true),
