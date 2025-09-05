@@ -34,9 +34,7 @@ return [
         'bootstrap' => [],
         'bootstrap-console' => '$bootstrap',
         'bootstrap-web' => '$bootstrap',
-        'routes' => [
-            'common/routes.php',
-        ],
+        'routes' => [],
     ],
     'config-plugin-environments' => [
         Environment::DEV => [
