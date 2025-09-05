@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Http\ApiResponseFormatter;
+use App\Http\ExceptionMiddleware;
 use App\Http\NotFoundHandler;
+use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
+use Yiisoft\DataResponse\Middleware\FormatDataResponse;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
@@ -11,10 +15,10 @@ use Yiisoft\Input\Http\RequestInputParametersResolver;
 use Yiisoft\Middleware\Dispatcher\CompositeParametersResolver;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
 use Yiisoft\Middleware\Dispatcher\ParametersResolverInterface;
-use Yiisoft\RequestProvider\RequestCatcherMiddleware;
+use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Http\Application;
-use Yiisoft\Yii\Middleware\Subfolder;
+
 
 /** @var array $params */
 
@@ -25,9 +29,14 @@ return [
                 'class' => MiddlewareDispatcher::class,
                 'withMiddlewares()' => [
                     [
-                        RequestCatcherMiddleware::class,
+                        static fn() => new FormatDataResponse(
+                            new ApiResponseFormatter(
+                                new JsonDataResponseFormatter(),
+                            ),
+                        ),
+                        RequestBodyParser::class,
+                        ExceptionMiddleware::class,
                         ErrorCatcher::class,
-                        Subfolder::class,
                         Router::class,
                     ],
                 ],
