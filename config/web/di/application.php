@@ -6,7 +6,6 @@ use App\Http\ApiResponseFormatter;
 use App\Http\ExceptionMiddleware;
 use App\Http\NotFoundHandler;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
-use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
 use Yiisoft\DataResponse\Middleware\FormatDataResponse;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
