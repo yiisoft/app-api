@@ -19,7 +19,6 @@ use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Http\Application;
 
-
 /** @var array $params */
 
 return [
