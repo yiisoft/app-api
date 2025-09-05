@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\ApiResponseFormatter;
 use App\Http\ExceptionMiddleware;
 use App\Http\NotFoundHandler;
+use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
 use Yiisoft\DataResponse\Middleware\FormatDataResponse;
 use Yiisoft\Definitions\DynamicReference;
@@ -28,11 +29,7 @@ return [
                 'class' => MiddlewareDispatcher::class,
                 'withMiddlewares()' => [
                     [
-                        static fn() => new FormatDataResponse(
-                            new ApiResponseFormatter(
-                                new JsonDataResponseFormatter(),
-                            ),
-                        ),
+                        static fn(ApiResponseFormatter $formatter) => new FormatDataResponse($formatter),
                         RequestBodyParser::class,
                         ExceptionMiddleware::class,
                         ErrorCatcher::class,
@@ -40,7 +37,9 @@ return [
                     ],
                 ],
             ]),
-            'fallbackHandler' => Reference::to(NotFoundHandler::class),
+            'fallbackHandler' => DynamicReference::to(
+                static fn(ApiResponseFormatter $formatter, DataResponseFactoryInterface $factory) => new NotFoundHandler($formatter, $factory),
+            ),
         ],
     ],
 
