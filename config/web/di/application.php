@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 use App\Http\ApiResponseFormatter;
 use App\Http\ExceptionMiddleware;
-use App\Http\NotFoundHandler;
-use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use App\Http\NotFoundMiddleware;
 use Yiisoft\DataResponse\Middleware\FormatDataResponse;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
@@ -33,12 +32,10 @@ return [
                         ExceptionMiddleware::class,
                         ErrorCatcher::class,
                         Router::class,
+                        NotFoundMiddleware::class,
                     ],
                 ],
             ]),
-            'fallbackHandler' => DynamicReference::to(
-                static fn(ApiResponseFormatter $formatter, DataResponseFactoryInterface $factory) => new NotFoundHandler($formatter, $factory),
-            ),
         ],
     ],
 
