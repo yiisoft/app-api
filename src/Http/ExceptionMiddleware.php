@@ -15,8 +15,7 @@ final readonly class ExceptionMiddleware implements MiddlewareInterface
 {
     public function __construct(
         private ResponseFactory $responseFactory,
-    ) {
-    }
+    ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {

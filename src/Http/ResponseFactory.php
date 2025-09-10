@@ -15,8 +15,7 @@ final readonly class ResponseFactory
     public function __construct(
         private DataResponseFactoryInterface $dataResponseFactory,
         private JsonDataResponseFormatter $jsonDataResponseFormatter,
-    ) {
-    }
+    ) {}
 
     public function success(array|null $data = null): ResponseInterface
     {
@@ -24,7 +23,7 @@ final readonly class ResponseFactory
             $this->dataResponseFactory->createResponse([
                 'status' => 'success',
                 'data' => $data,
-            ])
+            ]),
         );
     }
 
@@ -45,7 +44,7 @@ final readonly class ResponseFactory
             $result['error_data'] = $data;
         }
         return $this->jsonDataResponseFormatter->format(
-            $this->dataResponseFactory->createResponse($result, $httpCode)
+            $this->dataResponseFactory->createResponse($result, $httpCode),
         );
     }
 
