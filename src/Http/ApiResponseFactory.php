@@ -41,14 +41,18 @@ final readonly class ApiResponseFactory
         return $this->createResponse($result, $httpCode);
     }
 
-    public function notFound(): ResponseInterface
+    public function notFound(string $message = 'Not found.'): ResponseInterface
     {
-        return $this->fail('Not found.', httpCode: Status::NOT_FOUND);
+        return $this->fail($message, httpCode: Status::NOT_FOUND);
     }
 
     public function failValidation(Result $result): ResponseInterface
     {
-        return $this->fail('Validation failed.', $result->getErrorMessagesIndexedByPath());
+        return $this->fail(
+            'Validation failed.',
+            $result->getErrorMessagesIndexedByPath(),
+            httpCode: Status::UNPROCESSABLE_ENTITY,
+        );
     }
 
     private function createResponse(array $data, int $code = Status::OK): ResponseInterface
