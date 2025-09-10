@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Http\ApiResponseFormatter;
 use App\Http\ExceptionMiddleware;
 use App\Http\NotFoundMiddleware;
-use Yiisoft\DataResponse\Middleware\FormatDataResponse;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
@@ -27,7 +25,6 @@ return [
                 'class' => MiddlewareDispatcher::class,
                 'withMiddlewares()' => [
                     [
-                        static fn(ApiResponseFormatter $formatter) => new FormatDataResponse($formatter),
                         RequestBodyParser::class,
                         ExceptionMiddleware::class,
                         ErrorCatcher::class,
