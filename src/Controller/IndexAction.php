@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\ApplicationParams;
-use App\Http\ResponseFactory;
+use App\Http\ApiResponseFactory;
 use Psr\Http\Message\ResponseInterface;
 
 final class IndexAction
 {
     public function __invoke(
-        ResponseFactory $responseFactory,
+        ApiResponseFactory $apiResponseFactory,
         ApplicationParams $applicationParams,
     ): ResponseInterface {
-        return $responseFactory->success([
+        return $apiResponseFactory->success([
             'name' => $applicationParams->name,
             'version' => $applicationParams->version,
         ]);

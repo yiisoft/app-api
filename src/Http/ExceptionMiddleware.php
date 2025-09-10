@@ -14,7 +14,7 @@ use Yiisoft\Input\Http\InputValidationException;
 final readonly class ExceptionMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private ResponseFactory $responseFactory,
+        private ApiResponseFactory $apiResponseFactory,
     ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -22,9 +22,9 @@ final readonly class ExceptionMiddleware implements MiddlewareInterface
         try {
             return $handler->handle($request);
         } catch (ApplicationException $e) {
-            return $this->responseFactory->fail($e->getMessage(), code: $e->getCode());
+            return $this->apiResponseFactory->fail($e->getMessage(), code: $e->getCode());
         } catch (InputValidationException $e) {
-            return $this->responseFactory->failValidation($e->getResult());
+            return $this->apiResponseFactory->failValidation($e->getResult());
         }
     }
 }

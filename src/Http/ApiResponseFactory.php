@@ -4,27 +4,22 @@ declare(strict_types=1);
 
 namespace App\Http;
 
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
-use Yiisoft\DataResponse\DataResponseFactoryInterface;
-use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
+use Yiisoft\Http\Header;
 use Yiisoft\Http\Status;
+use Yiisoft\Json\Json;
 use Yiisoft\Validator\Result;
 
-final readonly class ResponseFactory
+final readonly class ApiResponseFactory
 {
     public function __construct(
-        private DataResponseFactoryInterface $dataResponseFactory,
-        private JsonDataResponseFormatter $jsonDataResponseFormatter,
+        private ResponseFactoryInterface $responseFactory,
     ) {}
 
     public function success(array|null $data = null): ResponseInterface
     {
-        return $this->jsonDataResponseFormatter->format(
-            $this->dataResponseFactory->createResponse([
-                'status' => 'success',
-                'data' => $data,
-            ]),
-        );
+        return $this->createResponse(['status' => 'success', 'data' => $data]);
     }
 
     public function fail(
@@ -43,9 +38,7 @@ final readonly class ResponseFactory
         if ($data !== null) {
             $result['error_data'] = $data;
         }
-        return $this->jsonDataResponseFormatter->format(
-            $this->dataResponseFactory->createResponse($result, $httpCode),
-        );
+        return $this->createResponse($result, $httpCode);
     }
 
     public function notFound(): ResponseInterface
@@ -56,5 +49,14 @@ final readonly class ResponseFactory
     public function failValidation(Result $result): ResponseInterface
     {
         return $this->fail('Validation failed.', $result->getErrorMessagesIndexedByPath());
+    }
+
+    private function createResponse(array $data, int $code = Status::OK): ResponseInterface
+    {
+        $response = $this->responseFactory
+            ->createResponse($code)
+            ->withHeader(Header::CONTENT_TYPE, "application/json; charset=UTF-8");
+        $response->getBody()->write(Json::encode($data));
+        return $response;
     }
 }
