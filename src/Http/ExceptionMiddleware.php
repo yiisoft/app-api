@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use App\Exception\ApplicationException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Throwable;
+use Yiisoft\ErrorHandler\Exception\UserException;
 use Yiisoft\Input\Http\InputValidationException;
+
+use function is_int;
 
 final readonly class ExceptionMiddleware implements MiddlewareInterface
 {
@@ -21,10 +24,17 @@ final readonly class ExceptionMiddleware implements MiddlewareInterface
     {
         try {
             return $handler->handle($request);
-        } catch (ApplicationException $e) {
-            return $this->apiResponseFactory->fail($e->getMessage(), code: $e->getCode());
-        } catch (InputValidationException $e) {
-            return $this->apiResponseFactory->failValidation($e->getResult());
+        } catch (InputValidationException $exception) {
+            return $this->apiResponseFactory->failValidation($exception->getResult());
+        } catch (Throwable $exception) {
+            if (UserException::isUserException($exception)) {
+                $code = $exception->getCode();
+                return $this->apiResponseFactory->fail(
+                    $exception->getMessage(),
+                    code: is_int($code) ? $code : null,
+                );
+            }
+            throw $exception;
         }
     }
 }
