@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\ApplicationParams;
+use App\Http\ApiResponseFactory;
 use Psr\Http\Message\ResponseInterface;
-use Yiisoft\DataResponse\DataResponseFactoryInterface;
 
 final class IndexAction
 {
     public function __invoke(
-        DataResponseFactoryInterface $responseFactory,
+        ApiResponseFactory $apiResponseFactory,
         ApplicationParams $applicationParams,
     ): ResponseInterface {
-        return $responseFactory->createResponse([
+        return $apiResponseFactory->success([
             'name' => $applicationParams->name,
             'version' => $applicationParams->version,
         ]);

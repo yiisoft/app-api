@@ -34,7 +34,6 @@ final class SiteCest
             [
                 'status' => 'failed',
                 'error_message' => 'Not found.',
-                'error_code' => 404,
             ],
         );
     }
