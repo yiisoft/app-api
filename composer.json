@@ -49,7 +49,6 @@
         "yiisoft/http": "^1.2",
         "yiisoft/hydrator": "^1.6.1",
         "yiisoft/input-http": "^1.0.1",
-        "yiisoft/json": "^1.0",
         "yiisoft/log": "^2.1.1",
         "yiisoft/log-target-file": "^3.0",
         "yiisoft/middleware-dispatcher": "^5.3",
