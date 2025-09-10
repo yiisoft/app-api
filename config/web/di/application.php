@@ -25,9 +25,9 @@ return [
                 'class' => MiddlewareDispatcher::class,
                 'withMiddlewares()' => [
                     [
-                        RequestBodyParser::class,
-                        ExceptionMiddleware::class,
                         ErrorCatcher::class,
+                        ExceptionMiddleware::class,
+                        RequestBodyParser::class,
                         Router::class,
                         NotFoundMiddleware::class,
                     ],
