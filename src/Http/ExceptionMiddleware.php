@@ -26,7 +26,7 @@ final readonly class ExceptionMiddleware implements MiddlewareInterface
             return $this->apiResponseFactory->failValidation($exception->getResult());
         } catch (Throwable $exception) {
             if (UserException::isUserException($exception)) {
-                return $this->apiResponseFactory->fail($exception->getMessage(), $exception->getCode());
+                return $this->apiResponseFactory->fail($exception->getMessage(), code: $exception->getCode());
             }
             throw $exception;
         }
