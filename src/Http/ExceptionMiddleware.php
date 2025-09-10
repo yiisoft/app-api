@@ -12,6 +12,8 @@ use Throwable;
 use Yiisoft\ErrorHandler\Exception\UserException;
 use Yiisoft\Input\Http\InputValidationException;
 
+use function is_int;
+
 final readonly class ExceptionMiddleware implements MiddlewareInterface
 {
     public function __construct(
@@ -26,7 +28,11 @@ final readonly class ExceptionMiddleware implements MiddlewareInterface
             return $this->apiResponseFactory->failValidation($exception->getResult());
         } catch (Throwable $exception) {
             if (UserException::isUserException($exception)) {
-                return $this->apiResponseFactory->fail($exception->getMessage(), code: $exception->getCode());
+                $code = $exception->getCode();
+                return $this->apiResponseFactory->fail(
+                    $exception->getMessage(),
+                    code: is_int($code) ? $code : null,
+                );
             }
             throw $exception;
         }
