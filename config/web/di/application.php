@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 use App\Http\ExceptionMiddleware;
 use App\Http\NotFoundMiddleware;
+use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
+use Yiisoft\DataResponse\Formatter\XmlDataResponseFormatter;
+use Yiisoft\DataResponse\Middleware\ContentNegotiator;
+use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
@@ -25,6 +29,11 @@ return [
                 'class' => MiddlewareDispatcher::class,
                 'withMiddlewares()' => [
                     [
+                        FormatDataResponseAsJson::class,
+                        static fn() => new ContentNegotiator([
+                            'application/xml' => new XmlDataResponseFormatter(),
+                            'application/json' => new JsonDataResponseFormatter(),
+                        ]),
                         ErrorCatcher::class,
                         ExceptionMiddleware::class,
                         RequestBodyParser::class,
