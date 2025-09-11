@@ -15,7 +15,7 @@ final readonly class ValidationResultPresenter implements PresenterInterface
     public function present(mixed $value, DataResponse $response): DataResponse
     {
         return $response->withData(
-            $value->getErrorMessagesIndexedByPath()
+            $value->getErrorMessagesIndexedByPath(),
         );
     }
 }
