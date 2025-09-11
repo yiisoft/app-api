@@ -11,8 +11,7 @@ final readonly class CollectionPresenter implements PresenterInterface
 {
     public function __construct(
         private PresenterInterface $itemPresenter = new AsIsPresenter(),
-    ) {
-    }
+    ) {}
 
     public function present(mixed $value): mixed
     {
