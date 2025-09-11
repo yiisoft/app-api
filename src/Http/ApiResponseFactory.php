@@ -23,11 +23,11 @@ final readonly class ApiResponseFactory
         PresenterInterface $presenter = new AsIsPresenter(),
     ): ResponseInterface
     {
-        $response = $this->dataResponseFactory->createResponse();
+        $response = $presenter->present($data, $this->dataResponseFactory->createResponse());
         return $response
             ->withData([
                 'status' => 'success',
-                'data' => $presenter->present($data, $response),
+                'data' => $response->getData(),
             ])
             ->withStatus(Status::OK);
     }
@@ -39,7 +39,7 @@ final readonly class ApiResponseFactory
         int $httpCode = Status::BAD_REQUEST,
         PresenterInterface $presenter = new AsIsPresenter(),
     ): ResponseInterface {
-        $response = $this->dataResponseFactory->createResponse();
+        $response = $presenter->present($data, $this->dataResponseFactory->createResponse());
         $result = [
             'status' => 'failed',
             'error_message' => $message,
@@ -48,7 +48,7 @@ final readonly class ApiResponseFactory
             $result['error_code'] = $code;
         }
         if ($data !== null) {
-            $result['error_data'] = $presenter->present($data, $response);
+            $result['error_data'] = $response->getData();
         }
         return $response->withData($result)->withStatus($httpCode);
     }

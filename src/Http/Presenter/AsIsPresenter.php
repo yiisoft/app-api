@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Presenter;
 
-use Psr\Http\Message\ResponseInterface;
+use Yiisoft\DataResponse\DataResponse;
 
 /**
  * @implements PresenterInterface<mixed>
  */
 final readonly class AsIsPresenter implements PresenterInterface
 {
-    public function present(mixed $value, ResponseInterface $response): mixed
+    public function present(mixed $value, DataResponse $response): DataResponse
     {
-        return $value;
+        return $response->withData($value);
     }
 }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Presenter;
 
-use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Data\Paginator\OffsetPaginator;
+use Yiisoft\DataResponse\DataResponse;
 
 /**
  * @implements PresenterInterface<OffsetPaginator>
@@ -20,13 +20,14 @@ final readonly class OffsetPaginatorPresenter implements PresenterInterface
         $this->collectionPresenter = new CollectionPresenter($itemPresenter);
     }
 
-    public function present(mixed $value, ResponseInterface $response): array
+    public function present(mixed $value, DataResponse $response): DataResponse
     {
-        return [
-            'items' => $this->collectionPresenter->present($value->read(), $response),
+        $collectionResponse = $this->collectionPresenter->present($value->read(), $response);
+        return $collectionResponse->withData([
+            'items' => $collectionResponse->getData(),
             'pageSize' => $value->getPageSize(),
             'currentPage' => $value->getCurrentPage(),
             'totalPages' => $value->getTotalPages(),
-        ];
+        ]);
     }
 }

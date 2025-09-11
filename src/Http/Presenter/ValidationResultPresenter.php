@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Presenter;
 
-use Psr\Http\Message\ResponseInterface;
+use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\Validator\Result;
 
 /**
@@ -12,8 +12,10 @@ use Yiisoft\Validator\Result;
  */
 final readonly class ValidationResultPresenter implements PresenterInterface
 {
-    public function present(mixed $value, ResponseInterface $response): array
+    public function present(mixed $value, DataResponse $response): DataResponse
     {
-        return $value->getErrorMessagesIndexedByPath();
+        return $response->withData(
+            $value->getErrorMessagesIndexedByPath()
+        );
     }
 }
