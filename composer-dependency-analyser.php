@@ -15,7 +15,7 @@ return (new Configuration())
     ->addPathToScan($root . '/yii', isDev: false)
     ->addPathToScan($root . '/tests', isDev: true)
     ->ignoreErrorsOnPackages(
-        ['psr/container', 'yiisoft/config', 'yiisoft/yii-event', 'yiisoft/yii-event'],
+        ['psr/container', 'yiisoft/config', 'yiisoft/yii-event', 'yiisoft/yii-event', 'yiisoft/data'],
         [ErrorType::PROD_DEPENDENCY_ONLY_IN_DEV],
     )
     ->ignoreErrorsOnPackages(
