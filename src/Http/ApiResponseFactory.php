@@ -21,8 +21,7 @@ final readonly class ApiResponseFactory
     public function success(
         array|object|null $data = null,
         PresenterInterface $presenter = new AsIsPresenter(),
-    ): ResponseInterface
-    {
+    ): ResponseInterface {
         $response = $this->dataResponseFactory->createResponse();
         return $response
             ->withData([
