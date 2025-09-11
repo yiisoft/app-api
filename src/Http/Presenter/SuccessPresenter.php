@@ -14,8 +14,7 @@ final readonly class SuccessPresenter implements PresenterInterface
 {
     public function __construct(
         private PresenterInterface $presenter = new AsIsPresenter(),
-    ) {
-    }
+    ) {}
 
     public function present(mixed $value, DataResponse $response): DataResponse
     {

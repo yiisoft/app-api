@@ -18,8 +18,7 @@ final readonly class ApiResponseFactory
 {
     public function __construct(
         private DataResponseFactoryInterface $dataResponseFactory,
-    ) {
-    }
+    ) {}
 
     public function success(
         array|object|null $data = null,

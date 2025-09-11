@@ -17,8 +17,7 @@ final readonly class FailPresenter implements PresenterInterface
         private int|null $code = null,
         private int $httpCode = Status::BAD_REQUEST,
         private PresenterInterface $presenter = new AsIsPresenter(),
-    ) {
-    }
+    ) {}
 
     public function present(mixed $value, DataResponse $response): DataResponse
     {
