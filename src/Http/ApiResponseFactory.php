@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http;
 
+use App\Http\Presenter\AsIsPresenter;
+use App\Http\Presenter\PresenterInterface;
+use App\Http\Presenter\ValidationResultPresenter;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\Http\Status;
@@ -15,9 +18,18 @@ final readonly class ApiResponseFactory
         private DataResponseFactoryInterface $dataResponseFactory,
     ) {}
 
-    public function success(array|object|null $data = null): ResponseInterface
+    public function success(
+        array|object|null $data = null,
+        PresenterInterface $presenter = new AsIsPresenter(),
+    ): ResponseInterface
     {
-        return $this->dataResponseFactory->createResponse(['status' => 'success', 'data' => $data]);
+        $response = $this->dataResponseFactory->createResponse();
+        return $response
+            ->withData([
+                'status' => 'success',
+                'data' => $presenter->present($data, $response),
+            ])
+            ->withStatus(Status::OK);
     }
 
     public function fail(
@@ -25,7 +37,9 @@ final readonly class ApiResponseFactory
         array|object|null $data = null,
         int|null $code = null,
         int $httpCode = Status::BAD_REQUEST,
+        PresenterInterface $presenter = new AsIsPresenter(),
     ): ResponseInterface {
+        $response = $this->dataResponseFactory->createResponse();
         $result = [
             'status' => 'failed',
             'error_message' => $message,
@@ -34,9 +48,9 @@ final readonly class ApiResponseFactory
             $result['error_code'] = $code;
         }
         if ($data !== null) {
-            $result['error_data'] = $data;
+            $result['error_data'] = $presenter->present($data, $response);
         }
-        return $this->dataResponseFactory->createResponse($result, $httpCode);
+        return $response->withData($result)->withStatus($httpCode);
     }
 
     public function notFound(string $message = 'Not found.'): ResponseInterface
@@ -48,8 +62,9 @@ final readonly class ApiResponseFactory
     {
         return $this->fail(
             'Validation failed.',
-            $result->getErrorMessagesIndexedByPath(),
+            $result,
             httpCode: Status::UNPROCESSABLE_ENTITY,
+            presenter: new ValidationResultPresenter(),
         );
     }
 }

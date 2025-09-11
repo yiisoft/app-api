@@ -7,6 +7,8 @@ namespace App\Tests\Unit\HttpPresenter;
 use App\Http\Presenter\OffsetPaginatorPresenter;
 use App\Http\Presenter\PresenterInterface;
 use Codeception\Test\Unit;
+use HttpSoft\Message\Response;
+use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Data\Paginator\OffsetPaginator;
 use Yiisoft\Data\Reader\Iterable\IterableDataReader;
 
@@ -27,7 +29,7 @@ final class OffsetPaginatorPresenterTest extends Unit
             ->withCurrentPage(2);
         $presenter = new OffsetPaginatorPresenter();
 
-        $result = $presenter->present($paginator);
+        $result = $presenter->present($paginator, new Response());
 
         $this->assertSame(
             [
@@ -53,14 +55,14 @@ final class OffsetPaginatorPresenterTest extends Unit
         );
         $presenter = new OffsetPaginatorPresenter(
             new class implements PresenterInterface {
-                public function present(mixed $value): mixed
+                public function present(mixed $value, ResponseInterface $response): mixed
                 {
                     return $value['name'];
                 }
             },
         );
 
-        $result = $presenter->present($paginator);
+        $result = $presenter->present($paginator, new Response());
 
         $this->assertSame(
             [
