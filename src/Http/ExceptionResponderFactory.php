@@ -18,8 +18,7 @@ final readonly class ExceptionResponderFactory
         private ResponseFactoryInterface $responseFactory,
         private ApiResponseFactory $apiResponseFactory,
         private Injector $injector,
-    ) {
-    }
+    ) {}
 
     public function create(): ExceptionResponder
     {
