@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Http\ExceptionMiddleware;
+use App\Http\ExceptionResponderFactory;
 use App\Http\NotFoundMiddleware;
 use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
 use Yiisoft\DataResponse\Formatter\XmlDataResponseFormatter;
@@ -35,7 +35,7 @@ return [
                             'application/json' => new JsonDataResponseFormatter(),
                         ]),
                         ErrorCatcher::class,
-                        ExceptionMiddleware::class,
+                        static fn(ExceptionResponderFactory $factory) => $factory->create(),
                         RequestBodyParser::class,
                         Router::class,
                         NotFoundMiddleware::class,
