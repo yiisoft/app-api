@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Http\ExceptionMiddleware;
+use App\Http\ExceptionResponderFactory;
 use App\Http\NotFoundMiddleware;
 use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
 use Yiisoft\DataResponse\Formatter\XmlDataResponseFormatter;
@@ -11,7 +11,9 @@ use Yiisoft\DataResponse\Middleware\FormatDataResponseAsJson;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
+use Yiisoft\ErrorHandler\Middleware\ExceptionResponder;
 use Yiisoft\Input\Http\HydratorAttributeParametersResolver;
+use Yiisoft\Input\Http\InputValidationException;
 use Yiisoft\Input\Http\RequestInputParametersResolver;
 use Yiisoft\Middleware\Dispatcher\CompositeParametersResolver;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
@@ -35,7 +37,7 @@ return [
                             'application/json' => new JsonDataResponseFormatter(),
                         ]),
                         ErrorCatcher::class,
-                        ExceptionMiddleware::class,
+                        static fn(ExceptionResponderFactory $factory) => $factory->create(),
                         RequestBodyParser::class,
                         Router::class,
                         NotFoundMiddleware::class,
