@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Presenter;
+namespace App\EndPoint\Api\Shared\Presenter;
 
 use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\Http\Status;

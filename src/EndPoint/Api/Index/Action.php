@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\EndPoint\Api\Index;
 
-use App\ApplicationParams;
-use App\Http\ApiResponseFactory;
+use App\EndPoint\Api\Shared\ApiResponseFactory;
+use App\Shared\ApplicationParams;
 use Psr\Http\Message\ResponseInterface;
 
-final class IndexAction
+final class Action
 {
     public function __invoke(
         ApiResponseFactory $apiResponseFactory,
