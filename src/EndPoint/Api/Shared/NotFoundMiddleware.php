@@ -12,11 +12,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 final readonly class NotFoundMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private ApiResponseFactory $apiResponseFactory,
+        private ResponseFactory $responseFactory,
     ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        return $this->apiResponseFactory->notFound();
+        return $this->responseFactory->notFound();
     }
 }

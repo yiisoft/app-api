@@ -14,7 +14,7 @@ use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\Http\Status;
 use Yiisoft\Validator\Result;
 
-final readonly class ApiResponseFactory
+final readonly class ResponseFactory
 {
     public function __construct(
         private DataResponseFactoryInterface $dataResponseFactory,
