@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\EndPoint\Api\Shared\Presenter;
+namespace App\Api\Shared\Presenter;
 
 use Yiisoft\DataResponse\DataResponse;
 

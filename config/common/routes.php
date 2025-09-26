@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\EndPoint\Api;
+use App\Api;
 use Yiisoft\Router\Route;
 
 /**
@@ -10,5 +10,5 @@ use Yiisoft\Router\Route;
  */
 
 return [
-    Route::get('/')->action(Api\Index\Action::class)->name('app/index'),
+    Route::get('/')->action(Api\IndexAction::class)->name('app/index'),
 ];

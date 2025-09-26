@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\EndPoint\Api\Index;
+namespace App\Api;
 
-use App\EndPoint\Api\Shared\ResponseFactory;
+use App\Api\Shared\ResponseFactory;
 use App\Shared\ApplicationParams;
 use Psr\Http\Message\ResponseInterface;
 
-final class Action
+final class IndexAction
 {
     public function __invoke(
         ResponseFactory $responseFactory,

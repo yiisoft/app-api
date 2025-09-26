@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\EndPoint\Api\Shared;
+namespace App\Api\Shared;
 
-use App\EndPoint\Api\Shared\Presenter\AsIsPresenter;
-use App\EndPoint\Api\Shared\Presenter\FailPresenter;
-use App\EndPoint\Api\Shared\Presenter\PresenterInterface;
-use App\EndPoint\Api\Shared\Presenter\SuccessPresenter;
-use App\EndPoint\Api\Shared\Presenter\ValidationResultPresenter;
+use App\Api\Shared\Presenter\AsIsPresenter;
+use App\Api\Shared\Presenter\FailPresenter;
+use App\Api\Shared\Presenter\PresenterInterface;
+use App\Api\Shared\Presenter\SuccessPresenter;
+use App\Api\Shared\Presenter\ValidationResultPresenter;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\Http\Status;

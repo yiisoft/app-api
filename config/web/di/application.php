@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\EndPoint\Api\Shared\ExceptionResponderFactory;
-use App\EndPoint\Api\Shared\NotFoundMiddleware;
+use App\Api\Shared\ExceptionResponderFactory;
+use App\Api\Shared\NotFoundMiddleware;
 use Yiisoft\DataResponse\Formatter\JsonDataResponseFormatter;
 use Yiisoft\DataResponse\Formatter\XmlDataResponseFormatter;
 use Yiisoft\DataResponse\Middleware\ContentNegotiator;
