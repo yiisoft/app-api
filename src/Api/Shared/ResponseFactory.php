@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Http;
+namespace App\Api\Shared;
 
-use App\Http\Presenter\AsIsPresenter;
-use App\Http\Presenter\FailPresenter;
-use App\Http\Presenter\PresenterInterface;
-use App\Http\Presenter\SuccessPresenter;
-use App\Http\Presenter\ValidationResultPresenter;
+use App\Api\Shared\Presenter\AsIsPresenter;
+use App\Api\Shared\Presenter\FailPresenter;
+use App\Api\Shared\Presenter\PresenterInterface;
+use App\Api\Shared\Presenter\SuccessPresenter;
+use App\Api\Shared\Presenter\ValidationResultPresenter;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
 use Yiisoft\Http\Status;
 use Yiisoft\Validator\Result;
 
-final readonly class ApiResponseFactory
+final readonly class ResponseFactory
 {
     public function __construct(
         private DataResponseFactoryInterface $dataResponseFactory,

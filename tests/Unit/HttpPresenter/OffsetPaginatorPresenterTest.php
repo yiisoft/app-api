@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\HttpPresenter;
 
-use App\Http\Presenter\OffsetPaginatorPresenter;
-use App\Http\Presenter\PresenterInterface;
+use App\Api\Shared\Presenter\OffsetPaginatorPresenter;
+use App\Api\Shared\Presenter\PresenterInterface;
 use Codeception\Test\Unit;
 use HttpSoft\Message\ResponseFactory;
 use HttpSoft\Message\StreamFactory;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http;
+namespace App\Api\Shared;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -15,8 +15,8 @@ use Yiisoft\Input\Http\InputValidationException;
 final readonly class ExceptionResponderFactory
 {
     public function __construct(
-        private ResponseFactoryInterface $responseFactory,
-        private ApiResponseFactory $apiResponseFactory,
+        private ResponseFactoryInterface $psrResponseFactory,
+        private ResponseFactory $apiResponseFactory,
         private Injector $injector,
     ) {}
 
@@ -27,7 +27,7 @@ final readonly class ExceptionResponderFactory
                 InputValidationException::class => $this->inputValidationException(...),
                 Throwable::class => $this->throwable(...),
             ],
-            $this->responseFactory,
+            $this->psrResponseFactory,
             $this->injector,
         );
     }
