@@ -92,7 +92,7 @@ final class ResponseFactoryTest extends Unit
             new DataResponseFactory(
                 new PsrResponseFactory(),
                 new StreamFactory(),
-            )
+            ),
         );
     }
 }

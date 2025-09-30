@@ -28,11 +28,11 @@ final class ExceptionResponderFactoryTest extends Unit
     public function testInputValidationException(): void
     {
         $request = new ServerRequest();
-        $handler = new class() implements RequestHandlerInterface {
+        $handler = new class implements RequestHandlerInterface {
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
                 throw new InputValidationException(
-                    (new Result())->addError('error1', valuePath: ['name'])
+                    (new Result())->addError('error1', valuePath: ['name']),
                 );
             }
         };
@@ -55,7 +55,7 @@ final class ExceptionResponderFactoryTest extends Unit
     public function testUserException(): void
     {
         $request = new ServerRequest();
-        $handler = new class() implements RequestHandlerInterface {
+        $handler = new class implements RequestHandlerInterface {
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
                 throw new UserException('Hello, Exception!');
@@ -78,7 +78,7 @@ final class ExceptionResponderFactoryTest extends Unit
     public function testOtherThrowable(): void
     {
         $request = new ServerRequest();
-        $handler = new class() implements RequestHandlerInterface {
+        $handler = new class implements RequestHandlerInterface {
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
                 throw new LogicException('Hello, Exception!');
