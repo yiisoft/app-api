@@ -1,4 +1,4 @@
-actor: AcceptanceTester
+actor: ApiTester
 extensions:
   enabled:
     - Codeception\Extension\RunProcess:
@@ -9,5 +9,4 @@ modules:
     - REST:
         url: http://127.0.0.1:8080
         depends: PhpBrowser
-    - App\Tests\Support\Helper\Acceptance
   step_decorators: ~
