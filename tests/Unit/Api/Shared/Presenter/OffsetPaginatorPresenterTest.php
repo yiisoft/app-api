@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\HttpPresenter;
+namespace App\Tests\Unit\Api\Shared\Presenter;
 
 use App\Api\Shared\Presenter\OffsetPaginatorPresenter;
 use App\Api\Shared\Presenter\PresenterInterface;
