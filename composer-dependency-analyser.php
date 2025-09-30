@@ -15,10 +15,10 @@ return (new Configuration())
     ->addPathToScan($root . '/yii', isDev: false)
     ->addPathToScan($root . '/tests', isDev: true)
     ->ignoreErrorsOnPackages(
-        ['psr/container', 'yiisoft/config', 'yiisoft/yii-event', 'yiisoft/yii-event', 'yiisoft/data'],
+        ['yiisoft/di', 'yiisoft/data'],
         [ErrorType::PROD_DEPENDENCY_ONLY_IN_DEV],
     )
     ->ignoreErrorsOnPackages(
-        ['yiisoft/di', 'yiisoft/aliases', 'yiisoft/request-provider', 'yiisoft/router-fastroute'],
+        ['psr/container', 'yiisoft/config', 'yiisoft/aliases', 'yiisoft/request-provider', 'yiisoft/router-fastroute'],
         [ErrorType::UNUSED_DEPENDENCY],
     );

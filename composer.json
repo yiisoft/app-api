@@ -59,7 +59,6 @@
         "yiisoft/router-fastroute": "^4.0.2",
         "yiisoft/validator": "^2.5",
         "yiisoft/yii-console": "^2.4",
-        "yiisoft/yii-event": "^2.1",
         "yiisoft/yii-http": "^1.1.0",
         "yiisoft/yii-runner-console": "^2.2",
         "yiisoft/yii-runner-http": "^3.2"
