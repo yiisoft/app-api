@@ -5,19 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Functional;
 
 use App\Tests\Support\FunctionalTester;
-use Codeception\Test\Unit;
 use HttpSoft\Message\ServerRequest;
 
 use function PHPUnit\Framework\assertJson;
 use function PHPUnit\Framework\assertSame;
 
-final class InfoControllerTest extends Unit
+final readonly class HomePageCest
 {
-    protected FunctionalTester $tester;
-
-    public function testGetIndex()
+    public function base(FunctionalTester $tester): void
     {
-        $response = $this->tester->sendRequest(
+        $response = $tester->sendRequest(
             new ServerRequest(uri: '/'),
         );
 

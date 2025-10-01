@@ -8,10 +8,9 @@ settings:
 
 paths:
   tests: tests
-  output: runtime/tests/_output
+  output: tests/_output
   data: tests/Support/Data
   support: tests/Support
-  envs: tests/_envs
 
 coverage:
   enabled: true

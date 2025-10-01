@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Support;
 
-use Codeception\Actor;
-
 /**
  * Inherited Methods
- *
- * @method void wantToTest($text)
  * @method void wantTo($text)
+ * @method void wantToTest($text)
  * @method void execute($callable)
  * @method void expectTo($prediction)
  * @method void expect($prediction)
@@ -18,15 +15,22 @@ use Codeception\Actor;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method void pause()
+ * @method void pause($vars = [])
  *
  * @SuppressWarnings(PHPMD)
 */
-class CliTester extends Actor
+class ConsoleTester extends \Codeception\Actor
 {
-    use _generated\CliTesterActions;
+    use _generated\ConsoleTesterActions;
 
     /**
      * Define custom actions here
      */
+
+    public function runApp(?string $parameters = null): void
+    {
+        $this->runShellCommand(
+            dirname(__DIR__, 2) . '/yii' . ($parameters === null ? '' : (' ' . $parameters)),
+        );
+    }
 }
