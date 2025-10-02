@@ -2,7 +2,8 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px" alt="Yii">
     </a>
-    <h1 align="center">Yii API template</h1>
+    <h1 align="center">Yii API application</h1>
+    <h3 align="center">An application template for a new web project</h3>
     <br>
 </p>
 
@@ -11,14 +12,28 @@
 [![build](https://github.com/yiisoft/app-api/actions/workflows/build.yml/badge.svg)](https://github.com/yiisoft/app-api/actions/workflows/build.yml)
 [![Code Coverage](https://codecov.io/gh/yiisoft/app-api/branch/master/graph/badge.svg)](https://codecov.io/gh/yiisoft/app-api)
 [![static analysis](https://github.com/yiisoft/app-api/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/app-api/actions?query=workflow%3A%22static+analysis%22)
+[![type-coverage](https://shepherd.dev/github/yiisoft/app-api/coverage.svg)](https://shepherd.dev/github/yiisoft/app-api)
+[![psalm-level](https://shepherd.dev/github/yiisoft/app-api/level.svg)](https://shepherd.dev/github/yiisoft/app-api)
 
-API application template for Yii 3.
+<p>
+    <a href="https://github.com/yiisoft/app-api" target="_blank">
+        <img src="screenshot.png" alt="API request result">
+    </a>
+</p>
+
+The package is an API application template. If you need console only or classic web please start with corresponding
+templates:
+
+- [Console application template](https://github.com/yiisoft/app-console)
+- [Web application template](https://github.com/yiisoft/app)
 
 ## Requirements
 
 - PHP 8.2 or higher.
 
-## Local installation
+## Installation
+
+### Local installation
 
 If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](https://getcomposer.org/doc/00-intro.md).
@@ -26,7 +41,7 @@ at [getcomposer.org](https://getcomposer.org/doc/00-intro.md).
 Create a project:
 
 ```shell
-composer create-project yiisoft/app-api --stability=dev myproject
+composer create-project yiisoft/app-api myproject
 cd myproject
 ```
 
@@ -37,11 +52,12 @@ APP_ENV=dev ./yii serve
 ```
 
 Now you should be able to access the application through the URL printed to console.
-Usually it is `https://127.0.0.1:8080`.
+Usually it is `http://localhost:8080`.
 
-Authorization is performed via the `X-Api-Key` header.
+### Installation with Docker
 
-## Installation with Docker
+> [!WARNING]
+> Docker compose version 2.24 or above is required.
 
 Fork the repository, clone it, then:
 
@@ -63,21 +79,43 @@ make down
 ```
 
 The application is available at `https://localhost`.
-Authorization is performed via the `X-Api-Key` header.
 
-## API Documentation
+Other make commands are available in the `Makefile` and can be listed with:
 
-API documentation is available at `/docs`. It is built from OpenAPI annotations (`@OA`).
+```shell
+make help
+```
 
-See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/guide/annotations.html) for details
-on how to annotate your code.
+## Directory structure
 
-## Getting help
+The application template has the following structure:
 
-If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
-You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
+```
+config/                     Configuration files.
+    common/                 Common configuration and DI definitions.
+    console/                Console-specific configuration.
+    environments/           Environment-specific configuration (dev/test/prod).
+    web/                    Web-specific configuration.
+docker/                     Docker-specific files.
+public/                     Files publically accessible from the Internet.
+    index.php               Entry script.
+runtime/                    Files generated during runtime.
+src/                        Application source code.
+    Api/                    API action handlers and API-specific code.
+        Shared/             Shared API components (middleware, presenters, factories).
+    Console/                Console commands.
+    Shared/                 Code shared between API and console applications.
+tests/                      A set of Codeception tests for the application.
+    Api/                    API endpoints tests.
+    Console/                Console command tests.
+    Functional/             Functional tests.
+    Unit/                   Unit tests.
+vendor/                     Installed Composer packages.
+Makefile                    Config for make command.
+yii                         Console application entry point.
+```
 
-## Codeception testing
+## Testing
 
 The template comes with ready to use [Codeception](https://codeception.com/) configuration.
 To execute tests, in local installation run:
@@ -85,7 +123,7 @@ To execute tests, in local installation run:
 ```shell
 ./vendor/bin/codecept build
 
-./yii serve > ./runtime/yii.log 2>&1 &
+APP_ENV=test ./yii serve > ./runtime/yii.log 2>&1 &
 ./vendor/bin/codecept run
 ```
 
@@ -93,7 +131,6 @@ For Docker:
 
 ```shell
 make codecept build
-
 make codecept run
 ```
 
@@ -111,9 +148,13 @@ or, using Docker:
 make psalm
 ```
 
+## Support
+
+If you need help or have a question, check out [Yii Community Resources](https://www.yiiframework.com/community).
+
 ## License
 
-The Yii API template is free software. It is released under the terms of the BSD License.
+The Yii3 API template is free software. It is released under the terms of the BSD License.
 Please see [`LICENSE`](./LICENSE.md) for more information.
 
 Maintained by [Yii Software](https://www.yiiframework.com/).
@@ -128,4 +169,4 @@ Maintained by [Yii Software](https://www.yiiframework.com/).
 [![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/yiiframework)
 [![Telegram](https://img.shields.io/badge/telegram-join-1DA1F2?style=flat&logo=telegram)](https://t.me/yii3en)
 [![Facebook](https://img.shields.io/badge/facebook-join-1DA1F2?style=flat&logo=facebook&logoColor=ffffff)](https://www.facebook.com/groups/yiitalk)
-[![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=flat&logo=slack)](https://www.yiiframework.com/go/slack)
+[![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=flat&logo=slack)](https://yiiframework.com/go/slack)

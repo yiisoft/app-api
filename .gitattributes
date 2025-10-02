@@ -27,6 +27,7 @@
 /CHANGELOG.md           export-ignore
 /LICENSE.md             export-ignore
 /README.md              export-ignore
+/screenshot.png         export-ignore
 /composer.lock          export-ignore
 
 # Avoid merge conflicts in CHANGELOG
