@@ -3,7 +3,7 @@
         <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px" alt="Yii">
     </a>
     <h1 align="center">Yii API application</h1>
-    <h3 align="center">An application template for a new web project</h3>
+    <h3 align="center">An application template for a new API project</h3>
     <br>
 </p>
 
