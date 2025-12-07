@@ -45,7 +45,22 @@ composer create-project yiisoft/app-api myproject
 cd myproject
 ```
 
+Copy the `.env.example` file to `.env`:
+
+```shell
+cp .env.example .env
+```
+
+The `.env` file contains environment-specific configuration. By default, it sets `APP_ENV=dev` for development.
+You can customize it as needed.
+
 To run the app:
+
+```shell
+./yii serve
+```
+
+Alternatively, you can still use the `APP_ENV` environment variable directly:
 
 ```shell
 APP_ENV=dev ./yii serve
@@ -111,9 +126,27 @@ tests/                      A set of Codeception tests for the application.
     Functional/             Functional tests.
     Unit/                   Unit tests.
 vendor/                     Installed Composer packages.
+.env.example                Example environment configuration (copy to .env for local dev).
 Makefile                    Config for make command.
 yii                         Console application entry point.
 ```
+
+## Environment Configuration
+
+For local development (non-Docker), you can use a `.env` file to configure the environment:
+
+1. Copy `.env.example` to `.env`:
+   ```shell
+   cp .env.example .env
+   ```
+
+2. The `.env` file is automatically loaded and sets environment variables like `APP_ENV`.
+
+3. The `.env` file is excluded from git, so each environment can have its own configuration.
+
+4. If no `.env` file exists and no `APP_ENV` is set, the application defaults to `prod` environment.
+
+For Docker environments, use the `.env` files in the `docker/` directory as before.
 
 ## Testing
 
