@@ -1,5 +1,9 @@
 # Yii API template Change Log
 
+## 1.1.1 under development
+
+- no changes in this release.
+
 ## 1.1.0 December 22, 2025
 
 - New #248, #249: Add Makefile `stop` goal for stopping Docker containers (@samdark, @vjik)
