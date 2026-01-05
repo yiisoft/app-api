@@ -2,7 +2,7 @@
 
 ## 1.1.1 under development
 
-- Bug #255: `make` was not displaying help with version 4.4 and up (@samdark)
+- Chg #255: Refactor `Makefile` default command help logic (@samdark)
 
 ## 1.1.0 December 22, 2025
 
