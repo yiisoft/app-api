@@ -1,12 +1,9 @@
 # Yii API template Change Log
 
-## 1.1.2  January 08, 2026
-
-- Fix #256: Fixed an issue with including .env files in Docker Compose for production (@aa-chernyh)
-
 ## 1.1.1 under development
 
 - Chg #255: Refactor `Makefile` default command help logic (@samdark)
+- Bug #256: Fix incorrect .env files used in Docker Compose for production (@aa-chernyh)
 
 ## 1.1.0 December 22, 2025
 
