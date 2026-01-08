@@ -1,7 +1,7 @@
 name: Code Style
 
 on:
-  pull_request:
+  pull_request_target:
     paths-ignore:
       - 'docs/**'
       - 'README.md'
@@ -18,7 +18,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.YIISOFT_GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
