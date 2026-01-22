@@ -4,6 +4,7 @@
 
 - Chg #255: Refactor `Makefile` default command help logic (@samdark)
 - Bug #256: Fix incorrect .env files used in Docker Compose for production (@aa-chernyh)
+- Enh #258: Set locale `C.UTF-8` in `Dockerfile` (@vjik)
 
 ## 1.1.0 December 22, 2025
 
