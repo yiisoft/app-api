@@ -38,7 +38,7 @@
         "psr/http-server-handler": "^1.0.2",
         "psr/http-server-middleware": "^1.0.2",
         "psr/log": "^3.0.2",
-        "symfony/console": "^7.4.4",
+        "symfony/console": "<=7.3",
         "yiisoft/aliases": "^3.1.1",
         "yiisoft/config": "^1.6.2",
         "yiisoft/data": "^1.0.1",
