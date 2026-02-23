@@ -2,8 +2,8 @@
 
 ## 1.1.1 under development
 
-- New #261: Improve `prod-deploy` error handling so exact error is printed in case of rollback (@samdark)
-- Chg #262: Remove mutation testing (@samdark)
+- New #263: Improve `prod-deploy` error handling so exact error is printed in case of rollback (@samdark)
+- Chg #263: Remove mutation testing (@samdark)
 - Chg #263: Allow symfony/console 8 (@samdark)
 - Chg #255: Refactor `Makefile` default command help logic (@samdark)
 - Bug #256: Fix incorrect .env files used in Docker Compose for production (@aa-chernyh)
