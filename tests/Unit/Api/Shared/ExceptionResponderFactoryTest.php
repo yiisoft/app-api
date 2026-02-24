@@ -9,13 +9,12 @@ use App\Api\Shared\ResponseFactory;
 use Codeception\Test\Unit;
 use HttpSoft\Message\ResponseFactory as PsrResponseFactory;
 use HttpSoft\Message\ServerRequest;
-use HttpSoft\Message\StreamFactory;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Yiisoft\DataResponse\DataResponse;
-use Yiisoft\DataResponse\DataResponseFactory;
+use Yiisoft\DataResponse\DataStream\DataStream;
+use Yiisoft\DataResponse\ResponseFactory\DataResponseFactory;
 use Yiisoft\Di\Container;
 use Yiisoft\ErrorHandler\Exception\UserException;
 use Yiisoft\ErrorHandler\Middleware\ExceptionResponder;
@@ -38,8 +37,9 @@ final class ExceptionResponderFactoryTest extends Unit
         };
 
         $response = $this->createExceptionResponder()->process($request, $handler);
+        $body = $response->getBody();
 
-        $this->assertInstanceOf(DataResponse::class, $response);
+        $this->assertInstanceOf(DataStream::class, $body);
         $this->assertSame(
             [
                 'status' => 'failed',
@@ -48,7 +48,7 @@ final class ExceptionResponderFactoryTest extends Unit
                     'name' => ['error1'],
                 ],
             ],
-            $response->getData(),
+            $body->getData(),
         );
     }
 
@@ -63,15 +63,16 @@ final class ExceptionResponderFactoryTest extends Unit
         };
 
         $response = $this->createExceptionResponder()->process($request, $handler);
+        $body = $response->getBody();
 
-        $this->assertInstanceOf(DataResponse::class, $response);
+        $this->assertInstanceOf(DataStream::class, $body);
         $this->assertSame(
             [
                 'status' => 'failed',
                 'error_message' => 'Hello, Exception!',
                 'error_code' => 0,
             ],
-            $response->getData(),
+            $body->getData(),
         );
     }
 
@@ -97,7 +98,6 @@ final class ExceptionResponderFactoryTest extends Unit
             new ResponseFactory(
                 new DataResponseFactory(
                     new PsrResponseFactory(),
-                    new StreamFactory(),
                 ),
             ),
             new Injector(new Container()),
