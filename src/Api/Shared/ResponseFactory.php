@@ -10,7 +10,7 @@ use App\Api\Shared\Presenter\PresenterInterface;
 use App\Api\Shared\Presenter\SuccessPresenter;
 use App\Api\Shared\Presenter\ValidationResultPresenter;
 use Psr\Http\Message\ResponseInterface;
-use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use Yiisoft\DataResponse\ResponseFactory\DataResponseFactoryInterface;
 use Yiisoft\Http\Status;
 use Yiisoft\Validator\Result;
 
@@ -24,8 +24,9 @@ final readonly class ResponseFactory
         array|object|null $data = null,
         PresenterInterface $presenter = new AsIsPresenter(),
     ): ResponseInterface {
-        return (new SuccessPresenter($presenter))
-            ->present($data, $this->dataResponseFactory->createResponse());
+        return $this->dataResponseFactory->createResponse(
+            (new SuccessPresenter($presenter))->present($data),
+        );
     }
 
     public function fail(
@@ -35,8 +36,11 @@ final readonly class ResponseFactory
         int $httpCode = Status::BAD_REQUEST,
         PresenterInterface $presenter = new AsIsPresenter(),
     ): ResponseInterface {
-        return (new FailPresenter($message, $code, $httpCode, $presenter))
-            ->present($data, $this->dataResponseFactory->createResponse());
+        return $this->dataResponseFactory
+            ->createResponse(
+                (new FailPresenter($message, $code, $presenter))->present($data),
+            )
+            ->withStatus($httpCode);
     }
 
     public function notFound(string $message = 'Not found.'): ResponseInterface

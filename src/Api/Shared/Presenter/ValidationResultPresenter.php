@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Api\Shared\Presenter;
 
-use Yiisoft\DataResponse\DataResponse;
 use Yiisoft\Validator\Result;
 
 /**
@@ -12,10 +11,8 @@ use Yiisoft\Validator\Result;
  */
 final readonly class ValidationResultPresenter implements PresenterInterface
 {
-    public function present(mixed $value, DataResponse $response): DataResponse
+    public function present(mixed $value): array
     {
-        return $response->withData(
-            $value->getErrorMessagesIndexedByPath(),
-        );
+        return $value->getErrorMessagesIndexedByPath();
     }
 }
