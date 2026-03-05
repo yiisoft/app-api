@@ -7,9 +7,8 @@ namespace App\Tests\Unit\Api\Shared;
 use App\Api\Shared\ResponseFactory;
 use Codeception\Test\Unit;
 use HttpSoft\Message\ResponseFactory as PsrResponseFactory;
-use HttpSoft\Message\StreamFactory;
-use Yiisoft\DataResponse\DataResponse;
-use Yiisoft\DataResponse\DataResponseFactory;
+use Yiisoft\DataResponse\DataStream\DataStream;
+use Yiisoft\DataResponse\ResponseFactory\DataResponseFactory;
 use Yiisoft\Validator\Result;
 
 final class ResponseFactoryTest extends Unit
@@ -20,13 +19,15 @@ final class ResponseFactoryTest extends Unit
             ->createResponseFactory()
             ->success(['name' => 'test']);
 
-        $this->assertInstanceOf(DataResponse::class, $response);
+        $body = $response->getBody();
+
+        $this->assertInstanceOf(DataStream::class, $body);
         $this->assertSame(
             [
                 'status' => 'success',
                 'data' => ['name' => 'test'],
             ],
-            $response->getData(),
+            $body->getData(),
         );
     }
 
@@ -36,13 +37,15 @@ final class ResponseFactoryTest extends Unit
             ->createResponseFactory()
             ->fail('error text');
 
-        $this->assertInstanceOf(DataResponse::class, $response);
+        $body = $response->getBody();
+
+        $this->assertInstanceOf(DataStream::class, $body);
         $this->assertSame(
             [
                 'status' => 'failed',
                 'error_message' => 'error text',
             ],
-            $response->getData(),
+            $body->getData(),
         );
     }
 
@@ -52,13 +55,15 @@ final class ResponseFactoryTest extends Unit
             ->createResponseFactory()
             ->notFound();
 
-        $this->assertInstanceOf(DataResponse::class, $response);
+        $body = $response->getBody();
+
+        $this->assertInstanceOf(DataStream::class, $body);
         $this->assertSame(
             [
                 'status' => 'failed',
                 'error_message' => 'Not found.',
             ],
-            $response->getData(),
+            $body->getData(),
         );
     }
 
@@ -72,7 +77,9 @@ final class ResponseFactoryTest extends Unit
             ->createResponseFactory()
             ->failValidation($result);
 
-        $this->assertInstanceOf(DataResponse::class, $response);
+        $body = $response->getBody();
+
+        $this->assertInstanceOf(DataStream::class, $body);
         $this->assertSame(
             [
                 'status' => 'failed',
@@ -82,7 +89,7 @@ final class ResponseFactoryTest extends Unit
                     'age' => ['error3'],
                 ],
             ],
-            $response->getData(),
+            $body->getData(),
         );
     }
 
@@ -91,7 +98,6 @@ final class ResponseFactoryTest extends Unit
         return new ResponseFactory(
             new DataResponseFactory(
                 new PsrResponseFactory(),
-                new StreamFactory(),
             ),
         );
     }

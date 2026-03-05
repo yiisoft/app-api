@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Api\Shared\Presenter;
 
-use Yiisoft\DataResponse\DataResponse;
-
 /**
  * @implements PresenterInterface<iterable>
  */
@@ -15,13 +13,12 @@ final readonly class CollectionPresenter implements PresenterInterface
         private PresenterInterface $itemPresenter = new AsIsPresenter(),
     ) {}
 
-    public function present(mixed $value, DataResponse $response): DataResponse
+    public function present(mixed $value): array
     {
         $result = [];
         foreach ($value as $item) {
-            $response = $this->itemPresenter->present($item, $response);
-            $result[] = $response->getData();
+            $result[] = $this->itemPresenter->present($item);
         }
-        return $response->withData($result);
+        return $result;
     }
 }

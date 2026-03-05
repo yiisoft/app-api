@@ -7,12 +7,8 @@ namespace App\Tests\Unit\Api\Shared\Presenter;
 use App\Api\Shared\Presenter\OffsetPaginatorPresenter;
 use App\Api\Shared\Presenter\PresenterInterface;
 use Codeception\Test\Unit;
-use HttpSoft\Message\ResponseFactory;
-use HttpSoft\Message\StreamFactory;
 use Yiisoft\Data\Paginator\OffsetPaginator;
 use Yiisoft\Data\Reader\Iterable\IterableDataReader;
-use Yiisoft\DataResponse\DataResponse;
-use Yiisoft\Http\Status;
 
 final class OffsetPaginatorPresenterTest extends Unit
 {
@@ -31,7 +27,7 @@ final class OffsetPaginatorPresenterTest extends Unit
             ->withCurrentPage(2);
         $presenter = new OffsetPaginatorPresenter();
 
-        $result = $presenter->present($paginator, $this->createDataResponse());
+        $result = $presenter->present($paginator);
 
         $this->assertSame(
             [
@@ -43,7 +39,7 @@ final class OffsetPaginatorPresenterTest extends Unit
                 'currentPage' => 2,
                 'totalPages' => 3,
             ],
-            $result->getData(),
+            $result,
         );
     }
 
@@ -57,14 +53,14 @@ final class OffsetPaginatorPresenterTest extends Unit
         );
         $presenter = new OffsetPaginatorPresenter(
             new class implements PresenterInterface {
-                public function present(mixed $value, DataResponse $response): DataResponse
+                public function present(mixed $value): mixed
                 {
-                    return $response->withData($value['name']);
+                    return $value['name'];
                 }
             },
         );
 
-        $result = $presenter->present($paginator, $this->createDataResponse());
+        $result = $presenter->present($paginator);
 
         $this->assertSame(
             [
@@ -73,18 +69,7 @@ final class OffsetPaginatorPresenterTest extends Unit
                 'currentPage' => 1,
                 'totalPages' => 1,
             ],
-            $result->getData(),
-        );
-    }
-
-    private function createDataResponse(): DataResponse
-    {
-        return new DataResponse(
-            '',
-            Status::OK,
-            '',
-            new ResponseFactory(),
-            new StreamFactory(),
+            $result,
         );
     }
 }
