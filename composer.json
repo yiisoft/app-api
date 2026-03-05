@@ -105,6 +105,7 @@
         "allow-plugins": {
             "codeception/c3": true,
             "composer/package-versions-deprecated": true,
+            "infection/extension-installer": true,
             "yiisoft/config": true
         }
     }
