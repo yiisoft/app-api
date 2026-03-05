@@ -11,6 +11,7 @@
 - Bug #260: Fix psalm cache directory in configuration file (@vjik)
 - Enh #260, #265: Update composer dependencies and refactor to replace use of deprecated classes (@vjik)
 - Chg #265: Refactor `PresenterInterface` and implementations for preparing data only (@vjik)
+- Enh #266: Add grouping to `make` help output (@Xakki, @samdark)
 
 ## 1.1.0 December 22, 2025
 
