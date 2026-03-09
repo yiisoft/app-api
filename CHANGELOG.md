@@ -1,5 +1,9 @@
 # Yii API template Change Log
 
+## 1.2.1 under development
+
+- no changes in this release.
+
 ## 1.2.0 March 09, 2026
 
 - New #263: Improve `prod-deploy` error handling so exact error is printed in case of rollback (@samdark)
