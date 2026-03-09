@@ -1,17 +1,17 @@
 # Yii API template Change Log
 
-## 1.1.1 under development
+## 1.2.0 March 09, 2026
 
 - New #263: Improve `prod-deploy` error handling so exact error is printed in case of rollback (@samdark)
-- Chg #263: Remove mutation testing (@samdark)
-- Chg #263, #268: Allow symfony/console 8 (@samdark)
 - Chg #255: Refactor `Makefile` default command help logic (@samdark)
-- Bug #256: Fix incorrect .env files used in Docker Compose for production (@aa-chernyh)
-- Enh #258: Set locale `C.UTF-8` in `Dockerfile` (@vjik)
-- Bug #260: Fix psalm cache directory in configuration file (@vjik)
-- Enh #260, #265: Update composer dependencies and refactor to replace use of deprecated classes (@vjik)
+- Chg #263, #268: Allow symfony/console 8 (@samdark)
+- Chg #263: Remove mutation testing (@samdark)
 - Chg #265: Refactor `PresenterInterface` and implementations for preparing data only (@vjik)
+- Enh #258: Set locale `C.UTF-8` in `Dockerfile` (@vjik)
+- Enh #260, #265: Update composer dependencies and refactor to replace use of deprecated classes (@vjik)
 - Enh #266: Add grouping to `make` help output (@Xakki, @samdark)
+- Bug #256: Fix incorrect .env files used in Docker Compose for production (@aa-chernyh)
+- Bug #260: Fix psalm cache directory in configuration file (@vjik)
 
 ## 1.1.0 December 22, 2025
 
