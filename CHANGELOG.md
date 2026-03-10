@@ -2,7 +2,7 @@
 
 ## 1.2.1 under development
 
-- no changes in this release.
+- Enh #269: Add comments to `.env` files about applicability of the environment variables (@samdark)
 
 ## 1.2.0 March 09, 2026
 
