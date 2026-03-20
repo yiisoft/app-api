@@ -2,8 +2,7 @@
 
 ## 1.2.1 under development
 
-- Chg #443: Do not write logs to file since that's not needed for both Docker and `./yii serve` (@samdark)
-- no changes in this release.
+- Chg #272: Do not write logs to file since that's not needed for both Docker and `./yii serve` (@samdark)
 
 ## 1.2.0 March 09, 2026
 
