@@ -2,7 +2,7 @@
 
 ## 1.2.1 under development
 
-- Enh #456: Add "service update paused" case for swarm deployment log parsing (@samdark)
+- Enh #271: Add "service update paused" case for swarm deployment log parsing (@samdark)
 
 ## 1.2.0 March 09, 2026
 
