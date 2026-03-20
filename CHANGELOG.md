@@ -3,6 +3,7 @@
 ## 1.2.1 under development
 
 - Chg #272: Do not write logs to file since that's not needed for both Docker and `./yii serve` (@samdark)
+- Enh #271: Add "service update paused" case for swarm deployment log parsing (@samdark)
 
 ## 1.2.0 March 09, 2026
 
