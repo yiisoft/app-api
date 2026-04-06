@@ -27,3 +27,6 @@ c3.php
 
 # Local environment configuration
 .env
+
+# Composer lock file (this is a project template)
+/composer.lock
