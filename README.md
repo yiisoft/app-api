@@ -45,14 +45,27 @@ composer create-project yiisoft/app-api myproject
 cd myproject
 ```
 
+> [!NOTE]
+> Ensure that Composer is executed with the same PHP version that will be used to run the application.
+
+Copy the example environment file and adjust as needed:
+
+```shell
+cp .env.example .env
+```
+
 To run the app:
 
 ```shell
-APP_ENV=dev ./yii serve
+./yii serve
 ```
 
 Now you should be able to access the application through the URL printed to console.
 Usually it is `http://localhost:8080`.
+
+> [!TIP]
+> The `.env` file is for local development only and is excluded from version control.
+> In production, configure environment variables via your server or container instead.
 
 ### Installation with Docker
 
@@ -105,6 +118,8 @@ src/                        Application source code.
         Shared/             Shared API components (middleware, presenters, factories).
     Console/                Console commands.
     Shared/                 Code shared between API and console applications.
+    bootstrap.php           Application bootstrap (autoloading, environment setup).
+    Environment.php         Environment configuration class.
 tests/                      A set of Codeception tests for the application.
     Api/                    API endpoints tests.
     Console/                Console command tests.

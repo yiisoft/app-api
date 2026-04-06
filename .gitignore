@@ -24,3 +24,9 @@ Thumbs.db
 
 # Codeception C3
 c3.php
+
+# Local environment configuration
+.env
+
+# Composer lock file (this is a project template)
+/composer.lock

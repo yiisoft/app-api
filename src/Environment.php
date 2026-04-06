@@ -58,7 +58,7 @@ final class Environment
     /**
      * @return non-empty-string|null
      */
-    public static function appHostPath(): string|null
+    public static function appHostPath(): ?string
     {
         /** @var non-empty-string|null */
         return self::$values['APP_HOST_PATH'];
@@ -78,14 +78,16 @@ final class Environment
 
     private static function setEnvironment(): void
     {
-        $environment = self::getRawValue('APP_ENV');
+        $environment = self::getRawValue('APP_ENV') ?: self::PROD;
 
         if (!in_array($environment, self::ENVIRONMENTS, true)) {
-            $message = $environment === null
-                ? 'APP_ENV environment variable is empty.'
-                : sprintf('APP_ENV="%s" environment is invalid.', $environment);
-            $message .= sprintf(' Valid values are "%s".', implode('", "', self::ENVIRONMENTS));
-            throw new RuntimeException($message);
+            throw new RuntimeException(
+                sprintf(
+                    'APP_ENV="%s" is invalid. Valid values are "%s".',
+                    $environment,
+                    implode('", "', self::ENVIRONMENTS),
+                ),
+            );
         }
 
         self::$values['APP_ENV'] = $environment;
