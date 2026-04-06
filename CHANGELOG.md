@@ -1,6 +1,6 @@
 # Yii API template Change Log
 
-## 1.2.1 under development
+## 1.3.0 April 06, 2026
 
 - Chg #272: Do not write logs to file since that's not needed for both Docker and `./yii serve` (@samdark)
 - Enh #252: Add `.env` for development without Docker (@samdark)
