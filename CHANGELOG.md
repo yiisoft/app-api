@@ -2,7 +2,7 @@
 
 ## 1.4.0 under development
 
-- New #459: Add explicit `Caddyfile`s for dev and prod (@samdark)
+- New #275: Add explicit `Caddyfile`s for dev and prod (@samdark)
 
 ## 1.3.0 April 06, 2026
 
