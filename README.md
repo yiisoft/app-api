@@ -85,13 +85,19 @@ To run the app:
 make up
 ```
 
+To open the running app in your default browser:
+
+```shell
+make open
+```
+
 To stop the app:
 
 ```shell
 make down
 ```
 
-The application is available at `https://localhost`.
+The application is available at `http://localhost`.
 
 Other make commands are available in the `Makefile` and can be listed with:
 
