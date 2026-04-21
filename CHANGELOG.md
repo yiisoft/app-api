@@ -2,7 +2,7 @@
 
 ## 1.4.1 under development
 
-- Enh: Add `make open` and improve `make up` UX (@samdark)
+- Enh #276: Add `make open` and improve `make up` UX (@samdark)
 
 ## 1.4.0 April 12, 2026
 
