@@ -70,7 +70,7 @@
         "codeception/module-asserts": "^3.3.0",
         "codeception/module-cli": "^2.0.1",
         "codeception/module-db": "^3.2.2",
-        "codeception/module-phpbrowser": "^3.0.2",
+        "codeception/module-phpbrowser": "^4.0.0",
         "codeception/module-rest": "^3.4.3",
         "friendsofphp/php-cs-fixer": "^3.94.2",
         "phpunit/phpunit": "^11.5.55",
