@@ -4,6 +4,7 @@
 
 - Enh #276: Add `make open` and improve `make up` UX (@samdark)
 - Enh #277: Update `yiisoft/data` requirement from `^1.0.1` to `^2.0.0` (@vjik)
+- Enh #279: Update Composer development dependencies (@vjik)
 
 ## 1.4.0 April 12, 2026
 
