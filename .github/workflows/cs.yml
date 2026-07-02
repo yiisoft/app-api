@@ -1,5 +1,12 @@
 name: Code Style
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 on:
   pull_request:
     paths-ignore:
@@ -12,22 +19,25 @@ on:
 
 jobs:
   cs-fix:
+    name: PHP CS Fixer and Rector
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # Required to push automated CS fixes to the pull request branch.
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
 
       - name: Install PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: 8.2
           tools: composer:v2
           coverage: none
 
       - name: Install Composer dependencies
-        uses: "ramsey/composer-install@v4"
+        uses: ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f # 3.2.1
 
       - name: Run PHP CS Fixer
         run: ./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php
@@ -35,9 +45,20 @@ jobs:
       - name: Run Rector
         run: ./vendor/bin/rector --output-format=github
 
+      - name: Configure Git credentials
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: git config --global credential.helper '!f() { echo username=x-access-token; echo password=$GH_TOKEN; }; f'
+
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: "Apply PHP CS Fixer and Rector changes (CI)"
-          file_pattern: '*.php'
-          disable_globbing: true
+        run: |
+          git add -- '*.php'
+
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Apply PHP CS Fixer and Rector changes (CI)"
+          git push
