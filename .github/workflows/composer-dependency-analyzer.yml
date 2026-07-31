@@ -1,33 +1,27 @@
+name: Composer dependency analyzer
+
 on:
   pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - '.gitignore'
-      - '.gitattributes'
-      - 'phpunit.xml.dist'
-      - 'psalm.xml'
-
+    paths: &paths
+      - 'public/**'
+      - 'src/**'
+      - 'config/**'
+      - 'tests/**'
+      - 'composer.json'
+      - 'composer-dependency-analyser.php'
+      - 'yii'
+      - 'yii.bat'
+      - '.github/workflows/composer-dependency-analyzer.yml'
   push:
     branches: ['master']
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - '.gitignore'
-      - '.gitattributes'
-      - 'phpunit.xml.dist'
-      - 'psalm.xml'
+    paths: *paths
 
-name: Composer dependency analyzer
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-permissions:
-  contents: read
 
 jobs:
   analyzer:

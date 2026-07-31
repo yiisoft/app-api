@@ -1,21 +1,25 @@
 name: Code Style
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+on:
+  pull_request:
+    paths:
+      - 'public/**'
+      - 'src/**'
+      - 'config/**'
+      - 'tests/**'
+      - '.php-cs-fixer.php'
+      - 'rector.php'
+      - 'composer.json'
+      - 'yii'
+      - 'yii.bat'
+      - '.github/workflows/cs.yml'
 
 permissions:
   contents: read
 
-on:
-  pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - '.gitignore'
-      - '.gitattributes'
-      - 'psalm.xml'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   cs-fix:
