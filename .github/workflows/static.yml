@@ -1,31 +1,26 @@
+name: static analysis
+
 on:
   pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - '.gitignore'
-      - '.gitattributes'
-      - 'phpunit.xml.dist'
-
+    paths: &paths
+      - 'public/**'
+      - 'src/**'
+      - 'config/**'
+      - 'psalm.xml'
+      - 'composer.json'
+      - 'yii'
+      - 'yii.bat'
+      - '.github/workflows/static.yml'
   push:
     branches: ['master']
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - '.gitignore'
-      - '.gitattributes'
-      - 'phpunit.xml.dist'
+    paths: *paths
 
-name: static analysis
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-permissions:
-  contents: read
 
 jobs:
   psalm:
@@ -41,6 +36,7 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
+          - "8.5"
 
     steps:
       - name: Checkout
