@@ -75,7 +75,6 @@
         "friendsofphp/php-cs-fixer": "^3.95.1",
         "phpunit/phpunit": "^11.5.55",
         "rector/rector": "^2.4.2",
-        "roave/infection-static-analysis-plugin": "^1.40",
         "shipmonk/composer-dependency-analyser": "^1.8.4",
         "vimeo/psalm": "^6.16.1"
     },
@@ -105,7 +104,6 @@
         "allow-plugins": {
             "codeception/c3": true,
             "composer/package-versions-deprecated": true,
-            "infection/extension-installer": true,
             "yiisoft/config": true
         }
     }
