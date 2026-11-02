@@ -73,7 +73,6 @@
         "codeception/module-phpbrowser": "^4.0.0",
         "codeception/module-rest": "^3.4.3",
         "friendsofphp/php-cs-fixer": "^3.95.1",
-        "infection/infection": "^0.29.8 || ^0.35.8",
         "phpunit/phpunit": "^11.5.55",
         "rector/rector": "^2.4.2",
         "shipmonk/composer-dependency-analyser": "^1.8.4",
@@ -105,7 +104,6 @@
         "allow-plugins": {
             "codeception/c3": true,
             "composer/package-versions-deprecated": true,
-            "infection/extension-installer": true,
             "yiisoft/config": true
         }
     }
