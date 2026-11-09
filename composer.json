@@ -50,7 +50,7 @@
         "yiisoft/hydrator": "^1.6.3",
         "yiisoft/injector": "^1.2.1",
         "yiisoft/input-http": "^1.0.1",
-        "yiisoft/log": "^2.2.0",
+        "yiisoft/log": "^2.2.1",
         "yiisoft/middleware-dispatcher": "^5.4",
         "yiisoft/request-body-parser": "^1.2.1",
         "yiisoft/request-provider": "^1.3",
