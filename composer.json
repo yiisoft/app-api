@@ -43,7 +43,7 @@
         "yiisoft/config": "^1.6.2",
         "yiisoft/data": "^2.0.0",
         "yiisoft/data-response": "^2.2",
-        "yiisoft/definitions": "^3.4.1",
+        "yiisoft/definitions": "^3.4.2",
         "yiisoft/di": "^1.4.1",
         "yiisoft/error-handler": "^4.3.2",
         "yiisoft/http": "^1.3",
